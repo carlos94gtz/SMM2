@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SMM2 Rankings de Ayer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="kicker">Super Mario Maker 2</p>
+        <h1>Rankings de niveles publicados ayer</h1>
+      </div>
+      <div class="meta">
+        <span id="dateLabel">--</span>
+        <span id="countLabel">-- niveles</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="stats" aria-label="Resumen">
+        <div>
+          <span class="stat-label">Niveles indexados</span>
+          <strong id="totalLevels">0</strong>
+        </div>
+        <div>
+          <span class="stat-label">Likes totales</span>
+          <strong id="totalLikes">0</strong>
+        </div>
+        <div>
+          <span class="stat-label">Plays totales</span>
+          <strong id="totalPlays">0</strong>
+        </div>
+        <div>
+          <span class="stat-label">Criterio dificultad</span>
+          <strong id="leastRule">--</strong>
+        </div>
+      </section>
+
+      <section class="leaderboards">
+        <section class="board" aria-labelledby="likesTitle">
+          <div class="board-heading">
+            <div>
+              <p class="kicker">Top 10</p>
+              <h2 id="likesTitle">Más likes</h2>
+            </div>
+            <span class="sort-label">likes ↓</span>
+          </div>
+          <div id="topLiked" class="level-list"></div>
+        </section>
+
+        <section class="board" aria-labelledby="clearedTitle">
+          <div class="board-heading">
+            <div>
+              <p class="kicker">Top 10</p>
+              <h2 id="clearedTitle">Menos superados</h2>
+            </div>
+            <span class="sort-label">clear rate ↑</span>
+          </div>
+          <div id="leastCleared" class="level-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
