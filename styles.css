@@ -87,33 +87,6 @@ main {
   padding: 22px 32px 34px;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.stats > div {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
-  padding: 14px 16px;
-}
-
-.stat-label {
-  display: block;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.stats strong {
-  display: block;
-  margin-top: 5px;
-  font-size: 22px;
-  line-height: 1.1;
-}
-
 .leaderboards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -278,10 +251,6 @@ main {
     padding: 18px;
   }
 
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .level-card {
     grid-template-columns: 42px 92px minmax(0, 1fr);
   }
@@ -292,10 +261,6 @@ main {
 }
 
 @media (max-width: 520px) {
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
   .level-card {
     grid-template-columns: 40px minmax(0, 1fr);
   }
