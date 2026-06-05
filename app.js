@@ -80,6 +80,7 @@ function renderList(id, courses, mode) {
 function render() {
   const localDate = new Date(`${data.date}T12:00:00`);
   byId("dateLabel").textContent = dateFormatter.format(localDate);
+  byId("countLabel").textContent = `${metric(data.stats.totalLevels)} niveles`;
 
   renderList("topLiked", data.topLiked, "likes");
   renderList("leastCleared", data.leastCleared, "clear");
