@@ -13,6 +13,12 @@ let lastActiveCard = null;
 
 function dashboardCourseLists() {
   const lists = [data.topLiked || [], data.topLongest || [], data.leastCleared || []];
+  for (const courses of Object.values(data.topLikedByDifficulty || {})) {
+    lists.push(courses || []);
+  }
+  for (const courses of Object.values(data.topLongestByDifficulty || {})) {
+    lists.push(courses || []);
+  }
   for (const courses of Object.values(data.leastClearedByDifficulty || {})) {
     lists.push(courses || []);
   }
@@ -235,8 +241,8 @@ function difficultyOptions() {
   ];
 }
 
-function renderDifficultyFilter() {
-  const select = byId("difficultyFilter");
+function renderDifficultyFilter(selectId) {
+  const select = byId(selectId);
   if (!select) return;
 
   const currentValue = select.value || "all";
@@ -251,18 +257,40 @@ function renderDifficultyFilter() {
   select.value = allowedValues.has(currentValue) ? currentValue : "all";
 }
 
-function selectedLeastClearedCourses() {
-  const selectedDifficulty = byId("difficultyFilter")?.value || "all";
-  if (selectedDifficulty === "all") return data.leastCleared || [];
-  return data.leastClearedByDifficulty?.[selectedDifficulty] || [];
+function selectedCourses(selectId, allCourses, byDifficulty) {
+  const selectedDifficulty = byId(selectId)?.value || "all";
+  if (selectedDifficulty === "all") return allCourses || [];
+  return byDifficulty?.[selectedDifficulty] || [];
+}
+
+function renderTopLiked() {
+  renderList(
+    "topLiked",
+    selectedCourses("likedDifficultyFilter", data.topLiked, data.topLikedByDifficulty),
+    "likes",
+  );
+}
+
+function renderTopLongest() {
+  renderList(
+    "topLongest",
+    selectedCourses("longestDifficultyFilter", data.topLongest, data.topLongestByDifficulty),
+    "time",
+  );
 }
 
 function renderLeastCleared() {
-  renderList("leastCleared", selectedLeastClearedCourses(), "clear");
+  renderList(
+    "leastCleared",
+    selectedCourses("clearedDifficultyFilter", data.leastCleared, data.leastClearedByDifficulty),
+    "clear",
+  );
 }
 
 function bindDifficultyFilter() {
-  byId("difficultyFilter")?.addEventListener("change", renderLeastCleared);
+  byId("likedDifficultyFilter")?.addEventListener("change", renderTopLiked);
+  byId("longestDifficultyFilter")?.addEventListener("change", renderTopLongest);
+  byId("clearedDifficultyFilter")?.addEventListener("change", renderLeastCleared);
 }
 
 function render() {
@@ -270,9 +298,11 @@ function render() {
   byId("dateLabel").textContent = dateFormatter.format(localDate);
   byId("countLabel").textContent = `${metric(data.stats.totalLevels)} niveles`;
 
-  renderDifficultyFilter();
-  renderList("topLiked", data.topLiked, "likes");
-  renderList("topLongest", data.topLongest || [], "time");
+  renderDifficultyFilter("likedDifficultyFilter");
+  renderDifficultyFilter("longestDifficultyFilter");
+  renderDifficultyFilter("clearedDifficultyFilter");
+  renderTopLiked();
+  renderTopLongest();
   renderLeastCleared();
 }
 

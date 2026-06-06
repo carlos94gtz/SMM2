@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SMM2 Rankings de Ayer</title>
-    <link rel="stylesheet" href="./styles.css?v=longest-1" />
+    <link rel="stylesheet" href="./styles.css?v=all-difficulty-filters-1" />
   </head>
   <body>
     <header class="topbar">
@@ -29,7 +29,19 @@
               <p class="kicker">Top 10</p>
               <h2 id="likesTitle">Más likes</h2>
             </div>
-            <span class="sort-label">likes ↓</span>
+            <div class="board-controls">
+              <span class="sort-label">likes ↓</span>
+              <label class="difficulty-filter">
+                <span>Dificultad</span>
+                <select id="likedDifficultyFilter" aria-label="Filtrar más likes por dificultad">
+                  <option value="all">Todas</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Expert">Expert</option>
+                  <option value="Super expert">Super expert</option>
+                </select>
+              </label>
+            </div>
           </div>
           <div id="topLiked" class="level-list">
 
@@ -325,7 +337,7 @@
               <span class="sort-label">clear rate ↑</span>
               <label class="difficulty-filter">
                 <span>Dificultad</span>
-                <select id="difficultyFilter" aria-label="Filtrar menos superados por dificultad">
+                <select id="clearedDifficultyFilter" aria-label="Filtrar menos superados por dificultad">
                   <option value="all">Todas</option>
                   <option value="Easy">Easy</option>
                   <option value="Normal">Normal</option>
@@ -625,7 +637,19 @@
               <p class="kicker">Top 10</p>
               <h2 id="longestTitle">Más largos</h2>
             </div>
-            <span class="sort-label">clear-check ↓</span>
+            <div class="board-controls">
+              <span class="sort-label">clear-check ↓</span>
+              <label class="difficulty-filter">
+                <span>Dificultad</span>
+                <select id="longestDifficultyFilter" aria-label="Filtrar más largos por dificultad">
+                  <option value="all">Todas</option>
+                  <option value="Easy">Easy</option>
+                  <option value="Normal">Normal</option>
+                  <option value="Expert">Expert</option>
+                  <option value="Super expert">Super expert</option>
+                </select>
+              </label>
+            </div>
           </div>
           <div id="topLongest" class="level-list">
 
@@ -920,7 +944,7 @@
       </section>
     </div>
 
-    <script src="./data.js?v=longest-1"></script>
-    <script src="./app.js?v=longest-1"></script>
+    <script src="./data.js?v=all-difficulty-filters-1"></script>
+    <script src="./app.js?v=all-difficulty-filters-1"></script>
   </body>
 </html>
