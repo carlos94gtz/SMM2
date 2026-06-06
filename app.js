@@ -5,10 +5,19 @@ const dateFormatter = new Intl.DateTimeFormat("es-MX", {
   dateStyle: "long",
   timeZone: data.timezone,
 });
-const coursesById = new Map(
-  [...data.topLiked, ...data.leastCleared].map((course) => [String(course.courseId), course]),
-);
+const coursesById = new Map();
+for (const courses of dashboardCourseLists()) {
+  for (const course of courses) coursesById.set(String(course.courseId), course);
+}
 let lastActiveCard = null;
+
+function dashboardCourseLists() {
+  const lists = [data.topLiked || [], data.leastCleared || []];
+  for (const courses of Object.values(data.leastClearedByDifficulty || {})) {
+    lists.push(courses || []);
+  }
+  return lists;
+}
 
 function byId(id) {
   return document.getElementById(id);
@@ -86,6 +95,14 @@ function card(course, index, mode) {
         </div>
       </div>
     </article>
+  `;
+}
+
+function emptyState() {
+  return `
+    <div class="empty-state">
+      No hay niveles con suficientes intentos para esta dificultad.
+    </div>
   `;
 }
 
@@ -194,7 +211,49 @@ function bindDetailEvents() {
 }
 
 function renderList(id, courses, mode) {
-  byId(id).innerHTML = courses.map((course, index) => card(course, index, mode)).join("");
+  byId(id).innerHTML = courses.length
+    ? courses.map((course, index) => card(course, index, mode)).join("")
+    : emptyState();
+}
+
+function difficultyOptions() {
+  return [
+    { value: "all", label: "Todas" },
+    ...(data.difficulties || []).map((difficulty) => ({
+      value: difficulty,
+      label: difficulty,
+    })),
+  ];
+}
+
+function renderDifficultyFilter() {
+  const select = byId("difficultyFilter");
+  if (!select) return;
+
+  const currentValue = select.value || "all";
+  const options = difficultyOptions();
+  select.innerHTML = options
+    .map((option) => {
+      return `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`;
+    })
+    .join("");
+
+  const allowedValues = new Set(options.map((option) => option.value));
+  select.value = allowedValues.has(currentValue) ? currentValue : "all";
+}
+
+function selectedLeastClearedCourses() {
+  const selectedDifficulty = byId("difficultyFilter")?.value || "all";
+  if (selectedDifficulty === "all") return data.leastCleared || [];
+  return data.leastClearedByDifficulty?.[selectedDifficulty] || [];
+}
+
+function renderLeastCleared() {
+  renderList("leastCleared", selectedLeastClearedCourses(), "clear");
+}
+
+function bindDifficultyFilter() {
+  byId("difficultyFilter")?.addEventListener("change", renderLeastCleared);
 }
 
 function render() {
@@ -202,9 +261,11 @@ function render() {
   byId("dateLabel").textContent = dateFormatter.format(localDate);
   byId("countLabel").textContent = `${metric(data.stats.totalLevels)} niveles`;
 
+  renderDifficultyFilter();
   renderList("topLiked", data.topLiked, "likes");
-  renderList("leastCleared", data.leastCleared, "clear");
+  renderLeastCleared();
 }
 
 render();
+bindDifficultyFilter();
 bindDetailEvents();

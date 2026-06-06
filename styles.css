@@ -118,6 +118,42 @@ main {
   font-size: 12px;
 }
 
+.board-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.difficulty-filter {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--muted);
+  padding: 3px 8px 3px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.difficulty-filter select {
+  min-height: 22px;
+  max-width: 130px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 680;
+}
+
+.difficulty-filter select:focus-visible {
+  outline: 2px solid rgba(25, 114, 120, 0.38);
+  outline-offset: 2px;
+}
+
 .level-list {
   display: grid;
   gap: 10px;
@@ -259,6 +295,19 @@ main {
 
 .metrics span {
   white-space: nowrap;
+}
+
+.empty-state {
+  display: grid;
+  min-height: 118px;
+  place-items: center;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  padding: 18px;
+  text-align: center;
+  font-size: 13px;
 }
 
 .detail-overlay {
@@ -434,6 +483,15 @@ main {
 
   .level-card {
     grid-template-columns: 42px 92px minmax(0, 1fr);
+  }
+
+  .board-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .board-controls {
+    justify-content: flex-start;
   }
 
   .primary-score {
