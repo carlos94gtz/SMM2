@@ -146,11 +146,11 @@ main {
 }
 
 .board-heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 14px;
-  min-height: 44px;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-items: start;
+  gap: 8px;
+  min-height: 88px;
   margin-bottom: 12px;
   border-bottom: 1px solid var(--line);
   padding-bottom: 10px;
@@ -165,15 +165,19 @@ main {
 .board-controls {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
 }
 
 .difficulty-filter {
   position: relative;
   display: inline-flex;
+  flex: 1 1 190px;
   min-height: 28px;
   min-width: 178px;
+  max-width: 230px;
   align-items: center;
   border: 1px solid var(--line);
   border-radius: 8px;
