@@ -297,16 +297,16 @@ main {
 
 .course-id {
   display: inline-flex;
-  min-height: 22px;
+  min-height: 28px;
   align-items: center;
   border: 1px solid #dfe6eb;
   border-radius: 6px;
   background: #f8fafb;
   color: #4f5e68;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 6px;
+  font-size: 14px;
+  font-weight: 780;
+  padding: 4px 8px;
   white-space: nowrap;
 }
 
@@ -456,16 +456,16 @@ main {
 
 .detail-course-id {
   display: inline-flex;
-  min-height: 24px;
+  min-height: 34px;
   align-items: center;
   border: 1px solid #dfe6eb;
   border-radius: 6px;
   background: #f8fafb;
   color: #4f5e68;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 12px;
-  font-weight: 760;
-  padding: 3px 7px;
+  font-size: 18px;
+  font-weight: 820;
+  padding: 5px 10px;
 }
 
 .detail-tags {

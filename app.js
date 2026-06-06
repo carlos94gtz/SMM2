@@ -74,7 +74,6 @@ function scoreMarkup(course, mode) {
 
 function card(course, index, mode) {
   const title = text(course.name);
-  const creator = text(course.uploaderName);
   const courseId = formatCourseId(course.courseId);
   return `
     <article class="level-card" data-course-id="${escapeHtml(course.courseId)}" tabindex="0" role="button" aria-label="Ver detalles de ${escapeHtml(title)}, ID ${escapeHtml(courseId)}">
@@ -90,9 +89,6 @@ function card(course, index, mode) {
         </div>
         <div class="level-meta">
           <span class="pill difficulty">${escapeHtml(course.difficulty)}</span>
-          <span class="pill">${escapeHtml(course.style)}</span>
-          <span class="pill">${escapeHtml(course.theme)}</span>
-          <span class="pill">${escapeHtml(creator)}</span>
         </div>
         <div class="metrics">
           <span>${metric(course.plays)} plays</span>
@@ -138,10 +134,6 @@ function detailMarkup(course) {
         <span class="detail-course-id">${escapeHtml(courseId)}</span>
         <div class="level-meta detail-tags">
           <span class="pill difficulty">${escapeHtml(course.difficulty)}</span>
-          <span class="pill">${escapeHtml(course.style)}</span>
-          <span class="pill">${escapeHtml(course.theme)}</span>
-          <span class="pill">${escapeHtml(course.uploaderName)}</span>
-          <span class="pill">${escapeHtml(course.uploaderCountry)}</span>
         </div>
         <div class="detail-grid">
           ${detailStat("Likes", metric(course.likes))}
