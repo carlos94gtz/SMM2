@@ -31,6 +31,12 @@ function metric(value) {
   return number.format(value || 0);
 }
 
+function formatCourseId(value) {
+  const raw = text(value).replace(/-/g, "").toUpperCase();
+  if (raw.length !== 9) return text(value);
+  return `${raw.slice(0, 3)}-${raw.slice(3, 6)}-${raw.slice(6, 9)}`;
+}
+
 function escapeHtml(value) {
   return text(value).replace(/[&<>"']/g, (character) => {
     return {
@@ -69,15 +75,16 @@ function scoreMarkup(course, mode) {
 function card(course, index, mode) {
   const title = text(course.name);
   const creator = text(course.uploaderName);
+  const courseId = formatCourseId(course.courseId);
   return `
-    <article class="level-card" data-course-id="${escapeHtml(course.courseId)}" tabindex="0" role="button" aria-label="Ver detalles de ${escapeHtml(title)}">
+    <article class="level-card" data-course-id="${escapeHtml(course.courseId)}" tabindex="0" role="button" aria-label="Ver detalles de ${escapeHtml(title)}, ID ${escapeHtml(courseId)}">
       <div class="rank">${index + 1}</div>
       <div class="thumb">${img(course.thumbnail, title)}</div>
       <div class="level-body">
         <div class="level-top">
           <div class="level-title">
             <h3>${escapeHtml(title)}</h3>
-            <span class="course-id">${escapeHtml(course.courseId)}</span>
+            <span class="course-id">${escapeHtml(courseId)}</span>
           </div>
           ${scoreMarkup(course, mode)}
         </div>
@@ -120,6 +127,7 @@ function detailMarkup(course) {
   const description = text(course.description);
   const uploaded = text(course.uploadedPretty);
   const image = img(course.thumbnail, title);
+  const courseId = formatCourseId(course.courseId);
 
   return `
     <div class="detail-layout">
@@ -127,7 +135,7 @@ function detailMarkup(course) {
       <div class="detail-copy">
         <p class="kicker">Detalle del nivel</p>
         <h2 id="detailTitle">${escapeHtml(title)}</h2>
-        <span class="detail-course-id">${escapeHtml(course.courseId)}</span>
+        <span class="detail-course-id">${escapeHtml(courseId)}</span>
         <div class="level-meta detail-tags">
           <span class="pill difficulty">${escapeHtml(course.difficulty)}</span>
           <span class="pill">${escapeHtml(course.style)}</span>
