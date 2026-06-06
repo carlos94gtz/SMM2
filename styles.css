@@ -25,6 +25,14 @@ body {
     sans-serif;
 }
 
+body.detail-open {
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none !important;
+}
+
 .topbar {
   display: flex;
   align-items: flex-end;
@@ -124,6 +132,25 @@ main {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.level-card:hover,
+.level-card:focus-visible {
+  border-color: rgba(25, 114, 120, 0.55);
+  box-shadow: 0 18px 34px rgba(23, 32, 38, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.level-card:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(25, 114, 120, 0.2),
+    0 18px 34px rgba(23, 32, 38, 0.12);
 }
 
 .rank {
@@ -234,6 +261,160 @@ main {
   white-space: nowrap;
 }
 
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(23, 32, 38, 0.58);
+}
+
+.detail-panel {
+  position: relative;
+  width: min(980px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 28px 70px rgba(23, 32, 38, 0.28);
+}
+
+.detail-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 720;
+  padding: 6px 12px;
+}
+
+.detail-close:hover,
+.detail-close:focus-visible {
+  border-color: rgba(25, 114, 120, 0.55);
+  outline: none;
+}
+
+#detailContent {
+  padding: 58px 22px 22px;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(320px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.detail-media {
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #dae3e8;
+}
+
+.detail-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-media .thumb-fallback {
+  min-height: 260px;
+}
+
+.detail-copy h2 {
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+  font-size: 28px;
+  line-height: 1.12;
+}
+
+.detail-course-id {
+  display: inline-block;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+}
+
+.detail-tags {
+  margin-top: 13px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.detail-stat {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  padding: 10px 12px;
+}
+
+.detail-stat span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.detail-stat strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.detail-description {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.detail-description span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 740;
+  text-transform: uppercase;
+}
+
+.detail-description p {
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+
+.detail-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.detail-footer span {
+  white-space: nowrap;
+}
+
 @media (max-width: 1060px) {
   .leaderboards {
     grid-template-columns: 1fr;
@@ -258,6 +439,38 @@ main {
   .primary-score {
     min-width: 58px;
   }
+
+  .detail-overlay {
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .detail-panel {
+    max-height: calc(100dvh - 24px);
+  }
+
+  #detailContent {
+    padding: 54px 16px 18px;
+  }
+
+  .detail-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .detail-media,
+  .detail-media img,
+  .detail-media .thumb-fallback {
+    min-height: 220px;
+  }
+
+  .detail-copy h2 {
+    font-size: 24px;
+  }
+
+  .detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 520px) {
@@ -276,5 +489,13 @@ main {
 
   .primary-score {
     text-align: left;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-footer span {
+    white-space: normal;
   }
 }
