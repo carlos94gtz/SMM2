@@ -418,8 +418,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "96.23%",
         "uploadTime": 8573,
         "uploadTimePretty": "00:08.573",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/VTVD88F1H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/VTVD88F1H"
+        "thumbnail": "./thumbs/VTVD88F1H.jpg",
+        "entireThumbnail": "./thumbs/VTVD88F1H.jpg"
       },
       {
         "courseId": "Q1CQ4RM8G",
@@ -440,8 +440,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "38.37%",
         "uploadTime": 17044,
         "uploadTimePretty": "00:17.044",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q1CQ4RM8G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q1CQ4RM8G"
+        "thumbnail": "./thumbs/Q1CQ4RM8G.jpg",
+        "entireThumbnail": "./thumbs/Q1CQ4RM8G.jpg"
       },
       {
         "courseId": "GM8H4H2VF",
@@ -462,8 +462,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "75.00%",
         "uploadTime": 30633,
         "uploadTimePretty": "00:30.633",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/GM8H4H2VF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/GM8H4H2VF"
+        "thumbnail": "./thumbs/GM8H4H2VF.jpg",
+        "entireThumbnail": "./thumbs/GM8H4H2VF.jpg"
       }
     ],
     "Normal": [
@@ -552,8 +552,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "23.24%",
         "uploadTime": 44633,
         "uploadTimePretty": "00:44.633",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/QMX0MK62H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/QMX0MK62H"
+        "thumbnail": "./thumbs/QMX0MK62H.jpg",
+        "entireThumbnail": "./thumbs/QMX0MK62H.jpg"
       },
       {
         "courseId": "SNLT4TPHG",
@@ -574,8 +574,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "19.16%",
         "uploadTime": 19653,
         "uploadTimePretty": "00:19.653",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/SNLT4TPHG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/SNLT4TPHG"
+        "thumbnail": "./thumbs/SNLT4TPHG.jpg",
+        "entireThumbnail": "./thumbs/SNLT4TPHG.jpg"
       },
       {
         "courseId": "0GW2YN6BG",
@@ -596,8 +596,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "20.69%",
         "uploadTime": 50383,
         "uploadTimePretty": "00:50.383",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/0GW2YN6BG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/0GW2YN6BG"
+        "thumbnail": "./thumbs/0GW2YN6BG.jpg",
+        "entireThumbnail": "./thumbs/0GW2YN6BG.jpg"
       },
       {
         "courseId": "BPSSF3F9G",
@@ -618,8 +618,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "25.00%",
         "uploadTime": 64364,
         "uploadTimePretty": "01:04.364",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BPSSF3F9G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BPSSF3F9G"
+        "thumbnail": "./thumbs/BPSSF3F9G.jpg",
+        "entireThumbnail": "./thumbs/BPSSF3F9G.jpg"
       },
       {
         "courseId": "252S9P4TG",
@@ -640,8 +640,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "9.93%",
         "uploadTime": 118445,
         "uploadTimePretty": "01:58.445",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/252S9P4TG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/252S9P4TG"
+        "thumbnail": "./thumbs/252S9P4TG.jpg",
+        "entireThumbnail": "./thumbs/252S9P4TG.jpg"
       },
       {
         "courseId": "8B3SK096G",
@@ -662,8 +662,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "28.74%",
         "uploadTime": 18849,
         "uploadTimePretty": "00:18.849",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8B3SK096G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8B3SK096G"
+        "thumbnail": "./thumbs/8B3SK096G.jpg",
+        "entireThumbnail": "./thumbs/8B3SK096G.jpg"
       },
       {
         "courseId": "0VTSS59GF",
@@ -684,8 +684,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "16.96%",
         "uploadTime": 8349,
         "uploadTimePretty": "00:08.349",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/0VTSS59GF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/0VTSS59GF"
+        "thumbnail": "./thumbs/0VTSS59GF.jpg",
+        "entireThumbnail": "./thumbs/0VTSS59GF.jpg"
       }
     ],
     "Expert": [
@@ -752,8 +752,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "7.00%",
         "uploadTime": 19997,
         "uploadTimePretty": "00:19.997",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/VFSXCLM0H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/VFSXCLM0H"
+        "thumbnail": "./thumbs/VFSXCLM0H.jpg",
+        "entireThumbnail": "./thumbs/VFSXCLM0H.jpg"
       },
       {
         "courseId": "N439G9FNG",
@@ -774,8 +774,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "4.11%",
         "uploadTime": 1840,
         "uploadTimePretty": "00:01.840",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/N439G9FNG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/N439G9FNG"
+        "thumbnail": "./thumbs/N439G9FNG.jpg",
+        "entireThumbnail": "./thumbs/N439G9FNG.jpg"
       },
       {
         "courseId": "VF0NR7FKF",
@@ -796,8 +796,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "11.46%",
         "uploadTime": 32333,
         "uploadTimePretty": "00:32.333",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/VF0NR7FKF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/VF0NR7FKF"
+        "thumbnail": "./thumbs/VF0NR7FKF.jpg",
+        "entireThumbnail": "./thumbs/VF0NR7FKF.jpg"
       },
       {
         "courseId": "XDMSQY8XG",
@@ -818,8 +818,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.48%",
         "uploadTime": 71189,
         "uploadTimePretty": "01:11.189",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XDMSQY8XG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XDMSQY8XG"
+        "thumbnail": "./thumbs/XDMSQY8XG.jpg",
+        "entireThumbnail": "./thumbs/XDMSQY8XG.jpg"
       },
       {
         "courseId": "SDLRB5F9G",
@@ -840,8 +840,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.50%",
         "uploadTime": 43400,
         "uploadTimePretty": "00:43.400",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/SDLRB5F9G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/SDLRB5F9G"
+        "thumbnail": "./thumbs/SDLRB5F9G.jpg",
+        "entireThumbnail": "./thumbs/SDLRB5F9G.jpg"
       },
       {
         "courseId": "QT32Y6FKF",
@@ -862,8 +862,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.83%",
         "uploadTime": 179777,
         "uploadTimePretty": "02:59.777",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/QT32Y6FKF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/QT32Y6FKF"
+        "thumbnail": "./thumbs/QT32Y6FKF.jpg",
+        "entireThumbnail": "./thumbs/QT32Y6FKF.jpg"
       },
       {
         "courseId": "BY0L97HJG",
@@ -884,8 +884,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.27%",
         "uploadTime": 31866,
         "uploadTimePretty": "00:31.866",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BY0L97HJG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BY0L97HJG"
+        "thumbnail": "./thumbs/BY0L97HJG.jpg",
+        "entireThumbnail": "./thumbs/BY0L97HJG.jpg"
       },
       {
         "courseId": "N4MYSP6BG",
@@ -906,8 +906,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "7.25%",
         "uploadTime": 2991,
         "uploadTimePretty": "00:02.991",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/N4MYSP6BG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/N4MYSP6BG"
+        "thumbnail": "./thumbs/N4MYSP6BG.jpg",
+        "entireThumbnail": "./thumbs/N4MYSP6BG.jpg"
       }
     ],
     "Super expert": [
@@ -952,8 +952,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.95%",
         "uploadTime": 33027,
         "uploadTimePretty": "00:33.027",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2M79LCX3G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2M79LCX3G"
+        "thumbnail": "./thumbs/2M79LCX3G.jpg",
+        "entireThumbnail": "./thumbs/2M79LCX3G.jpg"
       },
       {
         "courseId": "VPQR4K62H",
@@ -974,8 +974,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.17%",
         "uploadTime": 1552,
         "uploadTimePretty": "00:01.552",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/VPQR4K62H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/VPQR4K62H"
+        "thumbnail": "./thumbs/VPQR4K62H.jpg",
+        "entireThumbnail": "./thumbs/VPQR4K62H.jpg"
       },
       {
         "courseId": "8GWHK7XTG",
@@ -996,8 +996,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "3.81%",
         "uploadTime": 43766,
         "uploadTimePretty": "00:43.766",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8GWHK7XTG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8GWHK7XTG"
+        "thumbnail": "./thumbs/8GWHK7XTG.jpg",
+        "entireThumbnail": "./thumbs/8GWHK7XTG.jpg"
       },
       {
         "courseId": "2RWL2HXQF",
@@ -1018,8 +1018,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.55%",
         "uploadTime": 58646,
         "uploadTimePretty": "00:58.646",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2RWL2HXQF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2RWL2HXQF"
+        "thumbnail": "./thumbs/2RWL2HXQF.jpg",
+        "entireThumbnail": "./thumbs/2RWL2HXQF.jpg"
       },
       {
         "courseId": "V7RW22S0G",
@@ -1040,8 +1040,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "1.54%",
         "uploadTime": 20649,
         "uploadTimePretty": "00:20.649",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/V7RW22S0G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/V7RW22S0G"
+        "thumbnail": "./thumbs/V7RW22S0G.jpg",
+        "entireThumbnail": "./thumbs/V7RW22S0G.jpg"
       },
       {
         "courseId": "NJ7QWDHFF",
@@ -1062,8 +1062,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 9981,
         "uploadTimePretty": "00:09.981",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/NJ7QWDHFF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/NJ7QWDHFF"
+        "thumbnail": "./thumbs/NJ7QWDHFF.jpg",
+        "entireThumbnail": "./thumbs/NJ7QWDHFF.jpg"
       },
       {
         "courseId": "8XQMLKM0H",
@@ -1084,8 +1084,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.29%",
         "uploadTime": 3815,
         "uploadTimePretty": "00:03.815",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8XQMLKM0H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8XQMLKM0H"
+        "thumbnail": "./thumbs/8XQMLKM0H.jpg",
+        "entireThumbnail": "./thumbs/8XQMLKM0H.jpg"
       },
       {
         "courseId": "SVR8MT6LF",
@@ -1106,8 +1106,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.24%",
         "uploadTime": 92024,
         "uploadTimePretty": "01:32.024",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/SVR8MT6LF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/SVR8MT6LF"
+        "thumbnail": "./thumbs/SVR8MT6LF.jpg",
+        "entireThumbnail": "./thumbs/SVR8MT6LF.jpg"
       },
       {
         "courseId": "LYGD21V7G",
@@ -1128,8 +1128,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.98%",
         "uploadTime": 27466,
         "uploadTimePretty": "00:27.466",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/LYGD21V7G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/LYGD21V7G"
+        "thumbnail": "./thumbs/LYGD21V7G.jpg",
+        "entireThumbnail": "./thumbs/LYGD21V7G.jpg"
       }
     ]
   },
@@ -1153,8 +1153,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "100.00%",
       "uploadTime": 498672,
       "uploadTimePretty": "08:18.672",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/DNTYPKKNF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/DNTYPKKNF"
+      "thumbnail": "./thumbs/DNTYPKKNF.jpg",
+      "entireThumbnail": "./thumbs/DNTYPKKNF.jpg"
     },
     {
       "courseId": "8JSTWR43G",
@@ -1175,8 +1175,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "100.00%",
       "uploadTime": 491383,
       "uploadTimePretty": "08:11.383",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8JSTWR43G",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8JSTWR43G"
+      "thumbnail": "./thumbs/8JSTWR43G.jpg",
+      "entireThumbnail": "./thumbs/8JSTWR43G.jpg"
     },
     {
       "courseId": "J0256N6PG",
@@ -1197,8 +1197,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "3.33%",
       "uploadTime": 482849,
       "uploadTimePretty": "08:02.849",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/J0256N6PG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/J0256N6PG"
+      "thumbnail": "./thumbs/J0256N6PG.jpg",
+      "entireThumbnail": "./thumbs/J0256N6PG.jpg"
     },
     {
       "courseId": "BH1DQN0MF",
@@ -1219,8 +1219,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "11.11%",
       "uploadTime": 479133,
       "uploadTimePretty": "07:59.133",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BH1DQN0MF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BH1DQN0MF"
+      "thumbnail": "./thumbs/BH1DQN0MF.jpg",
+      "entireThumbnail": "./thumbs/BH1DQN0MF.jpg"
     },
     {
       "courseId": "BWHJ8T6BG",
@@ -1241,8 +1241,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 455772,
       "uploadTimePretty": "07:35.772",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BWHJ8T6BG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BWHJ8T6BG"
+      "thumbnail": "./thumbs/BWHJ8T6BG.jpg",
+      "entireThumbnail": "./thumbs/BWHJ8T6BG.jpg"
     },
     {
       "courseId": "2585V3VYG",
@@ -1263,8 +1263,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 453208,
       "uploadTimePretty": "07:33.208",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2585V3VYG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2585V3VYG"
+      "thumbnail": "./thumbs/2585V3VYG.jpg",
+      "entireThumbnail": "./thumbs/2585V3VYG.jpg"
     },
     {
       "courseId": "SDJ2NF0QG",
@@ -1285,8 +1285,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "11.11%",
       "uploadTime": 436856,
       "uploadTimePretty": "07:16.856",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/SDJ2NF0QG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/SDJ2NF0QG"
+      "thumbnail": "./thumbs/SDJ2NF0QG.jpg",
+      "entireThumbnail": "./thumbs/SDJ2NF0QG.jpg"
     },
     {
       "courseId": "D07RNTPRF",
@@ -1307,8 +1307,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 434949,
       "uploadTimePretty": "07:14.949",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/D07RNTPRF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/D07RNTPRF"
+      "thumbnail": "./thumbs/D07RNTPRF.jpg",
+      "entireThumbnail": "./thumbs/D07RNTPRF.jpg"
     },
     {
       "courseId": "G3QN5RPRF",
@@ -1329,8 +1329,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 434283,
       "uploadTimePretty": "07:14.283",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/G3QN5RPRF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/G3QN5RPRF"
+      "thumbnail": "./thumbs/G3QN5RPRF.jpg",
+      "entireThumbnail": "./thumbs/G3QN5RPRF.jpg"
     },
     {
       "courseId": "BW1HMMM0H",
@@ -1351,8 +1351,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 425533,
       "uploadTimePretty": "07:05.533",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BW1HMMM0H",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BW1HMMM0H"
+      "thumbnail": "./thumbs/BW1HMMM0H.jpg",
+      "entireThumbnail": "./thumbs/BW1HMMM0H.jpg"
     }
   ],
   "topLongestByDifficulty": {
@@ -1376,8 +1376,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 498672,
         "uploadTimePretty": "08:18.672",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/DNTYPKKNF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/DNTYPKKNF"
+        "thumbnail": "./thumbs/DNTYPKKNF.jpg",
+        "entireThumbnail": "./thumbs/DNTYPKKNF.jpg"
       },
       {
         "courseId": "693LLFHJG",
@@ -1398,8 +1398,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "14.29%",
         "uploadTime": 379050,
         "uploadTimePretty": "06:19.050",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/693LLFHJG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/693LLFHJG"
+        "thumbnail": "./thumbs/693LLFHJG.jpg",
+        "entireThumbnail": "./thumbs/693LLFHJG.jpg"
       },
       {
         "courseId": "JND1GP27G",
@@ -1420,8 +1420,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 336483,
         "uploadTimePretty": "05:36.483",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JND1GP27G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JND1GP27G"
+        "thumbnail": "./thumbs/JND1GP27G.jpg",
+        "entireThumbnail": "./thumbs/JND1GP27G.jpg"
       },
       {
         "courseId": "00XVC4QDF",
@@ -1442,8 +1442,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 319263,
         "uploadTimePretty": "05:19.263",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/00XVC4QDF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/00XVC4QDF"
+        "thumbnail": "./thumbs/00XVC4QDF.jpg",
+        "entireThumbnail": "./thumbs/00XVC4QDF.jpg"
       },
       {
         "courseId": "XN38PV6BG",
@@ -1464,8 +1464,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "60.00%",
         "uploadTime": 296362,
         "uploadTimePretty": "04:56.362",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XN38PV6BG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XN38PV6BG"
+        "thumbnail": "./thumbs/XN38PV6BG.jpg",
+        "entireThumbnail": "./thumbs/XN38PV6BG.jpg"
       },
       {
         "courseId": "BCMBDXRMF",
@@ -1486,8 +1486,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 292461,
         "uploadTimePretty": "04:52.461",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BCMBDXRMF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BCMBDXRMF"
+        "thumbnail": "./thumbs/BCMBDXRMF.jpg",
+        "entireThumbnail": "./thumbs/BCMBDXRMF.jpg"
       },
       {
         "courseId": "Q3D41JM8G",
@@ -1508,8 +1508,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "33.33%",
         "uploadTime": 288108,
         "uploadTimePretty": "04:48.108",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q3D41JM8G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q3D41JM8G"
+        "thumbnail": "./thumbs/Q3D41JM8G.jpg",
+        "entireThumbnail": "./thumbs/Q3D41JM8G.jpg"
       },
       {
         "courseId": "2FGL2J2HF",
@@ -1530,8 +1530,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "33.33%",
         "uploadTime": 245006,
         "uploadTimePretty": "04:05.006",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2FGL2J2HF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2FGL2J2HF"
+        "thumbnail": "./thumbs/2FGL2J2HF.jpg",
+        "entireThumbnail": "./thumbs/2FGL2J2HF.jpg"
       },
       {
         "courseId": "Q5FVV5HJG",
@@ -1552,8 +1552,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "25.00%",
         "uploadTime": 243783,
         "uploadTimePretty": "04:03.783",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q5FVV5HJG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q5FVV5HJG"
+        "thumbnail": "./thumbs/Q5FVV5HJG.jpg",
+        "entireThumbnail": "./thumbs/Q5FVV5HJG.jpg"
       },
       {
         "courseId": "JJNBB2XGG",
@@ -1574,8 +1574,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "75.00%",
         "uploadTime": 238931,
         "uploadTimePretty": "03:58.931",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JJNBB2XGG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JJNBB2XGG"
+        "thumbnail": "./thumbs/JJNBB2XGG.jpg",
+        "entireThumbnail": "./thumbs/JJNBB2XGG.jpg"
       }
     ],
     "Normal": [
@@ -1598,8 +1598,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 491383,
         "uploadTimePretty": "08:11.383",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8JSTWR43G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8JSTWR43G"
+        "thumbnail": "./thumbs/8JSTWR43G.jpg",
+        "entireThumbnail": "./thumbs/8JSTWR43G.jpg"
       },
       {
         "courseId": "J0256N6PG",
@@ -1620,8 +1620,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "3.33%",
         "uploadTime": 482849,
         "uploadTimePretty": "08:02.849",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/J0256N6PG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/J0256N6PG"
+        "thumbnail": "./thumbs/J0256N6PG.jpg",
+        "entireThumbnail": "./thumbs/J0256N6PG.jpg"
       },
       {
         "courseId": "BH1DQN0MF",
@@ -1642,8 +1642,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "11.11%",
         "uploadTime": 479133,
         "uploadTimePretty": "07:59.133",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BH1DQN0MF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BH1DQN0MF"
+        "thumbnail": "./thumbs/BH1DQN0MF.jpg",
+        "entireThumbnail": "./thumbs/BH1DQN0MF.jpg"
       },
       {
         "courseId": "SDJ2NF0QG",
@@ -1664,8 +1664,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "11.11%",
         "uploadTime": 436856,
         "uploadTimePretty": "07:16.856",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/SDJ2NF0QG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/SDJ2NF0QG"
+        "thumbnail": "./thumbs/SDJ2NF0QG.jpg",
+        "entireThumbnail": "./thumbs/SDJ2NF0QG.jpg"
       },
       {
         "courseId": "G3QN5RPRF",
@@ -1686,8 +1686,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 434283,
         "uploadTimePretty": "07:14.283",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/G3QN5RPRF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/G3QN5RPRF"
+        "thumbnail": "./thumbs/G3QN5RPRF.jpg",
+        "entireThumbnail": "./thumbs/G3QN5RPRF.jpg"
       },
       {
         "courseId": "QT1PRJ2VF",
@@ -1708,8 +1708,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "25.00%",
         "uploadTime": 405628,
         "uploadTimePretty": "06:45.628",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/QT1PRJ2VF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/QT1PRJ2VF"
+        "thumbnail": "./thumbs/QT1PRJ2VF.jpg",
+        "entireThumbnail": "./thumbs/QT1PRJ2VF.jpg"
       },
       {
         "courseId": "2F8K5T62H",
@@ -1730,8 +1730,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 376837,
         "uploadTimePretty": "06:16.837",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2F8K5T62H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2F8K5T62H"
+        "thumbnail": "./thumbs/2F8K5T62H.jpg",
+        "entireThumbnail": "./thumbs/2F8K5T62H.jpg"
       },
       {
         "courseId": "JLRC6XP4G",
@@ -1752,8 +1752,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "66.67%",
         "uploadTime": 344831,
         "uploadTimePretty": "05:44.831",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JLRC6XP4G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JLRC6XP4G"
+        "thumbnail": "./thumbs/JLRC6XP4G.jpg",
+        "entireThumbnail": "./thumbs/JLRC6XP4G.jpg"
       },
       {
         "courseId": "2TSQPRP4G",
@@ -1774,8 +1774,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 336405,
         "uploadTimePretty": "05:36.405",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2TSQPRP4G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2TSQPRP4G"
+        "thumbnail": "./thumbs/2TSQPRP4G.jpg",
+        "entireThumbnail": "./thumbs/2TSQPRP4G.jpg"
       },
       {
         "courseId": "B75BHQ8XG",
@@ -1796,8 +1796,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 332713,
         "uploadTimePretty": "05:32.713",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/B75BHQ8XG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/B75BHQ8XG"
+        "thumbnail": "./thumbs/B75BHQ8XG.jpg",
+        "entireThumbnail": "./thumbs/B75BHQ8XG.jpg"
       }
     ],
     "Expert": [
@@ -1820,8 +1820,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 453208,
         "uploadTimePretty": "07:33.208",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2585V3VYG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2585V3VYG"
+        "thumbnail": "./thumbs/2585V3VYG.jpg",
+        "entireThumbnail": "./thumbs/2585V3VYG.jpg"
       },
       {
         "courseId": "D07RNTPRF",
@@ -1842,8 +1842,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 434949,
         "uploadTimePretty": "07:14.949",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/D07RNTPRF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/D07RNTPRF"
+        "thumbnail": "./thumbs/D07RNTPRF.jpg",
+        "entireThumbnail": "./thumbs/D07RNTPRF.jpg"
       },
       {
         "courseId": "BW1HMMM0H",
@@ -1864,8 +1864,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 425533,
         "uploadTimePretty": "07:05.533",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BW1HMMM0H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BW1HMMM0H"
+        "thumbnail": "./thumbs/BW1HMMM0H.jpg",
+        "entireThumbnail": "./thumbs/BW1HMMM0H.jpg"
       },
       {
         "courseId": "G1C9J6XQF",
@@ -1886,8 +1886,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 418881,
         "uploadTimePretty": "06:58.881",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/G1C9J6XQF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/G1C9J6XQF"
+        "thumbnail": "./thumbs/G1C9J6XQF.jpg",
+        "entireThumbnail": "./thumbs/G1C9J6XQF.jpg"
       },
       {
         "courseId": "4L27470CG",
@@ -1908,8 +1908,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 410316,
         "uploadTimePretty": "06:50.316",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4L27470CG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4L27470CG"
+        "thumbnail": "./thumbs/4L27470CG.jpg",
+        "entireThumbnail": "./thumbs/4L27470CG.jpg"
       },
       {
         "courseId": "XSC9619GF",
@@ -1930,8 +1930,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 409479,
         "uploadTimePretty": "06:49.479",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XSC9619GF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XSC9619GF"
+        "thumbnail": "./thumbs/XSC9619GF.jpg",
+        "entireThumbnail": "./thumbs/XSC9619GF.jpg"
       },
       {
         "courseId": "61957XRMF",
@@ -1952,8 +1952,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 394650,
         "uploadTimePretty": "06:34.650",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/61957XRMF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/61957XRMF"
+        "thumbnail": "./thumbs/61957XRMF.jpg",
+        "entireThumbnail": "./thumbs/61957XRMF.jpg"
       },
       {
         "courseId": "6PP2CK43G",
@@ -1974,8 +1974,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 382433,
         "uploadTimePretty": "06:22.433",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/6PP2CK43G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/6PP2CK43G"
+        "thumbnail": "./thumbs/6PP2CK43G.jpg",
+        "entireThumbnail": "./thumbs/6PP2CK43G.jpg"
       },
       {
         "courseId": "XSPL4P4TG",
@@ -1996,8 +1996,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 382164,
         "uploadTimePretty": "06:22.164",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XSPL4P4TG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XSPL4P4TG"
+        "thumbnail": "./thumbs/XSPL4P4TG.jpg",
+        "entireThumbnail": "./thumbs/XSPL4P4TG.jpg"
       },
       {
         "courseId": "65MWJG27G",
@@ -2018,8 +2018,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 370869,
         "uploadTimePretty": "06:10.869",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/65MWJG27G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/65MWJG27G"
+        "thumbnail": "./thumbs/65MWJG27G.jpg",
+        "entireThumbnail": "./thumbs/65MWJG27G.jpg"
       }
     ],
     "Super expert": [
@@ -2042,8 +2042,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 455772,
         "uploadTimePretty": "07:35.772",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BWHJ8T6BG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BWHJ8T6BG"
+        "thumbnail": "./thumbs/BWHJ8T6BG.jpg",
+        "entireThumbnail": "./thumbs/BWHJ8T6BG.jpg"
       },
       {
         "courseId": "DDTK2P62H",
@@ -2064,8 +2064,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 385053,
         "uploadTimePretty": "06:25.053",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/DDTK2P62H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/DDTK2P62H"
+        "thumbnail": "./thumbs/DDTK2P62H.jpg",
+        "entireThumbnail": "./thumbs/DDTK2P62H.jpg"
       },
       {
         "courseId": "BKDRK60QG",
@@ -2086,8 +2086,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 363330,
         "uploadTimePretty": "06:03.330",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BKDRK60QG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BKDRK60QG"
+        "thumbnail": "./thumbs/BKDRK60QG.jpg",
+        "entireThumbnail": "./thumbs/BKDRK60QG.jpg"
       },
       {
         "courseId": "D0KD4KM0H",
@@ -2108,8 +2108,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 361114,
         "uploadTimePretty": "06:01.114",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/D0KD4KM0H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/D0KD4KM0H"
+        "thumbnail": "./thumbs/D0KD4KM0H.jpg",
+        "entireThumbnail": "./thumbs/D0KD4KM0H.jpg"
       },
       {
         "courseId": "NGQ21DHSF",
@@ -2130,8 +2130,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 344512,
         "uploadTimePretty": "05:44.512",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/NGQ21DHSF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/NGQ21DHSF"
+        "thumbnail": "./thumbs/NGQ21DHSF.jpg",
+        "entireThumbnail": "./thumbs/NGQ21DHSF.jpg"
       },
       {
         "courseId": "80BB57XGG",
@@ -2152,8 +2152,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.82%",
         "uploadTime": 329801,
         "uploadTimePretty": "05:29.801",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/80BB57XGG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/80BB57XGG"
+        "thumbnail": "./thumbs/80BB57XGG.jpg",
+        "entireThumbnail": "./thumbs/80BB57XGG.jpg"
       },
       {
         "courseId": "G70N58C2G",
@@ -2174,8 +2174,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 323933,
         "uploadTimePretty": "05:23.933",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/G70N58C2G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/G70N58C2G"
+        "thumbnail": "./thumbs/G70N58C2G.jpg",
+        "entireThumbnail": "./thumbs/G70N58C2G.jpg"
       },
       {
         "courseId": "JNNP69XTG",
@@ -2196,8 +2196,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 321638,
         "uploadTimePretty": "05:21.638",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JNNP69XTG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JNNP69XTG"
+        "thumbnail": "./thumbs/JNNP69XTG.jpg",
+        "entireThumbnail": "./thumbs/JNNP69XTG.jpg"
       },
       {
         "courseId": "BRRRYPM8G",
@@ -2218,8 +2218,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 283854,
         "uploadTimePretty": "04:43.854",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BRRRYPM8G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BRRRYPM8G"
+        "thumbnail": "./thumbs/BRRRYPM8G.jpg",
+        "entireThumbnail": "./thumbs/BRRRYPM8G.jpg"
       },
       {
         "courseId": "XQGKP3SMF",
@@ -2240,8 +2240,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 281581,
         "uploadTimePretty": "04:41.581",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XQGKP3SMF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XQGKP3SMF"
+        "thumbnail": "./thumbs/XQGKP3SMF.jpg",
+        "entireThumbnail": "./thumbs/XQGKP3SMF.jpg"
       }
     ]
   },
@@ -2265,8 +2265,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 43483,
       "uploadTimePretty": "00:43.483",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q7L6Y6FNG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q7L6Y6FNG"
+      "thumbnail": "./thumbs/Q7L6Y6FNG.jpg",
+      "entireThumbnail": "./thumbs/Q7L6Y6FNG.jpg"
     },
     {
       "courseId": "NSCS2T43G",
@@ -2287,8 +2287,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 8426,
       "uploadTimePretty": "00:08.426",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/NSCS2T43G",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/NSCS2T43G"
+      "thumbnail": "./thumbs/NSCS2T43G.jpg",
+      "entireThumbnail": "./thumbs/NSCS2T43G.jpg"
     },
     {
       "courseId": "4BG3SGKRG",
@@ -2309,8 +2309,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 3691,
       "uploadTimePretty": "00:03.691",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BG3SGKRG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BG3SGKRG"
+      "thumbnail": "./thumbs/4BG3SGKRG.jpg",
+      "entireThumbnail": "./thumbs/4BG3SGKRG.jpg"
     },
     {
       "courseId": "4S57G2XGG",
@@ -2331,8 +2331,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 186516,
       "uploadTimePretty": "03:06.516",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4S57G2XGG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4S57G2XGG"
+      "thumbnail": "./thumbs/4S57G2XGG.jpg",
+      "entireThumbnail": "./thumbs/4S57G2XGG.jpg"
     },
     {
       "courseId": "4BXQ89VHF",
@@ -2353,8 +2353,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 160316,
       "uploadTimePretty": "02:40.316",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BXQ89VHF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BXQ89VHF"
+      "thumbnail": "./thumbs/4BXQ89VHF.jpg",
+      "entireThumbnail": "./thumbs/4BXQ89VHF.jpg"
     },
     {
       "courseId": "0Q9R7CHWG",
@@ -2375,8 +2375,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 32899,
       "uploadTimePretty": "00:32.899",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/0Q9R7CHWG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/0Q9R7CHWG"
+      "thumbnail": "./thumbs/0Q9R7CHWG.jpg",
+      "entireThumbnail": "./thumbs/0Q9R7CHWG.jpg"
     },
     {
       "courseId": "NDCCVRMWF",
@@ -2397,8 +2397,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 19733,
       "uploadTimePretty": "00:19.733",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/NDCCVRMWF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/NDCCVRMWF"
+      "thumbnail": "./thumbs/NDCCVRMWF.jpg",
+      "entireThumbnail": "./thumbs/NDCCVRMWF.jpg"
     },
     {
       "courseId": "JNNP69XTG",
@@ -2419,8 +2419,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 321638,
       "uploadTimePretty": "05:21.638",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JNNP69XTG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JNNP69XTG"
+      "thumbnail": "./thumbs/JNNP69XTG.jpg",
+      "entireThumbnail": "./thumbs/JNNP69XTG.jpg"
     },
     {
       "courseId": "XLDYWTTYG",
@@ -2441,8 +2441,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 44890,
       "uploadTimePretty": "00:44.890",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XLDYWTTYG",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XLDYWTTYG"
+      "thumbnail": "./thumbs/XLDYWTTYG.jpg",
+      "entireThumbnail": "./thumbs/XLDYWTTYG.jpg"
     },
     {
       "courseId": "GTTJKCCPF",
@@ -2463,8 +2463,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 34478,
       "uploadTimePretty": "00:34.478",
-      "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/GTTJKCCPF",
-      "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/GTTJKCCPF"
+      "thumbnail": "./thumbs/GTTJKCCPF.jpg",
+      "entireThumbnail": "./thumbs/GTTJKCCPF.jpg"
     }
   ],
   "leastClearedByDifficulty": {
@@ -2488,8 +2488,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.13%",
         "uploadTime": 96893,
         "uploadTimePretty": "01:36.893",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/VRP2JDHFF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/VRP2JDHFF"
+        "thumbnail": "./thumbs/VRP2JDHFF.jpg",
+        "entireThumbnail": "./thumbs/VRP2JDHFF.jpg"
       },
       {
         "courseId": "XSR9TDKDG",
@@ -2510,8 +2510,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "6.90%",
         "uploadTime": 89800,
         "uploadTimePretty": "01:29.800",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XSR9TDKDG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XSR9TDKDG"
+        "thumbnail": "./thumbs/XSR9TDKDG.jpg",
+        "entireThumbnail": "./thumbs/XSR9TDKDG.jpg"
       },
       {
         "courseId": "L5XR91VYG",
@@ -2532,8 +2532,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "11.11%",
         "uploadTime": 111725,
         "uploadTimePretty": "01:51.725",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/L5XR91VYG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/L5XR91VYG"
+        "thumbnail": "./thumbs/L5XR91VYG.jpg",
+        "entireThumbnail": "./thumbs/L5XR91VYG.jpg"
       },
       {
         "courseId": "LMT8J1XTG",
@@ -2554,8 +2554,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "12.00%",
         "uploadTime": 22605,
         "uploadTimePretty": "00:22.605",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/LMT8J1XTG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/LMT8J1XTG"
+        "thumbnail": "./thumbs/LMT8J1XTG.jpg",
+        "entireThumbnail": "./thumbs/LMT8J1XTG.jpg"
       },
       {
         "courseId": "S6K27HMMG",
@@ -2576,8 +2576,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "13.04%",
         "uploadTime": 25018,
         "uploadTimePretty": "00:25.018",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/S6K27HMMG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/S6K27HMMG"
+        "thumbnail": "./thumbs/S6K27HMMG.jpg",
+        "entireThumbnail": "./thumbs/S6K27HMMG.jpg"
       },
       {
         "courseId": "8BW4H1QDF",
@@ -2598,8 +2598,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "13.89%",
         "uploadTime": 12071,
         "uploadTimePretty": "00:12.071",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8BW4H1QDF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8BW4H1QDF"
+        "thumbnail": "./thumbs/8BW4H1QDF.jpg",
+        "entireThumbnail": "./thumbs/8BW4H1QDF.jpg"
       },
       {
         "courseId": "2CY6Q1XGG",
@@ -2620,8 +2620,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "14.29%",
         "uploadTime": 129063,
         "uploadTimePretty": "02:09.063",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/2CY6Q1XGG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/2CY6Q1XGG"
+        "thumbnail": "./thumbs/2CY6Q1XGG.jpg",
+        "entireThumbnail": "./thumbs/2CY6Q1XGG.jpg"
       },
       {
         "courseId": "6RJFNS86G",
@@ -2642,8 +2642,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "14.29%",
         "uploadTime": 48994,
         "uploadTimePretty": "00:48.994",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/6RJFNS86G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/6RJFNS86G"
+        "thumbnail": "./thumbs/6RJFNS86G.jpg",
+        "entireThumbnail": "./thumbs/6RJFNS86G.jpg"
       },
       {
         "courseId": "4G85MX8TF",
@@ -2664,8 +2664,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "14.29%",
         "uploadTime": 24108,
         "uploadTimePretty": "00:24.108",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4G85MX8TF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4G85MX8TF"
+        "thumbnail": "./thumbs/4G85MX8TF.jpg",
+        "entireThumbnail": "./thumbs/4G85MX8TF.jpg"
       },
       {
         "courseId": "4XK65HXQF",
@@ -2686,8 +2686,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "16.00%",
         "uploadTime": 11667,
         "uploadTimePretty": "00:11.667",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4XK65HXQF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4XK65HXQF"
+        "thumbnail": "./thumbs/4XK65HXQF.jpg",
+        "entireThumbnail": "./thumbs/4XK65HXQF.jpg"
       }
     ],
     "Normal": [
@@ -2710,8 +2710,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 44890,
         "uploadTimePretty": "00:44.890",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/XLDYWTTYG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/XLDYWTTYG"
+        "thumbnail": "./thumbs/XLDYWTTYG.jpg",
+        "entireThumbnail": "./thumbs/XLDYWTTYG.jpg"
       },
       {
         "courseId": "23C3QGHFF",
@@ -2732,8 +2732,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 28574,
         "uploadTimePretty": "00:28.574",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/23C3QGHFF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/23C3QGHFF"
+        "thumbnail": "./thumbs/23C3QGHFF.jpg",
+        "entireThumbnail": "./thumbs/23C3QGHFF.jpg"
       },
       {
         "courseId": "JBM91J2HF",
@@ -2754,8 +2754,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 21269,
         "uploadTimePretty": "00:21.269",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JBM91J2HF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JBM91J2HF"
+        "thumbnail": "./thumbs/JBM91J2HF.jpg",
+        "entireThumbnail": "./thumbs/JBM91J2HF.jpg"
       },
       {
         "courseId": "JQ72S1C2G",
@@ -2776,8 +2776,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 25945,
         "uploadTimePretty": "00:25.945",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JQ72S1C2G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JQ72S1C2G"
+        "thumbnail": "./thumbs/JQ72S1C2G.jpg",
+        "entireThumbnail": "./thumbs/JQ72S1C2G.jpg"
       },
       {
         "courseId": "GY19J59TF",
@@ -2798,8 +2798,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 117927,
         "uploadTimePretty": "01:57.927",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/GY19J59TF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/GY19J59TF"
+        "thumbnail": "./thumbs/GY19J59TF.jpg",
+        "entireThumbnail": "./thumbs/GY19J59TF.jpg"
       },
       {
         "courseId": "S4B9S9XGG",
@@ -2820,8 +2820,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 249049,
         "uploadTimePretty": "04:09.049",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/S4B9S9XGG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/S4B9S9XGG"
+        "thumbnail": "./thumbs/S4B9S9XGG.jpg",
+        "entireThumbnail": "./thumbs/S4B9S9XGG.jpg"
       },
       {
         "courseId": "0L3R85XQF",
@@ -2842,8 +2842,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 32870,
         "uploadTimePretty": "00:32.870",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/0L3R85XQF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/0L3R85XQF"
+        "thumbnail": "./thumbs/0L3R85XQF.jpg",
+        "entireThumbnail": "./thumbs/0L3R85XQF.jpg"
       },
       {
         "courseId": "QTCNJBVVF",
@@ -2864,8 +2864,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 99012,
         "uploadTimePretty": "01:39.012",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/QTCNJBVVF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/QTCNJBVVF"
+        "thumbnail": "./thumbs/QTCNJBVVF.jpg",
+        "entireThumbnail": "./thumbs/QTCNJBVVF.jpg"
       },
       {
         "courseId": "LWYXV79GF",
@@ -2886,8 +2886,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 11638,
         "uploadTimePretty": "00:11.638",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/LWYXV79GF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/LWYXV79GF"
+        "thumbnail": "./thumbs/LWYXV79GF.jpg",
+        "entireThumbnail": "./thumbs/LWYXV79GF.jpg"
       },
       {
         "courseId": "4NR7KNP4G",
@@ -2908,8 +2908,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 245933,
         "uploadTimePretty": "04:05.933",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4NR7KNP4G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4NR7KNP4G"
+        "thumbnail": "./thumbs/4NR7KNP4G.jpg",
+        "entireThumbnail": "./thumbs/4NR7KNP4G.jpg"
       }
     ],
     "Expert": [
@@ -2932,8 +2932,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 71566,
         "uploadTimePretty": "01:11.566",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/0GRBLBHWG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/0GRBLBHWG"
+        "thumbnail": "./thumbs/0GRBLBHWG.jpg",
+        "entireThumbnail": "./thumbs/0GRBLBHWG.jpg"
       },
       {
         "courseId": "VY86SK62H",
@@ -2954,8 +2954,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 76037,
         "uploadTimePretty": "01:16.037",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/VY86SK62H",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/VY86SK62H"
+        "thumbnail": "./thumbs/VY86SK62H.jpg",
+        "entireThumbnail": "./thumbs/VY86SK62H.jpg"
       },
       {
         "courseId": "DDKH5Q2VF",
@@ -2976,8 +2976,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 254501,
         "uploadTimePretty": "04:14.501",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/DDKH5Q2VF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/DDKH5Q2VF"
+        "thumbnail": "./thumbs/DDKH5Q2VF.jpg",
+        "entireThumbnail": "./thumbs/DDKH5Q2VF.jpg"
       },
       {
         "courseId": "80SP9GKNF",
@@ -2998,8 +2998,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 86566,
         "uploadTimePretty": "01:26.566",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/80SP9GKNF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/80SP9GKNF"
+        "thumbnail": "./thumbs/80SP9GKNF.jpg",
+        "entireThumbnail": "./thumbs/80SP9GKNF.jpg"
       },
       {
         "courseId": "8LC84VR0G",
@@ -3020,8 +3020,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 132433,
         "uploadTimePretty": "02:12.433",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/8LC84VR0G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/8LC84VR0G"
+        "thumbnail": "./thumbs/8LC84VR0G.jpg",
+        "entireThumbnail": "./thumbs/8LC84VR0G.jpg"
       },
       {
         "courseId": "65TLLXT7G",
@@ -3042,8 +3042,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 76105,
         "uploadTimePretty": "01:16.105",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/65TLLXT7G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/65TLLXT7G"
+        "thumbnail": "./thumbs/65TLLXT7G.jpg",
+        "entireThumbnail": "./thumbs/65TLLXT7G.jpg"
       },
       {
         "courseId": "QPFN9M0MF",
@@ -3064,8 +3064,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 244752,
         "uploadTimePretty": "04:04.752",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/QPFN9M0MF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/QPFN9M0MF"
+        "thumbnail": "./thumbs/QPFN9M0MF.jpg",
+        "entireThumbnail": "./thumbs/QPFN9M0MF.jpg"
       },
       {
         "courseId": "61957XRMF",
@@ -3086,8 +3086,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 394650,
         "uploadTimePretty": "06:34.650",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/61957XRMF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/61957XRMF"
+        "thumbnail": "./thumbs/61957XRMF.jpg",
+        "entireThumbnail": "./thumbs/61957XRMF.jpg"
       },
       {
         "courseId": "4Q281K4GG",
@@ -3108,8 +3108,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 18762,
         "uploadTimePretty": "00:18.762",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4Q281K4GG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4Q281K4GG"
+        "thumbnail": "./thumbs/4Q281K4GG.jpg",
+        "entireThumbnail": "./thumbs/4Q281K4GG.jpg"
       },
       {
         "courseId": "BKL44MPVG",
@@ -3130,8 +3130,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 7732,
         "uploadTimePretty": "00:07.732",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BKL44MPVG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BKL44MPVG"
+        "thumbnail": "./thumbs/BKL44MPVG.jpg",
+        "entireThumbnail": "./thumbs/BKL44MPVG.jpg"
       }
     ],
     "Super expert": [
@@ -3154,8 +3154,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 43483,
         "uploadTimePretty": "00:43.483",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q7L6Y6FNG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/Q7L6Y6FNG"
+        "thumbnail": "./thumbs/Q7L6Y6FNG.jpg",
+        "entireThumbnail": "./thumbs/Q7L6Y6FNG.jpg"
       },
       {
         "courseId": "NSCS2T43G",
@@ -3176,8 +3176,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 8426,
         "uploadTimePretty": "00:08.426",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/NSCS2T43G",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/NSCS2T43G"
+        "thumbnail": "./thumbs/NSCS2T43G.jpg",
+        "entireThumbnail": "./thumbs/NSCS2T43G.jpg"
       },
       {
         "courseId": "4BG3SGKRG",
@@ -3198,8 +3198,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 3691,
         "uploadTimePretty": "00:03.691",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BG3SGKRG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BG3SGKRG"
+        "thumbnail": "./thumbs/4BG3SGKRG.jpg",
+        "entireThumbnail": "./thumbs/4BG3SGKRG.jpg"
       },
       {
         "courseId": "4S57G2XGG",
@@ -3220,8 +3220,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 186516,
         "uploadTimePretty": "03:06.516",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4S57G2XGG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4S57G2XGG"
+        "thumbnail": "./thumbs/4S57G2XGG.jpg",
+        "entireThumbnail": "./thumbs/4S57G2XGG.jpg"
       },
       {
         "courseId": "4BXQ89VHF",
@@ -3242,8 +3242,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 160316,
         "uploadTimePretty": "02:40.316",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BXQ89VHF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/4BXQ89VHF"
+        "thumbnail": "./thumbs/4BXQ89VHF.jpg",
+        "entireThumbnail": "./thumbs/4BXQ89VHF.jpg"
       },
       {
         "courseId": "0Q9R7CHWG",
@@ -3264,8 +3264,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 32899,
         "uploadTimePretty": "00:32.899",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/0Q9R7CHWG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/0Q9R7CHWG"
+        "thumbnail": "./thumbs/0Q9R7CHWG.jpg",
+        "entireThumbnail": "./thumbs/0Q9R7CHWG.jpg"
       },
       {
         "courseId": "NDCCVRMWF",
@@ -3286,8 +3286,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 19733,
         "uploadTimePretty": "00:19.733",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/NDCCVRMWF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/NDCCVRMWF"
+        "thumbnail": "./thumbs/NDCCVRMWF.jpg",
+        "entireThumbnail": "./thumbs/NDCCVRMWF.jpg"
       },
       {
         "courseId": "JNNP69XTG",
@@ -3308,8 +3308,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 321638,
         "uploadTimePretty": "05:21.638",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/JNNP69XTG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/JNNP69XTG"
+        "thumbnail": "./thumbs/JNNP69XTG.jpg",
+        "entireThumbnail": "./thumbs/JNNP69XTG.jpg"
       },
       {
         "courseId": "GTTJKCCPF",
@@ -3330,8 +3330,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 34478,
         "uploadTimePretty": "00:34.478",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/GTTJKCCPF",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/GTTJKCCPF"
+        "thumbnail": "./thumbs/GTTJKCCPF.jpg",
+        "entireThumbnail": "./thumbs/GTTJKCCPF.jpg"
       },
       {
         "courseId": "BHCP6H2LG",
@@ -3352,8 +3352,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 51401,
         "uploadTimePretty": "00:51.401",
-        "thumbnail": "https://tgrcode.com/mm2/level_thumbnail/BHCP6H2LG",
-        "entireThumbnail": "https://tgrcode.com/mm2/level_thumbnail/BHCP6H2LG"
+        "thumbnail": "./thumbs/BHCP6H2LG.jpg",
+        "entireThumbnail": "./thumbs/BHCP6H2LG.jpg"
       }
     ]
   }
