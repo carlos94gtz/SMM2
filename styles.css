@@ -170,27 +170,37 @@ main {
 }
 
 .difficulty-filter {
+  position: relative;
   display: inline-flex;
   min-height: 28px;
+  min-width: 178px;
   align-items: center;
-  gap: 7px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
   color: var(--muted);
-  padding: 3px 8px 3px 10px;
+  padding: 0;
   font-size: 12px;
   white-space: nowrap;
 }
 
+.difficulty-filter span {
+  position: absolute;
+  left: 10px;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .difficulty-filter select {
-  min-height: 22px;
-  max-width: 130px;
+  width: 100%;
+  min-height: 28px;
   border: 0;
   background: transparent;
   color: var(--ink);
+  cursor: pointer;
   font: inherit;
   font-weight: 680;
+  padding: 3px 26px 3px 76px;
 }
 
 .difficulty-filter select:focus-visible {
