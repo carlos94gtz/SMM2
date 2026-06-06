@@ -60,6 +60,21 @@ function img(url, alt) {
   return `<img src="${escapeHtml(url)}" alt="${escapeHtml(alt)}" loading="lazy" referrerpolicy="no-referrer" />`;
 }
 
+function bindImageFallbacks(root = document) {
+  root.querySelectorAll("img").forEach((image) => {
+    image.addEventListener(
+      "error",
+      () => {
+        const fallback = document.createElement("div");
+        fallback.className = "thumb-fallback";
+        fallback.textContent = "sin imagen";
+        image.replaceWith(fallback);
+      },
+      { once: true },
+    );
+  });
+}
+
 function scoreMarkup(course, mode) {
   if (mode === "likes") {
     return `
@@ -184,6 +199,7 @@ function openDetail(courseId, trigger) {
 
   lastActiveCard = trigger || document.querySelector(`[data-course-id="${courseId}"]`);
   content.innerHTML = detailMarkup(course);
+  bindImageFallbacks(content);
   overlay.hidden = false;
   document.body.classList.add("detail-open");
   byId("detailClose")?.focus();
@@ -226,9 +242,11 @@ function bindDetailEvents() {
 }
 
 function renderList(id, courses, mode) {
-  byId(id).innerHTML = courses.length
+  const list = byId(id);
+  list.innerHTML = courses.length
     ? courses.map((course, index) => card(course, index, mode)).join("")
     : emptyState();
+  bindImageFallbacks(list);
 }
 
 function difficultyOptions() {
