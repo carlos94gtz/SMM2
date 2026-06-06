@@ -3,14 +3,10 @@ const COURSE_ID_CHARS = "0123456789BCDFGHJKLMNPQRSTVWXY";
 
 const form = document.getElementById("levelSubmitForm");
 const courseIdInput = document.getElementById("courseIdInput");
-const courseNameInput = document.getElementById("courseNameInput");
-const creatorInput = document.getElementById("creatorInput");
-const difficultyInput = document.getElementById("difficultyInput");
 const commentInput = document.getElementById("commentInput");
-const contactInput = document.getElementById("contactInput");
 const formStatus = document.getElementById("formStatus");
 const previewCourseId = document.getElementById("previewCourseId");
-const previewCourseName = document.getElementById("previewCourseName");
+const previewComment = document.getElementById("previewComment");
 const copyLevelButton = document.getElementById("copyLevelButton");
 
 function normalizeCourseId(value) {
@@ -37,11 +33,7 @@ function currentSubmission() {
   return {
     courseId: formatCourseId(courseIdInput.value),
     rawCourseId: normalizeCourseId(courseIdInput.value),
-    courseName: fieldValue(courseNameInput),
-    creator: fieldValue(creatorInput),
-    difficulty: fieldValue(difficultyInput),
     comment: fieldValue(commentInput),
-    contact: fieldValue(contactInput),
   };
 }
 
@@ -49,24 +41,15 @@ function issueBody(submission) {
   return [
     "## Nivel",
     `ID: ${submission.courseId}`,
-    `Nombre: ${submission.courseName || "Sin dato"}`,
-    `Creador: ${submission.creator || "Sin dato"}`,
-    `Dificultad: ${submission.difficulty || "Sin dato"}`,
     "",
     "## Comentario",
     submission.comment || "Sin comentario",
-    "",
-    "## Contacto",
-    submission.contact || "Sin dato",
   ].join("\n");
 }
 
 function issueUrl(submission) {
-  const titleBits = ["Nivel SMM2", submission.courseId];
-  if (submission.courseName) titleBits.push(submission.courseName);
-
   const params = new URLSearchParams({
-    title: titleBits.join(" - "),
+    title: `Nivel SMM2 - ${submission.courseId}`,
     body: issueBody(submission),
   });
   return `${ISSUE_URL}?${params.toString()}`;
@@ -80,7 +63,7 @@ function setStatus(message, type = "") {
 function updatePreview() {
   const submission = currentSubmission();
   previewCourseId.textContent = submission.courseId || "XXX-XXX-XXX";
-  previewCourseName.textContent = submission.courseName || "Nivel sin nombre";
+  previewComment.textContent = submission.comment || "Sin comentario";
 }
 
 function validateSubmission(submission) {
@@ -98,9 +81,7 @@ courseIdInput.addEventListener("input", () => {
   updatePreview();
 });
 
-[courseNameInput, creatorInput, difficultyInput, commentInput, contactInput].forEach((input) => {
-  input.addEventListener("input", updatePreview);
-});
+commentInput.addEventListener("input", updatePreview);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();

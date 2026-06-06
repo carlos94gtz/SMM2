@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Manda tu nivel al Tío Charly</title>
-    <link rel="stylesheet" href="./styles.css?v=submit-level-1" />
+    <link rel="stylesheet" href="./styles.css?v=submit-level-2" />
   </head>
   <body>
     <header class="topbar">
@@ -42,36 +42,8 @@
           </label>
 
           <label class="field">
-            <span>Nombre del nivel</span>
-            <input id="courseNameInput" name="courseName" maxlength="90" placeholder="Nombre" />
-          </label>
-
-          <div class="field-row">
-            <label class="field">
-              <span>Creador</span>
-              <input id="creatorInput" name="creator" maxlength="50" placeholder="Tu nombre" />
-            </label>
-
-            <label class="field">
-              <span>Dificultad</span>
-              <select id="difficultyInput" name="difficulty">
-                <option value="">Sin seleccionar</option>
-                <option value="Easy">Easy</option>
-                <option value="Normal">Normal</option>
-                <option value="Expert">Expert</option>
-                <option value="Super expert">Super expert</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="field">
             <span>Comentario</span>
             <textarea id="commentInput" name="comment" rows="5" maxlength="500" placeholder="Qué quieres que vea del nivel"></textarea>
-          </label>
-
-          <label class="field">
-            <span>Contacto</span>
-            <input id="contactInput" name="contact" maxlength="80" placeholder="@usuario o correo" />
           </label>
 
           <div id="formStatus" class="form-status" aria-live="polite"></div>
@@ -85,11 +57,11 @@
         <aside class="submit-preview" aria-label="Vista previa del envío">
           <p class="kicker">Solicitud</p>
           <strong id="previewCourseId">XXX-XXX-XXX</strong>
-          <span id="previewCourseName">Nivel sin nombre</span>
+          <span id="previewComment">Sin comentario</span>
         </aside>
       </section>
     </main>
 
-    <script src="./submit-level.js?v=submit-level-1"></script>
+    <script src="./submit-level.js?v=submit-level-2"></script>
   </body>
 </html>
