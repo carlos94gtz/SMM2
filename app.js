@@ -12,7 +12,7 @@ for (const courses of dashboardCourseLists()) {
 let lastActiveCard = null;
 
 function dashboardCourseLists() {
-  const lists = [data.topLiked || [], data.leastCleared || []];
+  const lists = [data.topLiked || [], data.topLongest || [], data.leastCleared || []];
   for (const courses of Object.values(data.leastClearedByDifficulty || {})) {
     lists.push(courses || []);
   }
@@ -60,6 +60,15 @@ function scoreMarkup(course, mode) {
       <div class="primary-score">
         <strong>${metric(course.likes)}</strong>
         <span>likes</span>
+      </div>
+    `;
+  }
+
+  if (mode === "time") {
+    return `
+      <div class="primary-score">
+        <strong>${escapeHtml(course.uploadTimePretty)}</strong>
+        <span>clear-check</span>
       </div>
     `;
   }
@@ -263,6 +272,7 @@ function render() {
 
   renderDifficultyFilter();
   renderList("topLiked", data.topLiked, "likes");
+  renderList("topLongest", data.topLongest || [], "time");
   renderLeastCleared();
 }
 
