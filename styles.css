@@ -111,16 +111,73 @@ h2 {
   font-size: 13px;
 }
 
+.top-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
 .meta span,
-.sort-label {
+.sort-label,
+.submit-top-button,
+.primary-action,
+.secondary-action {
   display: inline-flex;
   min-height: 28px;
   align-items: center;
+  justify-content: center;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface-2);
   padding: 5px 10px;
+  text-decoration: none;
   white-space: nowrap;
+}
+
+.submit-top-button,
+.primary-action,
+.secondary-action {
+  min-height: 38px;
+  border-color: rgba(255, 255, 255, 0.18);
+  background: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 780;
+  padding: 8px 13px;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.submit-top-button:hover,
+.submit-top-button:focus-visible,
+.primary-action:hover,
+.primary-action:focus-visible,
+.secondary-action:hover,
+.secondary-action:focus-visible {
+  border-color: rgba(255, 255, 255, 0.42);
+  background: #a92b26;
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.submit-top-button.secondary,
+.secondary-action {
+  border-color: var(--line);
+  background: #ffffff;
+  color: var(--ink);
+}
+
+.submit-top-button.secondary:hover,
+.submit-top-button.secondary:focus-visible,
+.secondary-action:hover,
+.secondary-action:focus-visible {
+  border-color: rgba(25, 114, 120, 0.55);
+  background: #f8fafb;
 }
 
 .meta span {
@@ -549,9 +606,154 @@ main {
   white-space: nowrap;
 }
 
+.submit-shell {
+  width: min(1120px, 100%);
+}
+
+.submit-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  align-items: start;
+}
+
+.submit-heading {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.submit-form {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  padding: 9px 11px;
+}
+
+.field textarea {
+  min-height: 126px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: rgba(25, 114, 120, 0.62);
+  box-shadow: 0 0 0 3px rgba(25, 114, 120, 0.12);
+  outline: none;
+}
+
+#courseIdInput {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 22px;
+  font-weight: 820;
+  letter-spacing: 0;
+}
+
+.form-status {
+  min-height: 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.form-status[data-type="error"] {
+  color: var(--accent);
+  font-weight: 720;
+}
+
+.form-status[data-type="success"] {
+  color: var(--accent-2);
+  font-weight: 720;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary-action,
+.secondary-action {
+  min-height: 42px;
+  border-color: transparent;
+  padding: 9px 14px;
+}
+
+.submit-preview {
+  position: sticky;
+  top: 18px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.submit-preview strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 30px;
+  line-height: 1.08;
+}
+
+.submit-preview span {
+  display: block;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
 @media (max-width: 1060px) {
   .leaderboards {
     grid-template-columns: 1fr;
+  }
+
+  .submit-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-preview {
+    position: static;
   }
 }
 
@@ -564,6 +766,12 @@ main {
 
   .brand-lockup {
     align-items: flex-start;
+  }
+
+  .top-actions,
+  .submit-top-button {
+    width: 100%;
+    align-items: stretch;
   }
 
   .brand-mark {
@@ -628,6 +836,15 @@ main {
 
   .detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-form,
+  .submit-preview {
+    padding: 15px;
   }
 }
 

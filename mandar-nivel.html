@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manda tu nivel al Tío Charly</title>
+    <link rel="stylesheet" href="./styles.css?v=submit-level-1" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">S2</div>
+        <div>
+          <p class="kicker">Super Mario Maker 2</p>
+          <h1>Manda tu nivel al Tío Charly</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="submit-top-button secondary" href="./">Ver rankings</a>
+      </div>
+    </header>
+
+    <main class="submit-shell">
+      <section class="submit-panel" aria-labelledby="submitTitle">
+        <div class="submit-heading">
+          <p class="kicker">Enviar nivel</p>
+          <h2 id="submitTitle">Datos del nivel</h2>
+        </div>
+
+        <form id="levelSubmitForm" class="submit-form" novalidate>
+          <label class="field">
+            <span>ID del nivel</span>
+            <input
+              id="courseIdInput"
+              name="courseId"
+              autocomplete="off"
+              autocapitalize="characters"
+              maxlength="11"
+              placeholder="XXX-XXX-XXX"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span>Nombre del nivel</span>
+            <input id="courseNameInput" name="courseName" maxlength="90" placeholder="Nombre" />
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span>Creador</span>
+              <input id="creatorInput" name="creator" maxlength="50" placeholder="Tu nombre" />
+            </label>
+
+            <label class="field">
+              <span>Dificultad</span>
+              <select id="difficultyInput" name="difficulty">
+                <option value="">Sin seleccionar</option>
+                <option value="Easy">Easy</option>
+                <option value="Normal">Normal</option>
+                <option value="Expert">Expert</option>
+                <option value="Super expert">Super expert</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Comentario</span>
+            <textarea id="commentInput" name="comment" rows="5" maxlength="500" placeholder="Qué quieres que vea del nivel"></textarea>
+          </label>
+
+          <label class="field">
+            <span>Contacto</span>
+            <input id="contactInput" name="contact" maxlength="80" placeholder="@usuario o correo" />
+          </label>
+
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+
+          <div class="form-actions">
+            <button id="submitLevelButton" class="primary-action" type="submit">Enviar nivel</button>
+            <button id="copyLevelButton" class="secondary-action" type="button">Copiar mensaje</button>
+          </div>
+        </form>
+
+        <aside class="submit-preview" aria-label="Vista previa del envío">
+          <p class="kicker">Solicitud</p>
+          <strong id="previewCourseId">XXX-XXX-XXX</strong>
+          <span id="previewCourseName">Nivel sin nombre</span>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./submit-level.js?v=submit-level-1"></script>
+  </body>
+</html>
