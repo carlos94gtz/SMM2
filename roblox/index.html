@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roblox Rankings Diario</title>
+    <link rel="stylesheet" href="./styles.css?v=roblox-1" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">R</div>
+        <div>
+          <p class="kicker">Roblox</p>
+          <h1>Rankings de experiencias</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="submit-top-button" href="./mandar-juego.html">Manda tu juego al Tío Charly</a>
+        <a class="ghost-button" href="../">SMM2</a>
+        <div class="meta">
+          <span id="dateLabel">--</span>
+          <span id="countLabel">-- experiencias</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="leaderboards">
+        <section class="board" aria-labelledby="activeTitle">
+          <div class="board-heading">
+            <div>
+              <p class="kicker">Top 10</p>
+              <h2 id="activeTitle">Más jugadores activos</h2>
+            </div>
+            <div class="board-controls">
+              <span class="sort-label">activos ↓</span>
+              <label class="filter-box">
+                <span>Madurez</span>
+                <select id="activeFilter" aria-label="Filtrar más activos por madurez"></select>
+              </label>
+            </div>
+          </div>
+          <div id="topActive" class="game-list"></div>
+        </section>
+
+        <section class="board" aria-labelledby="ratedTitle">
+          <div class="board-heading">
+            <div>
+              <p class="kicker">Top 10</p>
+              <h2 id="ratedTitle">Mejor calificados</h2>
+            </div>
+            <div class="board-controls">
+              <span class="sort-label">rating ↓</span>
+              <label class="filter-box">
+                <span>Madurez</span>
+                <select id="ratedFilter" aria-label="Filtrar mejor calificados por madurez"></select>
+              </label>
+            </div>
+          </div>
+          <div id="topRated" class="game-list"></div>
+        </section>
+
+        <section class="board" aria-labelledby="favoritesTitle">
+          <div class="board-heading">
+            <div>
+              <p class="kicker">Top 10</p>
+              <h2 id="favoritesTitle">Más favoritos</h2>
+            </div>
+            <div class="board-controls">
+              <span class="sort-label">favoritos ↓</span>
+              <label class="filter-box">
+                <span>Madurez</span>
+                <select id="favoritesFilter" aria-label="Filtrar más favoritos por madurez"></select>
+              </label>
+            </div>
+          </div>
+          <div id="topFavorites" class="game-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <div class="detail-overlay" id="detailOverlay" aria-hidden="true">
+      <div class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <button class="close-button" id="closeDetail" type="button" aria-label="Cerrar">×</button>
+        <div class="detail-media">
+          <img id="detailIcon" alt="" />
+        </div>
+        <div class="detail-content">
+          <p class="kicker" id="detailCreator">Roblox</p>
+          <h2 id="detailTitle">--</h2>
+          <p id="detailDescription" class="detail-description"></p>
+          <div class="detail-grid">
+            <span><strong id="detailPlayers">--</strong><small>activos</small></span>
+            <span><strong id="detailRating">--</strong><small>rating</small></span>
+            <span><strong id="detailVisits">--</strong><small>visitas</small></span>
+            <span><strong id="detailFavorites">--</strong><small>favoritos</small></span>
+          </div>
+          <div class="detail-meta">
+            <span id="detailUniverse"></span>
+            <span id="detailMaturity"></span>
+            <span id="detailUpdated"></span>
+          </div>
+          <a id="detailLink" class="primary-link" href="#" target="_blank" rel="noreferrer">Abrir en Roblox</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="./data.js?v=roblox-1"></script>
+    <script src="./app.js?v=roblox-1"></script>
+  </body>
+</html>

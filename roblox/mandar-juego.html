@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manda tu juego Roblox</title>
+    <link rel="stylesheet" href="./styles.css?v=roblox-1" />
+  </head>
+  <body class="submit-page">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">R</div>
+        <div>
+          <p class="kicker">Roblox</p>
+          <h1>Manda tu juego al Tío Charly</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="ghost-button" href="./">Rankings</a>
+      </div>
+    </header>
+
+    <main class="submit-shell">
+      <form class="submit-form" id="gameSubmitForm">
+        <label>
+          <span>URL o ID del juego</span>
+          <input id="gameInput" name="game" type="text" inputmode="url" placeholder="https://www.roblox.com/games/..." required />
+        </label>
+        <label>
+          <span>Comentario</span>
+          <textarea id="commentInput" name="comment" rows="6" placeholder="Por qué debería aparecer en la página" required></textarea>
+        </label>
+        <button class="submit-button" type="submit">Mandar juego</button>
+      </form>
+    </main>
+
+    <script src="./submit-game.js?v=roblox-1"></script>
+  </body>
+</html>
