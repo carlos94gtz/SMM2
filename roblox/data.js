@@ -1,411 +1,67 @@
 window.ROBLOX_DASHBOARD_DATA = {
-  "generatedAt": "2026-06-07T22:34:43-06:00",
-  "targetDate": "2026-06-06",
-  "targetDateLabel": "2026-06-06",
+  "generatedAt": "2026-06-08T12:16:36-06:00",
+  "targetDate": "2026-06-07",
+  "targetDateLabel": "2026-06-07",
   "source": "Roblox public web APIs, filtered by games.created",
   "stats": {
-    "sampleSize": 1,
-    "matchedCreatedYesterday": 1,
-    "seedIds": 214,
+    "sampleSize": 0,
+    "matchedCreatedYesterday": 0,
+    "seedIds": 240,
     "scannedIds": 0,
     "scanRange": null,
     "idStride": null,
-    "totalPlayers": 2,
-    "totalVisits": 427175,
-    "totalFavorites": 7623,
+    "totalPlayers": 0,
+    "totalVisits": 0,
+    "totalFavorites": 0,
     "minVotesForRated": 25
   },
   "sorts": [
     {
       "id": "top-trending",
       "name": "Top Trending",
-      "count": 81
+      "count": 75
     },
     {
       "id": "up-and-coming",
       "name": "Up-and-Coming",
-      "count": 20
+      "count": 25
     },
     {
       "id": "top-playing-now",
       "name": "Top Playing Now",
-      "count": 91
+      "count": 90
     },
     {
       "id": "fun-with-friends",
       "name": "Fun with Friends",
-      "count": 71
+      "count": 68
     },
     {
       "id": "top-revisited",
       "name": "Top Revisited",
-      "count": 77
+      "count": 75
     }
   ],
   "maturityOptions": [
     {
       "id": "all",
       "label": "Todas"
-    },
-    {
-      "id": "minimal",
-      "label": "Minimal"
     }
   ],
-  "topActive": [
-    {
-      "universeId": 10283304746,
-      "rootPlaceId": 98459775784481,
-      "name": "New  game join me",
-      "description": "",
-      "creatorName": "BRAZLIAIN SPYDER",
-      "creatorType": "Group",
-      "playerCount": 2,
-      "visits": 427175,
-      "favorites": 7623,
-      "upVotes": 345,
-      "downVotes": 45,
-      "voteCount": 390,
-      "rating": 88.46,
-      "ratingPretty": "88.5%",
-      "maxPlayers": 8,
-      "created": "2026-06-06T22:16:14.101Z",
-      "updated": "2026-06-07T20:43:55.8449572Z",
-      "genre": "All",
-      "maturity": "minimal",
-      "maturityLabel": "Minimal",
-      "sortNames": [
-        "Up-and-Coming"
-      ],
-      "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-      "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-    }
-  ],
+  "topActive": [],
   "topActiveByMaturity": {
-    "all": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ],
-    "minimal": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ]
+    "all": []
   },
-  "topLiked": [
-    {
-      "universeId": 10283304746,
-      "rootPlaceId": 98459775784481,
-      "name": "New  game join me",
-      "description": "",
-      "creatorName": "BRAZLIAIN SPYDER",
-      "creatorType": "Group",
-      "playerCount": 2,
-      "visits": 427175,
-      "favorites": 7623,
-      "upVotes": 345,
-      "downVotes": 45,
-      "voteCount": 390,
-      "rating": 88.46,
-      "ratingPretty": "88.5%",
-      "maxPlayers": 8,
-      "created": "2026-06-06T22:16:14.101Z",
-      "updated": "2026-06-07T20:43:55.8449572Z",
-      "genre": "All",
-      "maturity": "minimal",
-      "maturityLabel": "Minimal",
-      "sortNames": [
-        "Up-and-Coming"
-      ],
-      "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-      "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-    }
-  ],
+  "topLiked": [],
   "topLikedByMaturity": {
-    "all": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ],
-    "minimal": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ]
+    "all": []
   },
-  "topRated": [
-    {
-      "universeId": 10283304746,
-      "rootPlaceId": 98459775784481,
-      "name": "New  game join me",
-      "description": "",
-      "creatorName": "BRAZLIAIN SPYDER",
-      "creatorType": "Group",
-      "playerCount": 2,
-      "visits": 427175,
-      "favorites": 7623,
-      "upVotes": 345,
-      "downVotes": 45,
-      "voteCount": 390,
-      "rating": 88.46,
-      "ratingPretty": "88.5%",
-      "maxPlayers": 8,
-      "created": "2026-06-06T22:16:14.101Z",
-      "updated": "2026-06-07T20:43:55.8449572Z",
-      "genre": "All",
-      "maturity": "minimal",
-      "maturityLabel": "Minimal",
-      "sortNames": [
-        "Up-and-Coming"
-      ],
-      "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-      "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-    }
-  ],
+  "topRated": [],
   "topRatedByMaturity": {
-    "all": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ],
-    "minimal": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ]
+    "all": []
   },
-  "topFavorites": [
-    {
-      "universeId": 10283304746,
-      "rootPlaceId": 98459775784481,
-      "name": "New  game join me",
-      "description": "",
-      "creatorName": "BRAZLIAIN SPYDER",
-      "creatorType": "Group",
-      "playerCount": 2,
-      "visits": 427175,
-      "favorites": 7623,
-      "upVotes": 345,
-      "downVotes": 45,
-      "voteCount": 390,
-      "rating": 88.46,
-      "ratingPretty": "88.5%",
-      "maxPlayers": 8,
-      "created": "2026-06-06T22:16:14.101Z",
-      "updated": "2026-06-07T20:43:55.8449572Z",
-      "genre": "All",
-      "maturity": "minimal",
-      "maturityLabel": "Minimal",
-      "sortNames": [
-        "Up-and-Coming"
-      ],
-      "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-      "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-    }
-  ],
+  "topFavorites": [],
   "topFavoritesByMaturity": {
-    "all": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ],
-    "minimal": [
-      {
-        "universeId": 10283304746,
-        "rootPlaceId": 98459775784481,
-        "name": "New  game join me",
-        "description": "",
-        "creatorName": "BRAZLIAIN SPYDER",
-        "creatorType": "Group",
-        "playerCount": 2,
-        "visits": 427175,
-        "favorites": 7623,
-        "upVotes": 345,
-        "downVotes": 45,
-        "voteCount": 390,
-        "rating": 88.46,
-        "ratingPretty": "88.5%",
-        "maxPlayers": 8,
-        "created": "2026-06-06T22:16:14.101Z",
-        "updated": "2026-06-07T20:43:55.8449572Z",
-        "genre": "All",
-        "maturity": "minimal",
-        "maturityLabel": "Minimal",
-        "sortNames": [
-          "Up-and-Coming"
-        ],
-        "icon": "https://tr.rbxcdn.com/180DAY-cb334cde99f869fb24a6d39b8e5d07de/512/512/Image/Png/noFilter",
-        "robloxUrl": "https://www.roblox.com/games/98459775784481/New-game-join-me"
-      }
-    ]
+    "all": []
   }
 };
