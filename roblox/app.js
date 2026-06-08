@@ -10,8 +10,8 @@ const boards = [
   {
     listId: "topRated",
     filterId: "ratedFilter",
-    dataKey: "topRatedByMaturity",
-    mode: "rating",
+    dataKey: "topLikedByMaturity",
+    mode: "likes",
   },
   {
     listId: "topFavorites",
@@ -52,6 +52,17 @@ function generatedDate(value) {
   }).format(date);
 }
 
+function targetDate(value) {
+  if (!value) return "Creadas ayer";
+  const date = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(date.getTime())) return "Creadas ayer";
+  return `Creadas ${new Intl.DateTimeFormat("es-MX", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  }).format(date)}`;
+}
+
 function esc(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -63,6 +74,9 @@ function esc(value) {
 function score(game, mode) {
   if (mode === "rating") {
     return `<div class="primary-score"><strong>${esc(game.ratingPretty)}</strong><span>rating</span></div>`;
+  }
+  if (mode === "likes") {
+    return `<div class="primary-score"><strong>${fmt(game.upVotes)}</strong><span>likes</span></div>`;
   }
   if (mode === "favorites") {
     return `<div class="primary-score"><strong>${fmt(game.favorites)}</strong><span>favoritos</span></div>`;
@@ -92,10 +106,11 @@ function gameCard(game, index, mode) {
           <span class="pill genre">${esc(game.genre)}</span>
         </div>
         <div class="metrics">
+          <span>${fmt(game.playerCount)} activos</span>
           <span>${fmt(game.visits)} visitas</span>
-          <span>${fmt(game.voteCount)} votos</span>
+          <span>${fmt(game.upVotes)} likes</span>
           <span>${fmt(game.favorites)} favoritos</span>
-          <span>${fmt(game.maxPlayers)} max players</span>
+          <span>Creado ${shortDate(game.created)}</span>
         </div>
       </div>
     </article>
@@ -121,7 +136,7 @@ function renderBoard(board) {
   list.innerHTML =
     games.length > 0
       ? games.map((game, index) => gameCard(game, index, board.mode)).join("")
-      : `<div class="empty-state">No hay experiencias en este filtro.</div>`;
+      : `<div class="empty-state">No hay experiencias creadas ayer en este filtro.</div>`;
 
   list.querySelectorAll(".game-card").forEach((card) => {
     card.addEventListener("click", () => openDetail(card.dataset.universeId));
@@ -152,7 +167,7 @@ function openDetail(universeId) {
   document.getElementById("detailFavorites").textContent = fmt(game.favorites);
   document.getElementById("detailUniverse").textContent = `Universe ${game.universeId}`;
   document.getElementById("detailMaturity").textContent = game.maturityLabel;
-  document.getElementById("detailUpdated").textContent = `Actualizado ${shortDate(game.updated)}`;
+  document.getElementById("detailUpdated").textContent = `Creado ${shortDate(game.created)}`;
   document.getElementById("detailLink").href = game.robloxUrl;
 
   detailOverlay.classList.add("is-open");
@@ -167,11 +182,11 @@ function hideDetail() {
 
 function allGames() {
   const map = new Map();
-  ["topActive", "topRated", "topFavorites"].forEach((key) => {
+  ["topActive", "topLiked", "topFavorites"].forEach((key) => {
     data[key].forEach((game) => map.set(String(game.universeId), game));
   });
   Object.values(data.topActiveByMaturity).flat().forEach((game) => map.set(String(game.universeId), game));
-  Object.values(data.topRatedByMaturity).flat().forEach((game) => map.set(String(game.universeId), game));
+  Object.values(data.topLikedByMaturity).flat().forEach((game) => map.set(String(game.universeId), game));
   Object.values(data.topFavoritesByMaturity).flat().forEach((game) => map.set(String(game.universeId), game));
   return map;
 }
@@ -179,8 +194,10 @@ function allGames() {
 function init() {
   if (!data) return;
   courseLookup = allGames();
-  document.getElementById("dateLabel").textContent = generatedDate(data.generatedAt);
-  document.getElementById("countLabel").textContent = `${fmt(data.stats.sampleSize)} experiencias`;
+  document.getElementById("dateLabel").textContent = targetDate(data.targetDate);
+  const sampleSize = data.stats.sampleSize || 0;
+  document.getElementById("countLabel").textContent =
+    sampleSize === 1 ? "1 creada ayer" : `${fmt(sampleSize)} creadas ayer`;
   fillFilters();
   boards.forEach(renderBoard);
 

@@ -12,10 +12,13 @@ import argparse
 import datetime as dt
 import json
 import math
+import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from collections.abc import Callable
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -26,11 +29,58 @@ DATA_JS = OUT_DIR / "data.js"
 TZ = ZoneInfo("America/Mexico_City")
 
 EXPLORE_API = "https://apis.roblox.com/explore-api/v1/get-sorts"
+SORT_CONTENT_API = "https://apis.roblox.com/explore-api/v1/get-sort-content"
+SEARCH_API = "https://apis.roblox.com/search-api/omni-search"
 GAMES_API = "https://games.roblox.com/v1/games"
+VOTES_API = "https://games.roblox.com/v1/games/votes"
 ICONS_API = "https://thumbnails.roblox.com/v1/games/icons"
 USER_AGENT = "roblox-rankings-static/1.0"
+
 TOP_LIMIT = 10
-MIN_VOTES_FOR_RATED = 10000
+MIN_VOTES_FOR_RATED = 25
+DEFAULT_ID_STRIDE = 50000
+MAX_SCAN_IDS = 500
+SCAN_RADIUS = 6_000_000
+
+DISCOVER_SORT_IDS = [
+    "up-and-coming",
+    "top-trending",
+    "top-playing-now",
+    "fun-with-friends",
+    "top-revisited",
+]
+
+SEARCH_TERMS = [
+    "obby",
+    "simulator",
+    "tycoon",
+    "rp",
+    "roleplay",
+    "escape",
+    "tower",
+    "anime",
+    "clicker",
+    "game",
+    "new",
+    "test",
+    "challenge",
+    "survive",
+    "battle",
+    "race",
+    "car",
+    "dress",
+    "pet",
+    "admin",
+    "free",
+    "mega",
+    "cart",
+    "parkour",
+    "story",
+    "hangout",
+    "school",
+    "city",
+    "zombie",
+]
 
 
 def fetch_json(url: str, *, timeout: float, retries: int) -> dict:
@@ -40,10 +90,21 @@ def fetch_json(url: str, *, timeout: float, retries: int) -> dict:
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=timeout) as response:
                 return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as error:
+            last_error = error
+            if error.code == 429 and attempt < retries:
+                retry_after = error.headers.get("Retry-After")
+                delay = float(retry_after) if retry_after else min(20.0, 2.5 * (attempt + 1) ** 2)
+                time.sleep(delay)
+                continue
+            if attempt < retries:
+                time.sleep(min(10.0, 0.75 * (attempt + 1) ** 2))
+                continue
         except Exception as error:  # noqa: BLE001 - network failures should retry broadly.
             last_error = error
             if attempt < retries:
-                time.sleep(min(8.0, 0.75 * (attempt + 1) ** 2))
+                time.sleep(min(10.0, 0.75 * (attempt + 1) ** 2))
+                continue
     raise RuntimeError(f"Could not fetch {url}: {last_error}")
 
 
@@ -52,49 +113,184 @@ def chunks(items: list[int], size: int):
         yield items[index : index + size]
 
 
-def collect_sort_games(payload: dict) -> tuple[list[dict], list[dict]]:
-    games_by_id: dict[int, dict] = {}
+def parse_roblox_datetime(value: str) -> dt.datetime | None:
+    if not value:
+        return None
+    normalized = value.replace("Z", "+00:00")
+    normalized = re.sub(r"(\.\d{6})\d+([+-]\d\d:\d\d)$", r"\1\2", normalized)
+    try:
+        parsed = dt.datetime.fromisoformat(normalized)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=dt.timezone.utc)
+    return parsed.astimezone(dt.timezone.utc)
+
+
+def target_date_from_args(value: str | None) -> dt.date:
+    if value:
+        return dt.date.fromisoformat(value)
+    return dt.datetime.now(tz=TZ).date() - dt.timedelta(days=1)
+
+
+def local_date(value: str) -> dt.date | None:
+    parsed = parse_roblox_datetime(value)
+    if not parsed:
+        return None
+    return parsed.astimezone(TZ).date()
+
+
+def add_raw_game(raw_by_id: dict[int, dict], game: dict, source_name: str) -> None:
+    universe_id = game.get("universeId") or game.get("contentId")
+    if not isinstance(universe_id, int):
+        return
+    existing = raw_by_id.get(universe_id, {})
+    merged = {**existing, **game, "universeId": universe_id}
+    merged.setdefault("sortNames", [])
+    if source_name not in merged["sortNames"]:
+        merged["sortNames"].append(source_name)
+    raw_by_id[universe_id] = merged
+
+
+def collect_sort_games(payload: dict, raw_by_id: dict[int, dict]) -> list[dict]:
     sorts: list[dict] = []
     for sort in payload.get("sorts") or []:
         games = sort.get("games") or []
-        sort_games: list[int] = []
+        sort_games = 0
+        display_name = sort.get("sortDisplayName") or sort.get("sortId") or "Discover"
         for game in games:
-            universe_id = game.get("universeId")
-            if not isinstance(universe_id, int):
-                continue
-            existing = games_by_id.get(universe_id, {})
-            merged = {**existing, **game}
-            merged.setdefault("sortNames", [])
-            display_name = sort.get("sortDisplayName") or sort.get("sortId") or "Discover"
-            if display_name not in merged["sortNames"]:
-                merged["sortNames"].append(display_name)
-            games_by_id[universe_id] = merged
-            sort_games.append(universe_id)
+            before = len(raw_by_id)
+            add_raw_game(raw_by_id, game, display_name)
+            if len(raw_by_id) > before or isinstance(game.get("universeId"), int):
+                sort_games += 1
         if sort_games:
             sorts.append(
                 {
                     "id": sort.get("sortId") or sort.get("id"),
-                    "name": sort.get("sortDisplayName") or sort.get("sortId") or "Discover",
-                    "count": len(sort_games),
+                    "name": display_name,
+                    "count": sort_games,
                 }
             )
-    return list(games_by_id.values()), sorts
+    return sorts
 
 
-def details_for(universe_ids: list[int], *, timeout: float, retries: int) -> dict[int, dict]:
+def collect_discover_games(args: argparse.Namespace) -> tuple[dict[int, dict], list[dict]]:
+    raw_by_id: dict[int, dict] = {}
+    session_id = str(uuid.uuid4())
+    explore_url = f"{EXPLORE_API}?{urllib.parse.urlencode({'sessionId': session_id})}"
+    payload = fetch_json(explore_url, timeout=args.timeout, retries=args.retries)
+    sorts = collect_sort_games(payload, raw_by_id)
+
+    known_sort_ids = {sort["id"] for sort in sorts if sort.get("id")}
+    for sort_id in DISCOVER_SORT_IDS:
+        if sort_id in known_sort_ids:
+            continue
+        query = urllib.parse.urlencode({"sortId": sort_id, "sessionId": session_id})
+        try:
+            sort_payload = fetch_json(f"{SORT_CONTENT_API}?{query}", timeout=args.timeout, retries=args.retries)
+        except RuntimeError:
+            continue
+        sort_name = sort_payload.get("sortDisplayName") or sort_id
+        count_before = len(raw_by_id)
+        for game in sort_payload.get("games") or []:
+            add_raw_game(raw_by_id, game, sort_name)
+        sorts.append({"id": sort_id, "name": sort_name, "count": len(raw_by_id) - count_before})
+        time.sleep(args.request_delay)
+    return raw_by_id, sorts
+
+
+def collect_search_games(args: argparse.Namespace) -> dict[int, dict]:
+    raw_by_id: dict[int, dict] = {}
+    for term in SEARCH_TERMS:
+        session_id = str(uuid.uuid4())
+        page_token: str | None = None
+        for _page in range(args.search_pages):
+            query = {"searchQuery": term, "sessionId": session_id}
+            if page_token:
+                query["pageToken"] = page_token
+            url = f"{SEARCH_API}?{urllib.parse.urlencode(query)}"
+            try:
+                payload = fetch_json(url, timeout=args.timeout, retries=args.retries)
+            except RuntimeError:
+                break
+            for group in payload.get("searchResults") or []:
+                if group.get("contentGroupType") != "Game":
+                    continue
+                for game in group.get("contents") or []:
+                    add_raw_game(raw_by_id, game, f"Search: {term}")
+            page_token = payload.get("nextPageToken")
+            if not page_token:
+                break
+            time.sleep(args.request_delay)
+    return raw_by_id
+
+
+def details_for(universe_ids: list[int], *, timeout: float, retries: int, request_delay: float) -> dict[int, dict]:
     details: dict[int, dict] = {}
-    for batch in chunks(universe_ids, 50):
+    unique_ids = sorted({int(item) for item in universe_ids if isinstance(item, int)})
+    for batch in chunks(unique_ids, 50):
         query = urllib.parse.urlencode({"universeIds": ",".join(str(item) for item in batch)})
-        payload = fetch_json(f"{GAMES_API}?{query}", timeout=timeout, retries=retries)
+        try:
+            payload = fetch_json(f"{GAMES_API}?{query}", timeout=timeout, retries=retries)
+        except RuntimeError as error:
+            print(
+                json.dumps(
+                    {
+                        "warning": "details_batch_failed",
+                        "firstUniverseId": batch[0],
+                        "count": len(batch),
+                        "error": str(error)[:220],
+                    },
+                    ensure_ascii=False,
+                ),
+                flush=True,
+            )
+            if request_delay:
+                time.sleep(request_delay * 2)
+            continue
         for item in payload.get("data") or []:
             if isinstance(item.get("id"), int):
                 details[item["id"]] = item
+        if request_delay:
+            time.sleep(request_delay)
     return details
 
 
-def icons_for(universe_ids: list[int], *, timeout: float, retries: int) -> dict[int, str]:
+def votes_for(universe_ids: list[int], *, timeout: float, retries: int, request_delay: float) -> dict[int, dict]:
+    votes: dict[int, dict] = {}
+    unique_ids = sorted({int(item) for item in universe_ids if isinstance(item, int)})
+    for batch in chunks(unique_ids, 100):
+        query = urllib.parse.urlencode({"universeIds": ",".join(str(item) for item in batch)})
+        try:
+            payload = fetch_json(f"{VOTES_API}?{query}", timeout=timeout, retries=retries)
+        except RuntimeError as error:
+            print(
+                json.dumps(
+                    {
+                        "warning": "votes_batch_failed",
+                        "firstUniverseId": batch[0],
+                        "count": len(batch),
+                        "error": str(error)[:220],
+                    },
+                    ensure_ascii=False,
+                ),
+                flush=True,
+            )
+            if request_delay:
+                time.sleep(request_delay * 2)
+            continue
+        for item in payload.get("data") or []:
+            if isinstance(item.get("id"), int):
+                votes[item["id"]] = item
+        if request_delay:
+            time.sleep(request_delay)
+    return votes
+
+
+def icons_for(universe_ids: list[int], *, timeout: float, retries: int, request_delay: float) -> dict[int, str]:
     icons: dict[int, str] = {}
-    for batch in chunks(universe_ids, 100):
+    unique_ids = sorted({int(item) for item in universe_ids if isinstance(item, int)})
+    for batch in chunks(unique_ids, 100):
         query = urllib.parse.urlencode(
             {
                 "universeIds": ",".join(str(item) for item in batch),
@@ -103,11 +299,104 @@ def icons_for(universe_ids: list[int], *, timeout: float, retries: int) -> dict[
                 "isCircular": "false",
             }
         )
-        payload = fetch_json(f"{ICONS_API}?{query}", timeout=timeout, retries=retries)
+        try:
+            payload = fetch_json(f"{ICONS_API}?{query}", timeout=timeout, retries=retries)
+        except RuntimeError as error:
+            print(
+                json.dumps(
+                    {
+                        "warning": "icons_batch_failed",
+                        "firstUniverseId": batch[0],
+                        "count": len(batch),
+                        "error": str(error)[:220],
+                    },
+                    ensure_ascii=False,
+                ),
+                flush=True,
+            )
+            if request_delay:
+                time.sleep(request_delay * 2)
+            continue
         for item in payload.get("data") or []:
             if isinstance(item.get("targetId"), int) and item.get("imageUrl"):
                 icons[item["targetId"]] = item["imageUrl"]
+        if request_delay:
+            time.sleep(request_delay)
     return icons
+
+
+def detail_date_for_id(universe_id: int, args: argparse.Namespace, cache: dict[int, dt.datetime]) -> dt.datetime | None:
+    if universe_id in cache:
+        return cache[universe_id]
+    details = details_for([universe_id], timeout=args.timeout, retries=args.retries, request_delay=args.request_delay)
+    detail = details.get(universe_id)
+    parsed = parse_roblox_datetime((detail or {}).get("created") or "")
+    if parsed:
+        cache[universe_id] = parsed
+    return parsed
+
+
+def find_boundary(
+    low: int,
+    high: int,
+    predicate: Callable[[dt.datetime], bool],
+    args: argparse.Namespace,
+    cache: dict[int, dt.datetime],
+) -> int:
+    while low < high:
+        mid = (low + high) // 2
+        created = detail_date_for_id(mid, args, cache)
+        if created and predicate(created):
+            high = mid
+        else:
+            low = mid + 1
+    return low
+
+
+def find_scan_range(anchor_ids: list[int], target_date: dt.date, args: argparse.Namespace) -> tuple[int, int] | None:
+    start_local = dt.datetime.combine(target_date, dt.time.min, tzinfo=TZ)
+    end_local = start_local + dt.timedelta(days=1)
+    start_utc = start_local.astimezone(dt.timezone.utc)
+    end_utc = end_local.astimezone(dt.timezone.utc)
+    cache: dict[int, dt.datetime] = {}
+
+    low = min(anchor_ids)
+    high = max(anchor_ids)
+    step = 500_000
+
+    for _ in range(30):
+        low_created = detail_date_for_id(low, args, cache)
+        if low_created and low_created < start_utc:
+            break
+        low -= step
+        step = min(2_000_000, int(step * 1.35))
+    else:
+        return None
+
+    step = 500_000
+    for _ in range(30):
+        high_created = detail_date_for_id(high, args, cache)
+        if high_created and high_created >= end_utc:
+            break
+        high += step
+        step = min(2_000_000, int(step * 1.35))
+    else:
+        return None
+
+    first = find_boundary(low, max(anchor_ids), lambda created: created >= start_utc, args, cache)
+    first_after = find_boundary(min(anchor_ids), high, lambda created: created >= end_utc, args, cache)
+    return first, max(first, first_after - 1)
+
+
+def scan_ids_for_range(first_id: int, last_id: int, anchor_ids: list[int], args: argparse.Namespace) -> list[int]:
+    if last_id < first_id:
+        return anchor_ids
+    span = last_id - first_id + 1
+    stride = max(args.id_stride, math.ceil(span / args.max_scan_ids))
+    scan_ids = list(range(first_id, last_id + 1, stride))
+    scan_ids.extend([first_id, last_id])
+    scan_ids.extend(anchor_ids)
+    return sorted(set(scan_ids))
 
 
 def vote_ratio(up_votes: int, down_votes: int) -> float:
@@ -115,14 +404,14 @@ def vote_ratio(up_votes: int, down_votes: int) -> float:
     return up_votes / total if total else 0.0
 
 
-def normalize_game(raw: dict, detail: dict, icon: str | None) -> dict:
+def normalize_game(raw: dict, detail: dict, icon: str | None, votes: dict | None) -> dict:
     universe_id = raw.get("universeId") or detail.get("id")
     root_place_id = raw.get("rootPlaceId") or detail.get("rootPlaceId")
-    up_votes = int(raw.get("totalUpVotes") or 0)
-    down_votes = int(raw.get("totalDownVotes") or 0)
+    up_votes = int((votes or {}).get("upVotes") or raw.get("totalUpVotes") or 0)
+    down_votes = int((votes or {}).get("downVotes") or raw.get("totalDownVotes") or 0)
     player_count = int(raw.get("playerCount") or detail.get("playing") or 0)
     creator = detail.get("creator") or {}
-    canonical_path = detail.get("canonicalUrlPath") or f"/games/{root_place_id}"
+    canonical_path = detail.get("canonicalUrlPath") or raw.get("canonicalUrlPath") or f"/games/{root_place_id}"
     rating = vote_ratio(up_votes, down_votes)
     maturity = raw.get("contentMaturity") or ""
     maturity_label = raw.get("ageRecommendationDisplayName") or maturity.title() or "Sin clasificar"
@@ -131,8 +420,8 @@ def normalize_game(raw: dict, detail: dict, icon: str | None) -> dict:
         "universeId": universe_id,
         "rootPlaceId": root_place_id,
         "name": raw.get("name") or detail.get("name") or "Untitled",
-        "description": detail.get("description") or "",
-        "creatorName": creator.get("name") or "",
+        "description": detail.get("description") or raw.get("description") or "",
+        "creatorName": creator.get("name") or raw.get("creatorName") or "",
         "creatorType": creator.get("type") or "",
         "playerCount": player_count,
         "visits": int(detail.get("visits") or 0),
@@ -156,6 +445,12 @@ def normalize_game(raw: dict, detail: dict, icon: str | None) -> dict:
 
 def top_active(games: list[dict]) -> list[dict]:
     return sorted(games, key=lambda item: (-item["playerCount"], -item["visits"], item["name"]))[:TOP_LIMIT]
+
+
+def top_liked(games: list[dict]) -> list[dict]:
+    return sorted(games, key=lambda item: (-item["upVotes"], -item["playerCount"], -item["visits"], item["name"]))[
+        :TOP_LIMIT
+    ]
 
 
 def top_rated(games: list[dict]) -> list[dict]:
@@ -188,7 +483,7 @@ def maturity_options(games: list[dict]) -> list[dict]:
     return ordered
 
 
-def by_maturity(games: list[dict], selector) -> dict[str, list[dict]]:
+def by_maturity(games: list[dict], selector: Callable[[list[dict]], list[dict]]) -> dict[str, list[dict]]:
     output = {"all": selector(games)}
     for option in maturity_options(games):
         if option["id"] == "all":
@@ -198,47 +493,120 @@ def by_maturity(games: list[dict], selector) -> dict[str, list[dict]]:
     return output
 
 
+def game_is_target_date(detail: dict, target_date: dt.date) -> bool:
+    return local_date(detail.get("created") or "") == target_date
+
+
 def build_payload(args: argparse.Namespace) -> dict:
-    session_id = str(uuid.uuid4())
-    explore_url = f"{EXPLORE_API}?{urllib.parse.urlencode({'sessionId': session_id})}"
-    payload = fetch_json(explore_url, timeout=args.timeout, retries=args.retries)
-    raw_games, sorts = collect_sort_games(payload)
-    universe_ids = sorted({int(game["universeId"]) for game in raw_games if isinstance(game.get("universeId"), int)})
-    detail_map = details_for(universe_ids, timeout=args.timeout, retries=args.retries)
-    icon_map = icons_for(universe_ids, timeout=args.timeout, retries=args.retries)
+    target_date = target_date_from_args(args.date)
+    discover_raw, sorts = collect_discover_games(args)
+    search_raw = collect_search_games(args)
+    raw_by_id = {**discover_raw}
+    for universe_id, raw in search_raw.items():
+        existing = raw_by_id.get(universe_id, {})
+        merged = {**existing, **raw}
+        merged["sortNames"] = sorted(set((existing.get("sortNames") or []) + (raw.get("sortNames") or [])))
+        raw_by_id[universe_id] = merged
+
+    seed_ids = sorted(raw_by_id)
+    seed_details = details_for(
+        seed_ids,
+        timeout=args.timeout,
+        retries=args.retries,
+        request_delay=args.request_delay,
+    )
+    anchor_ids = [universe_id for universe_id, detail in seed_details.items() if game_is_target_date(detail, target_date)]
+
+    scan_range = (
+        (max(1, min(anchor_ids) - args.scan_radius), max(anchor_ids) + args.scan_radius)
+        if anchor_ids and args.id_scan and not args.no_id_scan
+        else None
+    )
+    scan_ids = scan_ids_for_range(*scan_range, anchor_ids, args) if scan_range else []
+    all_ids = sorted(set(seed_ids + scan_ids))
+    detail_map = details_for(
+        all_ids,
+        timeout=args.timeout,
+        retries=args.retries,
+        request_delay=args.request_delay,
+    )
+    target_details = {
+        universe_id: detail
+        for universe_id, detail in detail_map.items()
+        if game_is_target_date(detail, target_date)
+    }
+    target_ids = sorted(target_details)
+    vote_map = votes_for(
+        target_ids,
+        timeout=args.timeout,
+        retries=args.retries,
+        request_delay=args.request_delay,
+    )
+    icon_map = icons_for(
+        target_ids,
+        timeout=args.timeout,
+        retries=args.retries,
+        request_delay=args.request_delay,
+    )
 
     games = [
-        normalize_game(raw, detail_map.get(int(raw["universeId"]), {}), icon_map.get(int(raw["universeId"])))
-        for raw in raw_games
+        normalize_game(raw_by_id.get(universe_id, {}), target_details[universe_id], icon_map.get(universe_id), vote_map.get(universe_id))
+        for universe_id in target_ids
     ]
     games = [game for game in games if game.get("universeId") and game.get("rootPlaceId")]
 
+    meaningful_games = [
+        game
+        for game in games
+        if game["playerCount"] > 0
+        or game["visits"] > 0
+        or game["favorites"] > 0
+        or game["voteCount"] > 0
+    ]
+    ranked_games = meaningful_games if meaningful_games else games
+
     return {
         "generatedAt": dt.datetime.now(tz=TZ).isoformat(timespec="seconds"),
-        "source": "Roblox public web APIs",
-        "sessionId": session_id,
+        "targetDate": target_date.isoformat(),
+        "targetDateLabel": target_date.strftime("%Y-%m-%d"),
+        "source": "Roblox public web APIs, filtered by games.created",
         "stats": {
-            "sampleSize": len(games),
-            "totalPlayers": sum(game["playerCount"] for game in games),
-            "totalVisits": sum(game["visits"] for game in games),
-            "totalFavorites": sum(game["favorites"] for game in games),
+            "sampleSize": len(ranked_games),
+            "matchedCreatedYesterday": len(games),
+            "seedIds": len(seed_ids),
+            "scannedIds": len(scan_ids),
+            "scanRange": list(scan_range) if scan_range else None,
+            "idStride": max(args.id_stride, math.ceil(((scan_range[1] - scan_range[0] + 1) / args.max_scan_ids))) if scan_range else None,
+            "totalPlayers": sum(game["playerCount"] for game in ranked_games),
+            "totalVisits": sum(game["visits"] for game in ranked_games),
+            "totalFavorites": sum(game["favorites"] for game in ranked_games),
             "minVotesForRated": MIN_VOTES_FOR_RATED,
         },
         "sorts": sorts,
-        "maturityOptions": maturity_options(games),
-        "topActive": top_active(games),
-        "topActiveByMaturity": by_maturity(games, top_active),
-        "topRated": top_rated(games),
-        "topRatedByMaturity": by_maturity(games, top_rated),
-        "topFavorites": top_favorites(games),
-        "topFavoritesByMaturity": by_maturity(games, top_favorites),
+        "maturityOptions": maturity_options(ranked_games),
+        "topActive": top_active(ranked_games),
+        "topActiveByMaturity": by_maturity(ranked_games, top_active),
+        "topLiked": top_liked(ranked_games),
+        "topLikedByMaturity": by_maturity(ranked_games, top_liked),
+        "topRated": top_rated(ranked_games),
+        "topRatedByMaturity": by_maturity(ranked_games, top_rated),
+        "topFavorites": top_favorites(ranked_games),
+        "topFavoritesByMaturity": by_maturity(ranked_games, top_favorites),
     }
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Update Roblox static rankings data")
-    parser.add_argument("--timeout", type=float, default=20.0)
+    parser.add_argument("--date", help="Fecha local CDMX a publicar, formato YYYY-MM-DD. Vacío = ayer.")
+    parser.add_argument("--timeout", type=float, default=12.0)
     parser.add_argument("--retries", type=int, default=4)
+    parser.add_argument("--request-delay", type=float, default=0.75)
+    parser.add_argument("--search-pages", type=int, default=0)
+    parser.add_argument("--id-stride", type=int, default=DEFAULT_ID_STRIDE)
+    parser.add_argument("--max-scan-ids", type=int, default=MAX_SCAN_IDS)
+    parser.add_argument("--scan-radius", type=int, default=SCAN_RADIUS)
+    parser.add_argument("--id-scan", action="store_true")
+    parser.add_argument("--no-id-scan", action="store_true")
     args = parser.parse_args()
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -252,9 +620,13 @@ def main() -> int:
     print(
         json.dumps(
             {
+                "targetDate": payload["targetDate"],
                 "sampleSize": payload["stats"]["sampleSize"],
+                "matchedCreatedYesterday": payload["stats"]["matchedCreatedYesterday"],
+                "seedIds": payload["stats"]["seedIds"],
+                "scannedIds": payload["stats"]["scannedIds"],
                 "topActive": [game["name"] for game in payload["topActive"][:3]],
-                "topRated": [game["name"] for game in payload["topRated"][:3]],
+                "topLiked": [game["name"] for game in payload["topLiked"][:3]],
                 "topFavorites": [game["name"] for game in payload["topFavorites"][:3]],
             },
             ensure_ascii=False,
