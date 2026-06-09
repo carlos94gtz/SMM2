@@ -15,6 +15,7 @@ import datetime as dt
 import html
 import json
 import re
+import subprocess
 import sys
 import time
 import urllib.error
@@ -81,6 +82,48 @@ def chunked(items: list[IdPair], size: int) -> Iterable[list[IdPair]]:
 def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | None]:
     url = f"{API_BASE}{path}"
     for attempt in range(retries + 1):
+        curl_missing = False
+        try:
+            result = subprocess.run(
+                [
+                    "curl",
+                    "-sS",
+                    "--max-time",
+                    str(timeout),
+                    "-H",
+                    "User-Agent: smm2-dashboard-updater/1.0",
+                    "-w",
+                    "\n%{http_code}",
+                    url,
+                ],
+                capture_output=True,
+                text=True,
+                timeout=timeout + 5,
+                check=False,
+            )
+            if result.returncode != 0 or not result.stdout:
+                if attempt < retries:
+                    time.sleep(min(6.0, 0.6 * (attempt + 1) ** 2))
+                    continue
+                return 0, None
+            body, status_text = result.stdout.rsplit("\n", 1)
+            status = int(status_text)
+            parsed = json.loads(body) if body else {}
+            if status == 429 and attempt < retries:
+                time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
+                continue
+            return status, parsed
+        except FileNotFoundError:
+            curl_missing = True
+        except (ValueError, subprocess.TimeoutExpired, json.JSONDecodeError):
+            if attempt < retries:
+                time.sleep(min(6.0, 0.6 * (attempt + 1) ** 2))
+                continue
+            return 0, None
+
+        if not curl_missing:
+            return 0, None
+
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "smm2-dashboard-updater/1.0"})
             with urllib.request.urlopen(req, timeout=timeout) as response:
@@ -245,8 +288,11 @@ def scan_target_day(args: argparse.Namespace, local_date: dt.date, state: dict) 
     start_ts, end_ts = day_bounds(local_date)
     current_start, current_end = estimate_range(local_date, state, args.scan_margin)
     all_courses: dict[int, dict] = {}
+    scanned_start: int | None = None
+    scanned_end: int | None = None
 
     def add_scan(scan_start: int, scan_end: int) -> None:
+        nonlocal scanned_start, scanned_end
         if scan_end < scan_start:
             return
         found = scan_range(
@@ -262,41 +308,66 @@ def scan_target_day(args: argparse.Namespace, local_date: dt.date, state: dict) 
             data_id = course.get("data_id")
             if data_id is not None:
                 all_courses[int(data_id)] = course
+        scanned_start = scan_start if scanned_start is None else min(scanned_start, scan_start)
+        scanned_end = scan_end if scanned_end is None else max(scanned_end, scan_end)
 
-    add_scan(current_start, current_end)
-
-    for extension in range(args.max_extensions + 1):
+    def coverage() -> tuple[list[dict], list[dict], bool, bool]:
         courses = sorted(all_courses.values(), key=lambda course: int(course.get("data_id") or 0))
         day_courses = [course for course in courses if start_ts <= int(course.get("uploaded") or 0) < end_ts]
         has_before = any(int(course.get("uploaded") or 0) < start_ts for course in courses)
         has_after = any(int(course.get("uploaded") or 0) >= end_ts for course in courses)
+        return day_courses, courses, has_before, has_after
 
+    def checked_result(label: str) -> tuple[list[dict], list[dict], tuple[int, int]] | None:
+        day_courses, courses, has_before, has_after = coverage()
         print(
-            f"Coverage attempt {extension + 1}: "
-            f"{len(day_courses):,} levels in {local_date.isoformat()}, "
+            f"{label}: {len(day_courses):,} levels in {local_date.isoformat()}, "
             f"before={has_before}, after={has_after}",
             flush=True,
         )
-
         if day_courses and has_before and has_after:
-            return day_courses, courses, (current_start, current_end)
+            return day_courses, courses, (scanned_start or current_start, scanned_end or current_end)
+        return None
+
+    def scan_windows(scan_start: int, scan_end: int, label: str) -> tuple[list[dict], list[dict], tuple[int, int]] | None:
+        if scan_end < scan_start:
+            return checked_result(label)
+        window = max(1, int(args.scan_window))
+        for window_start in range(scan_start, scan_end + 1, window):
+            window_end = min(scan_end, window_start + window - 1)
+            add_scan(window_start, window_end)
+            result = checked_result(label)
+            if result:
+                return result
+        return None
+
+    result = scan_windows(current_start, current_end, "Coverage check")
+    if result:
+        return result
+
+    for extension in range(args.max_extensions + 1):
+        day_courses, courses, has_before, has_after = coverage()
 
         if extension >= args.max_extensions:
             break
 
         if not day_courses or not has_before:
             next_start = max(1, current_start - args.scan_margin)
-            add_scan(next_start, current_start - 1)
+            result = scan_windows(next_start, current_start - 1, f"Coverage extension {extension + 1}")
+            if result:
+                return result
             current_start = next_start
 
         if not day_courses or not has_after:
             next_end = current_end + args.scan_margin
-            add_scan(current_end + 1, next_end)
+            result = scan_windows(current_end + 1, next_end, f"Coverage extension {extension + 1}")
+            if result:
+                return result
             current_end = next_end
 
     raise RuntimeError(
         f"Could not confirm full coverage for {local_date.isoformat()} "
-        f"after scanning {current_start}..{current_end}"
+        f"after scanning {scanned_start or current_start}..{scanned_end or current_end}"
     )
 
 
@@ -425,18 +496,52 @@ def download_binary(url: str, output: Path, timeout: float, retries: int) -> Non
     temp = output.with_suffix(".tmp")
     last_error: Exception | str | None = None
     for attempt in range(retries + 1):
+        curl_missing = False
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "smm2-dashboard-updater/1.0"})
-            with urllib.request.urlopen(req, timeout=timeout) as response:
-                data = response.read()
-            if data:
-                temp.write_bytes(data)
+            result = subprocess.run(
+                [
+                    "curl",
+                    "-sS",
+                    "-L",
+                    "--fail",
+                    "--max-time",
+                    str(timeout),
+                    "-H",
+                    "User-Agent: smm2-dashboard-updater/1.0",
+                    "-o",
+                    str(temp),
+                    url,
+                ],
+                capture_output=True,
+                text=True,
+                timeout=timeout + 5,
+                check=False,
+            )
+            if result.returncode == 0 and temp.exists() and temp.stat().st_size > 0:
                 temp.replace(output)
                 return
-            last_error = "empty thumbnail response"
-        except (urllib.error.URLError, TimeoutError, OSError) as error:
+            temp.unlink(missing_ok=True)
+            last_error = result.stderr.strip() or "empty thumbnail response"
+        except FileNotFoundError:
+            curl_missing = True
+        except (subprocess.TimeoutExpired, OSError) as error:
             temp.unlink(missing_ok=True)
             last_error = error
+
+        if curl_missing:
+            try:
+                req = urllib.request.Request(url, headers={"User-Agent": "smm2-dashboard-updater/1.0"})
+                with urllib.request.urlopen(req, timeout=timeout) as response:
+                    data = response.read()
+                if data:
+                    temp.write_bytes(data)
+                    temp.replace(output)
+                    return
+                last_error = "empty thumbnail response"
+            except (urllib.error.URLError, TimeoutError, OSError) as error:
+                temp.unlink(missing_ok=True)
+                last_error = error
+
         if attempt < retries:
             time.sleep(min(14.0, 1.5 * (attempt + 1) ** 2))
     raise RuntimeError(str(last_error or "thumbnail download failed"))
@@ -446,7 +551,9 @@ def localize_thumbnails(payload: dict, local_date: dt.date, *, timeout: float, r
     THUMBS_DIR.mkdir(parents=True, exist_ok=True)
     version = f"{local_date.isoformat()}-auto"
     seen: set[str] = set()
-    downloaded = 0
+    local_thumbs: dict[str, str] = {}
+    local = 0
+    remote = 0
 
     for courses in course_groups(payload):
         for course in courses:
@@ -455,34 +562,20 @@ def localize_thumbnails(payload: dict, local_date: dt.date, *, timeout: float, r
                 continue
 
             output = THUMBS_DIR / f"{course_id}.jpg"
-            if course_id not in seen and (not output.exists() or output.stat().st_size == 0):
-                urls = list(
-                    dict.fromkeys(
-                        [
-                            course.get("thumbnail"),
-                            course.get("entireThumbnail"),
-                            f"{API_BASE}/level_thumbnail/{course_id}",
-                        ]
-                    )
-                )
-                last_error: Exception | str | None = None
-                for url in [str(u) for u in urls if u]:
-                    try:
-                        download_binary(url, output, timeout, retries)
-                        downloaded += 1
-                        time.sleep(delay)
-                        break
-                    except RuntimeError as error:
-                        last_error = error
+            if course_id not in seen:
+                if output.exists() and output.stat().st_size > 0:
+                    local_thumbs[course_id] = f"./thumbs/{course_id}.jpg?v={version}"
+                    local += 1
                 else:
-                    raise RuntimeError(f"Could not download thumbnail for {course_id}: {last_error}")
+                    local_thumbs[course_id] = f"{API_BASE}/level_thumbnail/{course_id}"
+                    remote += 1
+                seen.add(course_id)
 
-            local_thumb = f"./thumbs/{course_id}.jpg?v={version}"
+            local_thumb = local_thumbs.get(course_id, "")
             course["thumbnail"] = local_thumb
             course["entireThumbnail"] = local_thumb
-            seen.add(course_id)
 
-    print(f"Localized {len(seen):,} thumbnails ({downloaded:,} downloaded)", flush=True)
+    print(f"Prepared {len(seen):,} thumbnails ({local:,} local, {remote:,} remote)", flush=True)
 
 
 def esc(value: object) -> str:
@@ -633,12 +726,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Update the SMM2 static dashboard")
     parser.add_argument("--date", help="Local date to publish, YYYY-MM-DD. Defaults to yesterday in Mexico City.")
     parser.add_argument("--scan-margin", type=int, default=1000, help="Extra IDs to scan before and after the estimate.")
+    parser.add_argument("--scan-window", type=int, default=400, help="IDs to scan before checking day coverage.")
     parser.add_argument("--max-extensions", type=int, default=10, help="How many times to extend the scan if coverage is incomplete.")
-    parser.add_argument("--batch-size", type=int, default=60)
-    parser.add_argument("--workers", type=int, default=6)
-    parser.add_argument("--timeout", type=float, default=12.0)
-    parser.add_argument("--retries", type=int, default=2)
-    parser.add_argument("--pause", type=float, default=0.05, help="Pause after each HTTP request per worker.")
+    parser.add_argument("--batch-size", type=int, default=20)
+    parser.add_argument("--workers", type=int, default=3)
+    parser.add_argument("--timeout", type=float, default=20.0)
+    parser.add_argument("--retries", type=int, default=4)
+    parser.add_argument("--pause", type=float, default=0.08, help="Pause after each HTTP request per worker.")
     parser.add_argument("--thumbnail-timeout", type=float, default=12.0)
     parser.add_argument("--thumbnail-retries", type=int, default=3)
     parser.add_argument("--thumbnail-delay", type=float, default=0.15)
