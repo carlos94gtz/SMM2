@@ -1,12 +1,12 @@
 {
-  "anchorDate": "2026-06-11",
-  "anchorStartId": 59442230,
-  "idsPerDay": 10904,
-  "lastUpdatedDate": "2026-06-10",
-  "lastTotalLevels": 8266,
+  "anchorDate": "2026-06-12",
+  "anchorStartId": 59450663,
+  "idsPerDay": 10163,
+  "lastUpdatedDate": "2026-06-11",
+  "lastTotalLevels": 7821,
   "lastScanRange": {
-    "startId": 59432206,
-    "endId": 59442605
+    "startId": 59441230,
+    "endId": 59450829
   },
-  "updatedAt": "2026-06-11T06:45:27-06:00"
+  "updatedAt": "2026-06-12T06:17:04-06:00"
 }
