@@ -38,6 +38,7 @@ TZ_NAME = "America/Mexico_City"
 TZ = ZoneInfo(TZ_NAME)
 DIFFICULTY_ORDER = ["Easy", "Normal", "Expert", "Super expert"]
 MIN_ATTEMPTS_FOR_LEAST_CLEARED = 20
+MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED = 180_000
 DEFAULT_STATE = {
     "anchorDate": "2026-06-06",
     "anchorStartId": 59389587,
@@ -401,7 +402,7 @@ def compact(course: dict) -> dict:
 
 def top_liked_courses(courses: list[dict]) -> list[dict]:
     return sorted(
-        courses,
+        [c for c in courses if (c.get("upload_time") or 0) > MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED],
         key=lambda c: (
             -(c.get("likes") or 0),
             -(c.get("plays") or 0),
@@ -447,6 +448,7 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
         "stats": {
             "totalLevels": len(courses),
             "topLikedCount": len(top_liked),
+            "topLikedMinClearCheckMs": MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED,
             "topLongestCount": len(top_longest),
             "leastClearedCount": len(least_cleared),
             "leastClearedMinAttempts": MIN_ATTEMPTS_FOR_LEAST_CLEARED,
