@@ -9,9 +9,16 @@ on:
         type: string
   schedule:
     - cron: "30 8 * * *"
+    - cron: "30 12 * * *"
+    - cron: "30 16 * * *"
+    - cron: "30 20 * * *"
 
 permissions:
   contents: write
+
+concurrency:
+  group: update-smm2-dashboard
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -25,16 +32,42 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Update dashboard data
+      - name: Resolve target date
+        id: target
         env:
           REQUESTED_DATE: ${{ github.event.inputs.date || '' }}
+          RUN_EVENT: ${{ github.event_name }}
+        run: |
+          if [ -n "$REQUESTED_DATE" ]; then
+            TARGET_DATE="$REQUESTED_DATE"
+          else
+            TARGET_DATE="$(TZ=America/Mexico_City date -d 'yesterday' +'%Y-%m-%d')"
+          fi
+
+          FORCE_UPDATE="false"
+          if [ "$RUN_EVENT" = "workflow_dispatch" ]; then
+            FORCE_UPDATE="true"
+          fi
+
+          echo "date=$TARGET_DATE" >> "$GITHUB_OUTPUT"
+          echo "force=$FORCE_UPDATE" >> "$GITHUB_OUTPUT"
+          echo "Target SMM2 date: $TARGET_DATE"
+          echo "Force update: $FORCE_UPDATE"
+
+      - name: Check current dashboard date
+        id: current
+        run: |
+          CURRENT_DATE="$(python -c 'import json, pathlib; text = pathlib.Path("data.js").read_text(encoding="utf-8"); payload = json.loads(text.split("=", 1)[1].rsplit(";", 1)[0]); print(payload.get("date", ""))')"
+          echo "date=$CURRENT_DATE" >> "$GITHUB_OUTPUT"
+          echo "Current SMM2 date: $CURRENT_DATE"
+
+      - name: Update dashboard data
+        if: steps.target.outputs.force == 'true' || steps.current.outputs.date != steps.target.outputs.date
+        env:
+          TARGET_DATE: ${{ steps.target.outputs.date }}
         run: |
           THUMBNAIL_ARGS=(--thumbnail-timeout 10 --thumbnail-retries 1 --thumbnail-delay 0.05 --thumbnail-workers 4)
-          if [ -n "$REQUESTED_DATE" ]; then
-            python scripts/update_dashboard.py --date "$REQUESTED_DATE" "${THUMBNAIL_ARGS[@]}"
-          else
-            python scripts/update_dashboard.py "${THUMBNAIL_ARGS[@]}"
-          fi
+          python scripts/update_dashboard.py --date "$TARGET_DATE" "${THUMBNAIL_ARGS[@]}"
           python scripts/update_roblox_dashboard.py
 
       - name: Commit and push changes
