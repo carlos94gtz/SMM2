@@ -29,10 +29,11 @@ jobs:
         env:
           REQUESTED_DATE: ${{ github.event.inputs.date || '' }}
         run: |
+          THUMBNAIL_ARGS=(--thumbnail-timeout 10 --thumbnail-retries 1 --thumbnail-delay 0.05 --thumbnail-workers 4)
           if [ -n "$REQUESTED_DATE" ]; then
-            python scripts/update_dashboard.py --date "$REQUESTED_DATE"
+            python scripts/update_dashboard.py --date "$REQUESTED_DATE" "${THUMBNAIL_ARGS[@]}"
           else
-            python scripts/update_dashboard.py
+            python scripts/update_dashboard.py "${THUMBNAIL_ARGS[@]}"
           fi
           python scripts/update_roblox_dashboard.py
 
