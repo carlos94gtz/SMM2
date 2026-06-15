@@ -547,13 +547,69 @@ def download_binary(url: str, output: Path, timeout: float, retries: int) -> Non
     raise RuntimeError(str(last_error or "thumbnail download failed"))
 
 
-def localize_thumbnails(payload: dict, local_date: dt.date, *, timeout: float, retries: int, delay: float) -> None:
+def localize_thumbnails(
+    payload: dict,
+    local_date: dt.date,
+    *,
+    timeout: float,
+    retries: int,
+    delay: float,
+    workers: int,
+) -> None:
     THUMBS_DIR.mkdir(parents=True, exist_ok=True)
     version = f"{local_date.isoformat()}-auto"
     seen: set[str] = set()
+    course_ids: list[str] = []
     local_thumbs: dict[str, str] = {}
-    local = 0
-    remote = 0
+    existing = 0
+    downloaded = 0
+    unavailable = 0
+
+    for courses in course_groups(payload):
+        for course in courses:
+            course_id = str(course.get("courseId") or "")
+            if course_id and course_id not in seen:
+                seen.add(course_id)
+                course_ids.append(course_id)
+
+    missing: list[str] = []
+    for course_id in course_ids:
+        output = THUMBS_DIR / f"{course_id}.jpg"
+        if output.exists() and output.stat().st_size > 0:
+            local_thumbs[course_id] = f"./thumbs/{course_id}.jpg?v={version}"
+            existing += 1
+        else:
+            missing.append(course_id)
+
+    def fetch_thumbnail(course_id: str) -> tuple[str, bool, str]:
+        if delay:
+            time.sleep(delay)
+        output = THUMBS_DIR / f"{course_id}.jpg"
+        try:
+            download_binary(f"{API_BASE}/level_thumbnail/{course_id}", output, timeout, retries)
+        except RuntimeError as error:
+            return course_id, False, str(error)
+        return course_id, output.exists() and output.stat().st_size > 0, ""
+
+    if missing:
+        print(f"Downloading {len(missing):,} missing thumbnails", flush=True)
+        errors: list[tuple[str, str]] = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max(1, workers)) as executor:
+            futures = {executor.submit(fetch_thumbnail, course_id): course_id for course_id in missing}
+            for future in concurrent.futures.as_completed(futures):
+                course_id, ok, error = future.result()
+                if ok:
+                    local_thumbs[course_id] = f"./thumbs/{course_id}.jpg?v={version}"
+                    downloaded += 1
+                else:
+                    local_thumbs[course_id] = ""
+                    unavailable += 1
+                    errors.append((course_id, error))
+
+        for course_id, error in errors[:8]:
+            print(f"  thumbnail fallback {course_id}: {error}", flush=True)
+        if len(errors) > 8:
+            print(f"  ... {len(errors) - 8:,} more thumbnail fallbacks", flush=True)
 
     for courses in course_groups(payload):
         for course in courses:
@@ -561,21 +617,15 @@ def localize_thumbnails(payload: dict, local_date: dt.date, *, timeout: float, r
             if not course_id:
                 continue
 
-            output = THUMBS_DIR / f"{course_id}.jpg"
-            if course_id not in seen:
-                if output.exists() and output.stat().st_size > 0:
-                    local_thumbs[course_id] = f"./thumbs/{course_id}.jpg?v={version}"
-                    local += 1
-                else:
-                    local_thumbs[course_id] = f"{API_BASE}/level_thumbnail/{course_id}"
-                    remote += 1
-                seen.add(course_id)
-
             local_thumb = local_thumbs.get(course_id, "")
             course["thumbnail"] = local_thumb
             course["entireThumbnail"] = local_thumb
 
-    print(f"Prepared {len(seen):,} thumbnails ({local:,} local, {remote:,} remote)", flush=True)
+    print(
+        f"Prepared {len(seen):,} thumbnails "
+        f"({existing:,} existing, {downloaded:,} downloaded, {unavailable:,} unavailable)",
+        flush=True,
+    )
 
 
 def esc(value: object) -> str:
@@ -733,9 +783,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--timeout", type=float, default=20.0)
     parser.add_argument("--retries", type=int, default=4)
     parser.add_argument("--pause", type=float, default=0.08, help="Pause after each HTTP request per worker.")
-    parser.add_argument("--thumbnail-timeout", type=float, default=12.0)
-    parser.add_argument("--thumbnail-retries", type=int, default=3)
-    parser.add_argument("--thumbnail-delay", type=float, default=0.15)
+    parser.add_argument("--thumbnail-timeout", type=float, default=10.0)
+    parser.add_argument("--thumbnail-retries", type=int, default=1)
+    parser.add_argument("--thumbnail-delay", type=float, default=0.05)
+    parser.add_argument("--thumbnail-workers", type=int, default=4)
     parser.add_argument("--skip-thumbnails", action="store_true", help="Only for local debugging.")
     parser.add_argument("--validate", action="store_true", help="Print the estimated range without making network requests.")
     return parser
@@ -777,6 +828,7 @@ def main(argv: list[str] | None = None) -> int:
             timeout=args.thumbnail_timeout,
             retries=args.thumbnail_retries,
             delay=args.thumbnail_delay,
+            workers=args.thumbnail_workers,
         )
 
     save_payload(payload)
