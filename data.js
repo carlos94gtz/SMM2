@@ -217,8 +217,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "59.44%",
       "uploadTime": 44150,
       "uploadTimePretty": "00:44.150",
-      "thumbnail": "",
-      "entireThumbnail": ""
+      "thumbnail": "./thumbs/401FM2R4G.jpg?v=2026-06-13-auto",
+      "entireThumbnail": "./thumbs/401FM2R4G.jpg?v=2026-06-13-auto"
     },
     {
       "courseId": "X6VKVG3YG",
@@ -396,8 +396,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "59.44%",
         "uploadTime": 44150,
         "uploadTimePretty": "00:44.150",
-        "thumbnail": "",
-        "entireThumbnail": ""
+        "thumbnail": "./thumbs/401FM2R4G.jpg?v=2026-06-13-auto",
+        "entireThumbnail": "./thumbs/401FM2R4G.jpg?v=2026-06-13-auto"
       },
       {
         "courseId": "X6VKVG3YG",
@@ -1153,8 +1153,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "100.00%",
       "uploadTime": 496245,
       "uploadTimePretty": "08:16.245",
-      "thumbnail": "",
-      "entireThumbnail": ""
+      "thumbnail": "./thumbs/BTS9BY7LF.jpg?v=2026-06-13-auto",
+      "entireThumbnail": "./thumbs/BTS9BY7LF.jpg?v=2026-06-13-auto"
     },
     {
       "courseId": "D2JWS5YGG",
@@ -1598,8 +1598,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 496245,
         "uploadTimePretty": "08:16.245",
-        "thumbnail": "",
-        "entireThumbnail": ""
+        "thumbnail": "./thumbs/BTS9BY7LF.jpg?v=2026-06-13-auto",
+        "entireThumbnail": "./thumbs/BTS9BY7LF.jpg?v=2026-06-13-auto"
       },
       {
         "courseId": "GCQVMVSCG",
@@ -3108,8 +3108,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 44355,
         "uploadTimePretty": "00:44.355",
-        "thumbnail": "",
-        "entireThumbnail": ""
+        "thumbnail": "./thumbs/6FT4L31QG.jpg?v=2026-06-13-auto",
+        "entireThumbnail": "./thumbs/6FT4L31QG.jpg?v=2026-06-13-auto"
       },
       {
         "courseId": "XQ8DGG3LG",
