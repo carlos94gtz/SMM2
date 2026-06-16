@@ -39,6 +39,7 @@ TZ = ZoneInfo(TZ_NAME)
 DIFFICULTY_ORDER = ["Easy", "Normal", "Expert", "Super expert"]
 MIN_ATTEMPTS_FOR_LEAST_CLEARED = 20
 MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED = 180_000
+TOP_LONGEST_LIMIT = 20
 DEFAULT_STATE = {
     "anchorDate": "2026-06-06",
     "anchorStartId": 59389587,
@@ -419,7 +420,7 @@ def top_longest_courses(courses: list[dict]) -> list[dict]:
             -(c.get("plays") or 0),
             -(c.get("likes") or 0),
         ),
-    )[:10]
+    )[:TOP_LONGEST_LIMIT]
 
 
 def least_cleared_courses(courses: list[dict]) -> list[dict]:
