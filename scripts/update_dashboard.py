@@ -654,8 +654,6 @@ def localize_thumbnails(
             print(f"  thumbnail fallback {course_id}: {error}", flush=True)
         if len(errors) > 8:
             print(f"  ... {len(errors) - 8:,} more thumbnail fallbacks", flush=True)
-        if errors:
-            raise RuntimeError(f"{len(errors):,} thumbnails unavailable after slow retry")
 
     for courses in course_groups(payload):
         for course in courses:
