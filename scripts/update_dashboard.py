@@ -434,14 +434,25 @@ def least_cleared_courses(courses: list[dict]) -> list[dict]:
     )[:10]
 
 
+def safe_asset_version(value: object) -> str:
+    version = re.sub(r"[^0-9A-Za-z]+", "-", str(value or "")).strip("-")
+    return version or "auto"
+
+
+def payload_asset_version(payload: dict) -> str:
+    return safe_asset_version(payload.get("assetVersion") or payload.get("generatedAt") or payload.get("date"))
+
+
 def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
     start_ts, end_ts = day_bounds(local_date)
+    generated_at = dt.datetime.now(tz=TZ).isoformat(timespec="seconds")
     top_liked = top_liked_courses(courses)
     top_longest = top_longest_courses(courses)
     least_cleared = least_cleared_courses(courses)
 
     return {
-        "generatedAt": dt.datetime.now(tz=TZ).isoformat(timespec="seconds"),
+        "generatedAt": generated_at,
+        "assetVersion": safe_asset_version(generated_at),
         "date": local_date.isoformat(),
         "timezone": TZ_NAME,
         "difficulties": DIFFICULTY_ORDER,
@@ -560,7 +571,7 @@ def localize_thumbnails(
     workers: int,
 ) -> None:
     THUMBS_DIR.mkdir(parents=True, exist_ok=True)
-    version = f"{local_date.isoformat()}-auto"
+    version = payload_asset_version(payload)
     seen: set[str] = set()
     course_ids: list[str] = []
     local_thumbs: dict[str, str] = {}
@@ -739,7 +750,7 @@ def update_index(payload: dict) -> None:
         longest,
         "\n        </section>\n      </section>\n    </main>",
     )
-    version = f"{payload['date']}-auto"
+    version = payload_asset_version(payload)
     text = re.sub(r"data\.js\?v=[^\"']+", f"data.js?v={version}", text)
     INDEX_HTML.write_text(text, encoding="utf-8")
 
