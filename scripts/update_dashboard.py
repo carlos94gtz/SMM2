@@ -40,6 +40,9 @@ DIFFICULTY_ORDER = ["Easy", "Normal", "Expert", "Super expert"]
 MIN_ATTEMPTS_FOR_LEAST_CLEARED = 20
 MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED = 180_000
 TOP_LONGEST_LIMIT = 20
+SLOW_THUMBNAIL_TIMEOUT = 25.0
+SLOW_THUMBNAIL_RETRIES = 4
+SLOW_THUMBNAIL_DELAY = 0.8
 DEFAULT_STATE = {
     "anchorDate": "2026-06-06",
     "anchorStartId": 59389587,
@@ -616,14 +619,43 @@ def localize_thumbnails(
                     local_thumbs[course_id] = f"./thumbs/{course_id}.jpg?v={version}"
                     downloaded += 1
                 else:
+                    errors.append((course_id, error))
+
+        if errors:
+            print(f"Retrying {len(errors):,} thumbnails slowly", flush=True)
+            retry_errors: list[tuple[str, str]] = []
+            for course_id, first_error in errors:
+                if SLOW_THUMBNAIL_DELAY:
+                    time.sleep(SLOW_THUMBNAIL_DELAY)
+                output = THUMBS_DIR / f"{course_id}.jpg"
+                try:
+                    download_binary(
+                        f"{API_BASE}/level_thumbnail/{course_id}",
+                        output,
+                        max(timeout, SLOW_THUMBNAIL_TIMEOUT),
+                        max(retries, SLOW_THUMBNAIL_RETRIES),
+                    )
+                except RuntimeError as error:
                     local_thumbs[course_id] = ""
                     unavailable += 1
-                    errors.append((course_id, error))
+                    retry_errors.append((course_id, f"{first_error}; slow retry: {error}"))
+                    continue
+
+                if output.exists() and output.stat().st_size > 0:
+                    local_thumbs[course_id] = f"./thumbs/{course_id}.jpg?v={version}"
+                    downloaded += 1
+                else:
+                    local_thumbs[course_id] = ""
+                    unavailable += 1
+                    retry_errors.append((course_id, f"{first_error}; slow retry: empty thumbnail response"))
+            errors = retry_errors
 
         for course_id, error in errors[:8]:
             print(f"  thumbnail fallback {course_id}: {error}", flush=True)
         if len(errors) > 8:
             print(f"  ... {len(errors) - 8:,} more thumbnail fallbacks", flush=True)
+        if errors:
+            raise RuntimeError(f"{len(errors):,} thumbnails unavailable after slow retry")
 
     for courses in course_groups(payload):
         for course in courses:
