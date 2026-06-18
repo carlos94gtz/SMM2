@@ -63,7 +63,7 @@ jobs:
         if: steps.target.outputs.force == 'true' || steps.current.outputs.date != steps.target.outputs.date
         env:
           TARGET_DATE: ${{ steps.target.outputs.date }}
-          SMM2_PLAYER_ID: ${{ vars.SMM2_PLAYER_ID || secrets.SMM2_PLAYER_ID || '' }}
+          SMM2_PLAYER_ID: ${{ vars.SMM2_PLAYER_ID || secrets.SMM2_PLAYER_ID || 'S00DC0DDG' }}
         run: |
           THUMBNAIL_ARGS=(--thumbnail-timeout 10 --thumbnail-retries 1 --thumbnail-delay 0.05 --thumbnail-workers 4)
           python scripts/update_dashboard.py --date "$TARGET_DATE" "${THUMBNAIL_ARGS[@]}"

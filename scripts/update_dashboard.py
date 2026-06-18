@@ -833,6 +833,7 @@ def update_index(payload: dict) -> None:
     )
     version = payload_asset_version(payload)
     text = re.sub(r"data\.js\?v=[^\"']+", f"data.js?v={version}", text)
+    text = "\n".join(line.rstrip() for line in text.splitlines()) + "\n"
     INDEX_HTML.write_text(text, encoding="utf-8")
 
 

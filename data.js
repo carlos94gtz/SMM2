@@ -21,7 +21,7 @@ window.SMM2_DASHBOARD_DATA = {
     "leastClearedMinAttempts": 20,
     "totalLikes": 5942,
     "totalPlays": 34167,
-    "recentlyPlayedCount": 0
+    "recentlyPlayedCount": 10
   },
   "topLiked": [
     {
@@ -43,8 +43,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "2.31%",
       "uploadTime": 253741,
       "uploadTimePretty": "04:13.741",
-      "thumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "0VCTS9XTG",
@@ -65,8 +65,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.54%",
       "uploadTime": 379394,
       "uploadTimePretty": "06:19.394",
-      "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "DGVHMLH5G",
@@ -87,8 +87,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "50.00%",
       "uploadTime": 230850,
       "uploadTimePretty": "03:50.850",
-      "thumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "8XSBR4VYG",
@@ -109,8 +109,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 394192,
       "uploadTimePretty": "06:34.192",
-      "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "6T3QJX2HF",
@@ -131,8 +131,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "7.14%",
       "uploadTime": 244678,
       "uploadTimePretty": "04:04.678",
-      "thumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "8QW57JXGG",
@@ -153,8 +153,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "35.71%",
       "uploadTime": 184907,
       "uploadTimePretty": "03:04.907",
-      "thumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "G1MW3BC2G",
@@ -175,8 +175,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "37.50%",
       "uploadTime": 217256,
       "uploadTimePretty": "03:37.256",
-      "thumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "SGH35KFXF",
@@ -197,8 +197,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "35.00%",
       "uploadTime": 180611,
       "uploadTimePretty": "03:00.611",
-      "thumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "JBC5MWHFF",
@@ -219,8 +219,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "5.71%",
       "uploadTime": 183562,
       "uploadTimePretty": "03:03.562",
-      "thumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "LHK3737PG",
@@ -241,8 +241,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "5.56%",
       "uploadTime": 213736,
       "uploadTimePretty": "03:33.736",
-      "thumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T18-54-25-06-00"
     }
   ],
   "topLikedByDifficulty": {
@@ -266,8 +266,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "83.33%",
         "uploadTime": 181911,
         "uploadTimePretty": "03:01.911",
-        "thumbnail": "./thumbs/Q99576Q4G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/Q99576Q4G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/Q99576Q4G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/Q99576Q4G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "XV49SFV7G",
@@ -288,8 +288,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "80.00%",
         "uploadTime": 213140,
         "uploadTimePretty": "03:33.140",
-        "thumbnail": "./thumbs/XV49SFV7G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/XV49SFV7G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/XV49SFV7G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/XV49SFV7G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LMK63XK1G",
@@ -310,8 +310,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "42.86%",
         "uploadTime": 216599,
         "uploadTimePretty": "03:36.599",
-        "thumbnail": "./thumbs/LMK63XK1G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LMK63XK1G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LMK63XK1G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LMK63XK1G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "X8Y24H0QG",
@@ -332,8 +332,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 200416,
         "uploadTimePretty": "03:20.416",
-        "thumbnail": "./thumbs/X8Y24H0QG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/X8Y24H0QG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/X8Y24H0QG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/X8Y24H0QG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "V5VT237BG",
@@ -354,8 +354,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "66.67%",
         "uploadTime": 180030,
         "uploadTimePretty": "03:00.030",
-        "thumbnail": "./thumbs/V5VT237BG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/V5VT237BG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/V5VT237BG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/V5VT237BG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4NC5FM0CG",
@@ -376,8 +376,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "55.56%",
         "uploadTime": 287703,
         "uploadTimePretty": "04:47.703",
-        "thumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "S67Y3R00G",
@@ -398,8 +398,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "12.50%",
         "uploadTime": 213652,
         "uploadTimePretty": "03:33.652",
-        "thumbnail": "./thumbs/S67Y3R00G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/S67Y3R00G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/S67Y3R00G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/S67Y3R00G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8VFKY6SCG",
@@ -420,8 +420,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "16.67%",
         "uploadTime": 396677,
         "uploadTimePretty": "06:36.677",
-        "thumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "Q91TMGXTG",
@@ -442,8 +442,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "14.29%",
         "uploadTime": 191997,
         "uploadTimePretty": "03:11.997",
-        "thumbnail": "./thumbs/Q91TMGXTG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/Q91TMGXTG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/Q91TMGXTG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/Q91TMGXTG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4X9J2Q2LG",
@@ -464,8 +464,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "75.00%",
         "uploadTime": 221981,
         "uploadTimePretty": "03:41.981",
-        "thumbnail": "./thumbs/4X9J2Q2LG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4X9J2Q2LG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4X9J2Q2LG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4X9J2Q2LG.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Normal": [
@@ -488,8 +488,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "50.00%",
         "uploadTime": 230850,
         "uploadTimePretty": "03:50.850",
-        "thumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DGVHMLH5G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "6T3QJX2HF",
@@ -510,8 +510,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "7.14%",
         "uploadTime": 244678,
         "uploadTimePretty": "04:04.678",
-        "thumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8QW57JXGG",
@@ -532,8 +532,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "35.71%",
         "uploadTime": 184907,
         "uploadTimePretty": "03:04.907",
-        "thumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8QW57JXGG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "G1MW3BC2G",
@@ -554,8 +554,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "37.50%",
         "uploadTime": 217256,
         "uploadTimePretty": "03:37.256",
-        "thumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/G1MW3BC2G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SGH35KFXF",
@@ -576,8 +576,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "35.00%",
         "uploadTime": 180611,
         "uploadTimePretty": "03:00.611",
-        "thumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SGH35KFXF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "6TYPT0QHG",
@@ -598,8 +598,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "3.70%",
         "uploadTime": 214327,
         "uploadTimePretty": "03:34.327",
-        "thumbnail": "./thumbs/6TYPT0QHG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/6TYPT0QHG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/6TYPT0QHG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/6TYPT0QHG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8Q16XF9GF",
@@ -620,8 +620,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "8.70%",
         "uploadTime": 258626,
         "uploadTimePretty": "04:18.626",
-        "thumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0B1SQJQMG",
@@ -642,8 +642,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "57.14%",
         "uploadTime": 271549,
         "uploadTimePretty": "04:31.549",
-        "thumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8SLLSBXTG",
@@ -664,8 +664,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "18.52%",
         "uploadTime": 206151,
         "uploadTimePretty": "03:26.151",
-        "thumbnail": "./thumbs/8SLLSBXTG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8SLLSBXTG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8SLLSBXTG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8SLLSBXTG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0XQS9HF9G",
@@ -686,8 +686,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "9.52%",
         "uploadTime": 250708,
         "uploadTimePretty": "04:10.708",
-        "thumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Expert": [
@@ -710,8 +710,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.54%",
         "uploadTime": 379394,
         "uploadTimePretty": "06:19.394",
-        "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8XSBR4VYG",
@@ -732,8 +732,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 394192,
         "uploadTimePretty": "06:34.192",
-        "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "JBC5MWHFF",
@@ -754,8 +754,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.71%",
         "uploadTime": 183562,
         "uploadTimePretty": "03:03.562",
-        "thumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/JBC5MWHFF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LHK3737PG",
@@ -776,8 +776,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.56%",
         "uploadTime": 213736,
         "uploadTimePretty": "03:33.736",
-        "thumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LHK3737PG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8QRWY1QVG",
@@ -798,8 +798,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 186960,
         "uploadTimePretty": "03:06.960",
-        "thumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "V71V5796G",
@@ -820,8 +820,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "10.00%",
         "uploadTime": 189216,
         "uploadTimePretty": "03:09.216",
-        "thumbnail": "./thumbs/V71V5796G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/V71V5796G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/V71V5796G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/V71V5796G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VTX1SHF9G",
@@ -842,8 +842,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 361649,
         "uploadTimePretty": "06:01.649",
-        "thumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VFX6F3NJF",
@@ -864,8 +864,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 202194,
         "uploadTimePretty": "03:22.194",
-        "thumbnail": "./thumbs/VFX6F3NJF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VFX6F3NJF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VFX6F3NJF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VFX6F3NJF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SGR776YHF",
@@ -886,8 +886,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "7.14%",
         "uploadTime": 253333,
         "uploadTimePretty": "04:13.333",
-        "thumbnail": "./thumbs/SGR776YHF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SGR776YHF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SGR776YHF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SGR776YHF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VWTC42NJF",
@@ -908,8 +908,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "1.79%",
         "uploadTime": 194770,
         "uploadTimePretty": "03:14.770",
-        "thumbnail": "./thumbs/VWTC42NJF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VWTC42NJF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VWTC42NJF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VWTC42NJF.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Super expert": [
@@ -932,8 +932,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.31%",
         "uploadTime": 253741,
         "uploadTimePretty": "04:13.741",
-        "thumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4JT3607BG",
@@ -954,8 +954,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 206711,
         "uploadTimePretty": "03:26.711",
-        "thumbnail": "./thumbs/4JT3607BG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4JT3607BG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4JT3607BG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4JT3607BG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "NL021W43G",
@@ -976,8 +976,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 489256,
         "uploadTimePretty": "08:09.256",
-        "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "25DR2HXTG",
@@ -998,8 +998,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 484286,
         "uploadTimePretty": "08:04.286",
-        "thumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VCHXPQ0MF",
@@ -1020,8 +1020,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 250338,
         "uploadTimePretty": "04:10.338",
-        "thumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8BCQN5SCG",
@@ -1042,8 +1042,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 189251,
         "uploadTimePretty": "03:09.251",
-        "thumbnail": "./thumbs/8BCQN5SCG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8BCQN5SCG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8BCQN5SCG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8BCQN5SCG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "48TPV8V7G",
@@ -1064,8 +1064,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 221507,
         "uploadTimePretty": "03:41.507",
-        "thumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "G95DDNKRG",
@@ -1086,8 +1086,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 227923,
         "uploadTimePretty": "03:47.923",
-        "thumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "NVV5349KG",
@@ -1108,8 +1108,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 208072,
         "uploadTimePretty": "03:28.072",
-        "thumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LWRW9QFKF",
@@ -1130,8 +1130,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 221497,
         "uploadTimePretty": "03:41.497",
-        "thumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ]
   },
@@ -1155,8 +1155,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 499716,
       "uploadTimePretty": "08:19.716",
-      "thumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "NL021W43G",
@@ -1177,8 +1177,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 489256,
       "uploadTimePretty": "08:09.256",
-      "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "25DR2HXTG",
@@ -1199,8 +1199,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 484286,
       "uploadTimePretty": "08:04.286",
-      "thumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "0XG4KWKNF",
@@ -1221,8 +1221,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 482583,
       "uploadTimePretty": "08:02.583",
-      "thumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "L75P80LNF",
@@ -1243,8 +1243,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "100.00%",
       "uploadTime": 434083,
       "uploadTimePretty": "07:14.083",
-      "thumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "SLW4P8VYG",
@@ -1265,8 +1265,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 430250,
       "uploadTimePretty": "07:10.250",
-      "thumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "DJYV0JCPF",
@@ -1287,8 +1287,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 428571,
       "uploadTimePretty": "07:08.571",
-      "thumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "21VPTT4TG",
@@ -1309,8 +1309,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 410386,
       "uploadTimePretty": "06:50.386",
-      "thumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "8VFKY6SCG",
@@ -1331,8 +1331,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "16.67%",
       "uploadTime": 396677,
       "uploadTimePretty": "06:36.677",
-      "thumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "8XSBR4VYG",
@@ -1353,8 +1353,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 394192,
       "uploadTimePretty": "06:34.192",
-      "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "0VCTS9XTG",
@@ -1375,8 +1375,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.54%",
       "uploadTime": 379394,
       "uploadTimePretty": "06:19.394",
-      "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "N0PTF1QHG",
@@ -1397,8 +1397,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "46.15%",
       "uploadTime": 370616,
       "uploadTimePretty": "06:10.616",
-      "thumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "4QXR0S2LG",
@@ -1419,8 +1419,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 364734,
       "uploadTimePretty": "06:04.734",
-      "thumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "VTX1SHF9G",
@@ -1441,8 +1441,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 361649,
       "uploadTimePretty": "06:01.649",
-      "thumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "V98WXYMWF",
@@ -1463,8 +1463,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 348037,
       "uploadTimePretty": "05:48.037",
-      "thumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "Q9PHCM2YG",
@@ -1485,8 +1485,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 347418,
       "uploadTimePretty": "05:47.418",
-      "thumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "GFWQJDV7G",
@@ -1507,8 +1507,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "50.00%",
       "uploadTime": 344391,
       "uploadTimePretty": "05:44.391",
-      "thumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "VCWVPS2VF",
@@ -1529,8 +1529,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 341784,
       "uploadTimePretty": "05:41.784",
-      "thumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "4SMSF7SCG",
@@ -1551,8 +1551,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 335933,
       "uploadTimePretty": "05:35.933",
-      "thumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "4NMRJWM8G",
@@ -1573,8 +1573,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 331576,
       "uploadTimePretty": "05:31.576",
-      "thumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T18-54-25-06-00"
     }
   ],
   "topLongestByDifficulty": {
@@ -1598,8 +1598,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 434083,
         "uploadTimePretty": "07:14.083",
-        "thumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/L75P80LNF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8VFKY6SCG",
@@ -1620,8 +1620,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "16.67%",
         "uploadTime": 396677,
         "uploadTimePretty": "06:36.677",
-        "thumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8VFKY6SCG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "N0PTF1QHG",
@@ -1642,8 +1642,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "46.15%",
         "uploadTime": 370616,
         "uploadTimePretty": "06:10.616",
-        "thumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/N0PTF1QHG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4NC5FM0CG",
@@ -1664,8 +1664,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "55.56%",
         "uploadTime": 287703,
         "uploadTimePretty": "04:47.703",
-        "thumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4NC5FM0CG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GK7F7MX3G",
@@ -1686,8 +1686,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "50.00%",
         "uploadTime": 279041,
         "uploadTimePretty": "04:39.041",
-        "thumbnail": "./thumbs/GK7F7MX3G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GK7F7MX3G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GK7F7MX3G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GK7F7MX3G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8NN6F8S0G",
@@ -1708,8 +1708,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "40.00%",
         "uploadTime": 267686,
         "uploadTimePretty": "04:27.686",
-        "thumbnail": "./thumbs/8NN6F8S0G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8NN6F8S0G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8NN6F8S0G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8NN6F8S0G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DX11L39XG",
@@ -1730,8 +1730,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 265949,
         "uploadTimePretty": "04:25.949",
-        "thumbnail": "./thumbs/DX11L39XG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DX11L39XG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DX11L39XG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DX11L39XG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "2CM58MHJG",
@@ -1752,8 +1752,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 252666,
         "uploadTimePretty": "04:12.666",
-        "thumbnail": "./thumbs/2CM58MHJG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/2CM58MHJG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/2CM58MHJG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/2CM58MHJG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8BKP277YF",
@@ -1774,8 +1774,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 252095,
         "uploadTimePretty": "04:12.095",
-        "thumbnail": "./thumbs/8BKP277YF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8BKP277YF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8BKP277YF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8BKP277YF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GFM2SS0MF",
@@ -1796,8 +1796,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "20.00%",
         "uploadTime": 249065,
         "uploadTimePretty": "04:09.065",
-        "thumbnail": "./thumbs/GFM2SS0MF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GFM2SS0MF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GFM2SS0MF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GFM2SS0MF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LWR9G3Q4G",
@@ -1818,8 +1818,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 247979,
         "uploadTimePretty": "04:07.979",
-        "thumbnail": "./thumbs/LWR9G3Q4G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LWR9G3Q4G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LWR9G3Q4G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LWR9G3Q4G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "JG59RHFNG",
@@ -1840,8 +1840,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "50.00%",
         "uploadTime": 246668,
         "uploadTimePretty": "04:06.668",
-        "thumbnail": "./thumbs/JG59RHFNG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/JG59RHFNG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/JG59RHFNG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/JG59RHFNG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "BKXC705GG",
@@ -1862,8 +1862,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "50.00%",
         "uploadTime": 246578,
         "uploadTimePretty": "04:06.578",
-        "thumbnail": "./thumbs/BKXC705GG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/BKXC705GG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/BKXC705GG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/BKXC705GG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GCGQCL2YG",
@@ -1884,8 +1884,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0%",
         "uploadTime": 245070,
         "uploadTimePretty": "04:05.070",
-        "thumbnail": "./thumbs/GCGQCL2YG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GCGQCL2YG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GCGQCL2YG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GCGQCL2YG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "JDG6PQH5G",
@@ -1906,8 +1906,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 238282,
         "uploadTimePretty": "03:58.282",
-        "thumbnail": "./thumbs/JDG6PQH5G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/JDG6PQH5G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/JDG6PQH5G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/JDG6PQH5G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GRVT15SQG",
@@ -1928,8 +1928,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 233311,
         "uploadTimePretty": "03:53.311",
-        "thumbnail": "./thumbs/GRVT15SQG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GRVT15SQG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GRVT15SQG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GRVT15SQG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LK84NJXGG",
@@ -1950,8 +1950,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "60.00%",
         "uploadTime": 232807,
         "uploadTimePretty": "03:52.807",
-        "thumbnail": "./thumbs/LK84NJXGG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LK84NJXGG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LK84NJXGG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LK84NJXGG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VW5PDWHFF",
@@ -1972,8 +1972,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "100.00%",
         "uploadTime": 226666,
         "uploadTimePretty": "03:46.666",
-        "thumbnail": "./thumbs/VW5PDWHFF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VW5PDWHFF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VW5PDWHFF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VW5PDWHFF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "2PN9F0QVG",
@@ -1994,8 +1994,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "33.33%",
         "uploadTime": 225383,
         "uploadTimePretty": "03:45.383",
-        "thumbnail": "./thumbs/2PN9F0QVG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/2PN9F0QVG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/2PN9F0QVG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/2PN9F0QVG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "2T2C9W4GG",
@@ -2016,8 +2016,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "50.00%",
         "uploadTime": 223195,
         "uploadTimePretty": "03:43.195",
-        "thumbnail": "./thumbs/2T2C9W4GG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/2T2C9W4GG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/2T2C9W4GG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/2T2C9W4GG.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Normal": [
@@ -2040,8 +2040,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 482583,
         "uploadTimePretty": "08:02.583",
-        "thumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0XG4KWKNF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4QXR0S2LG",
@@ -2062,8 +2062,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 364734,
         "uploadTimePretty": "06:04.734",
-        "thumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4QXR0S2LG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GFWQJDV7G",
@@ -2084,8 +2084,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "50.00%",
         "uploadTime": 344391,
         "uploadTimePretty": "05:44.391",
-        "thumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GFWQJDV7G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "44KLQSKDG",
@@ -2106,8 +2106,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 321649,
         "uploadTimePretty": "05:21.649",
-        "thumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "65KG6B96G",
@@ -2128,8 +2128,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "10.00%",
         "uploadTime": 314845,
         "uploadTimePretty": "05:14.845",
-        "thumbnail": "./thumbs/65KG6B96G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/65KG6B96G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/65KG6B96G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/65KG6B96G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SNN451NWF",
@@ -2150,8 +2150,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.56%",
         "uploadTime": 309078,
         "uploadTimePretty": "05:09.078",
-        "thumbnail": "./thumbs/SNN451NWF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SNN451NWF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SNN451NWF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SNN451NWF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "2M181V27G",
@@ -2172,8 +2172,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 291974,
         "uploadTimePretty": "04:51.974",
-        "thumbnail": "./thumbs/2M181V27G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/2M181V27G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/2M181V27G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/2M181V27G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DVLN7FF9G",
@@ -2194,8 +2194,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "57.14%",
         "uploadTime": 291196,
         "uploadTimePretty": "04:51.196",
-        "thumbnail": "./thumbs/DVLN7FF9G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DVLN7FF9G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DVLN7FF9G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DVLN7FF9G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "XB6QQV2VF",
@@ -2216,8 +2216,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "40.00%",
         "uploadTime": 285699,
         "uploadTimePretty": "04:45.699",
-        "thumbnail": "./thumbs/XB6QQV2VF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/XB6QQV2VF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/XB6QQV2VF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/XB6QQV2VF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8NGWH59KG",
@@ -2238,8 +2238,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "10.00%",
         "uploadTime": 281933,
         "uploadTimePretty": "04:41.933",
-        "thumbnail": "./thumbs/8NGWH59KG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8NGWH59KG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8NGWH59KG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8NGWH59KG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0B1SQJQMG",
@@ -2260,8 +2260,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "57.14%",
         "uploadTime": 271549,
         "uploadTimePretty": "04:31.549",
-        "thumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0B1SQJQMG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DDM0T614G",
@@ -2282,8 +2282,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "21.43%",
         "uploadTime": 271333,
         "uploadTimePretty": "04:31.333",
-        "thumbnail": "./thumbs/DDM0T614G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DDM0T614G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DDM0T614G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DDM0T614G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8Q16XF9GF",
@@ -2304,8 +2304,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "8.70%",
         "uploadTime": 258626,
         "uploadTimePretty": "04:18.626",
-        "thumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8Q16XF9GF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0XQS9HF9G",
@@ -2326,8 +2326,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "9.52%",
         "uploadTime": 250708,
         "uploadTimePretty": "04:10.708",
-        "thumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0XQS9HF9G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "D6DQHTHFF",
@@ -2348,8 +2348,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 246936,
         "uploadTimePretty": "04:06.936",
-        "thumbnail": "./thumbs/D6DQHTHFF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/D6DQHTHFF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/D6DQHTHFF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/D6DQHTHFF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "6T3QJX2HF",
@@ -2370,8 +2370,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "7.14%",
         "uploadTime": 244678,
         "uploadTimePretty": "04:04.678",
-        "thumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/6T3QJX2HF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "BTNF95QRF",
@@ -2392,8 +2392,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "33.33%",
         "uploadTime": 241895,
         "uploadTimePretty": "04:01.895",
-        "thumbnail": "./thumbs/BTNF95QRF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/BTNF95QRF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/BTNF95QRF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/BTNF95QRF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "XS77BMH5G",
@@ -2414,8 +2414,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 238823,
         "uploadTimePretty": "03:58.823",
-        "thumbnail": "./thumbs/XS77BMH5G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/XS77BMH5G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/XS77BMH5G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/XS77BMH5G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "B31K137BG",
@@ -2436,8 +2436,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.00%",
         "uploadTime": 238357,
         "uploadTimePretty": "03:58.357",
-        "thumbnail": "./thumbs/B31K137BG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/B31K137BG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/B31K137BG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/B31K137BG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "QMQ3V1Y7G",
@@ -2458,8 +2458,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "20.00%",
         "uploadTime": 235606,
         "uploadTimePretty": "03:55.606",
-        "thumbnail": "./thumbs/QMQ3V1Y7G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/QMQ3V1Y7G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/QMQ3V1Y7G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/QMQ3V1Y7G.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Expert": [
@@ -2482,8 +2482,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 499716,
         "uploadTimePretty": "08:19.716",
-        "thumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/X6424BQDF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DJYV0JCPF",
@@ -2504,8 +2504,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 428571,
         "uploadTimePretty": "07:08.571",
-        "thumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DJYV0JCPF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "21VPTT4TG",
@@ -2526,8 +2526,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 410386,
         "uploadTimePretty": "06:50.386",
-        "thumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/21VPTT4TG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "8XSBR4VYG",
@@ -2548,8 +2548,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 394192,
         "uploadTimePretty": "06:34.192",
-        "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8XSBR4VYG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0VCTS9XTG",
@@ -2570,8 +2570,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.54%",
         "uploadTime": 379394,
         "uploadTimePretty": "06:19.394",
-        "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0VCTS9XTG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VTX1SHF9G",
@@ -2592,8 +2592,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 361649,
         "uploadTimePretty": "06:01.649",
-        "thumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VTX1SHF9G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "V98WXYMWF",
@@ -2614,8 +2614,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 348037,
         "uploadTimePretty": "05:48.037",
-        "thumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/V98WXYMWF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "Q9PHCM2YG",
@@ -2636,8 +2636,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 347418,
         "uploadTimePretty": "05:47.418",
-        "thumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/Q9PHCM2YG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VCWVPS2VF",
@@ -2658,8 +2658,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 341784,
         "uploadTimePretty": "05:41.784",
-        "thumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VCWVPS2VF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4SMSF7SCG",
@@ -2680,8 +2680,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 335933,
         "uploadTimePretty": "05:35.933",
-        "thumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4SMSF7SCG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DL4W3NFKF",
@@ -2702,8 +2702,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "9.09%",
         "uploadTime": 328280,
         "uploadTimePretty": "05:28.280",
-        "thumbnail": "./thumbs/DL4W3NFKF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DL4W3NFKF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DL4W3NFKF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DL4W3NFKF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DD9C1B3CG",
@@ -2724,8 +2724,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 326261,
         "uploadTimePretty": "05:26.261",
-        "thumbnail": "./thumbs/DD9C1B3CG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DD9C1B3CG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DD9C1B3CG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DD9C1B3CG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "N2BKN99TF",
@@ -2746,8 +2746,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 307678,
         "uploadTimePretty": "05:07.678",
-        "thumbnail": "./thumbs/N2BKN99TF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/N2BKN99TF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/N2BKN99TF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/N2BKN99TF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LTJ8PBCFG",
@@ -2768,8 +2768,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "5.88%",
         "uploadTime": 306516,
         "uploadTimePretty": "05:06.516",
-        "thumbnail": "./thumbs/LTJ8PBCFG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LTJ8PBCFG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LTJ8PBCFG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LTJ8PBCFG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "04V6SPM0H",
@@ -2790,8 +2790,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 293566,
         "uploadTimePretty": "04:53.566",
-        "thumbnail": "./thumbs/04V6SPM0H.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/04V6SPM0H.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/04V6SPM0H.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/04V6SPM0H.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "V9L67THSF",
@@ -2812,8 +2812,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 285908,
         "uploadTimePretty": "04:45.908",
-        "thumbnail": "./thumbs/V9L67THSF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/V9L67THSF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/V9L67THSF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/V9L67THSF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0JN0XRKDG",
@@ -2834,8 +2834,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "8.33%",
         "uploadTime": 278047,
         "uploadTimePretty": "04:38.047",
-        "thumbnail": "./thumbs/0JN0XRKDG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0JN0XRKDG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0JN0XRKDG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0JN0XRKDG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "44Y86BS0G",
@@ -2856,8 +2856,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 276197,
         "uploadTimePretty": "04:36.197",
-        "thumbnail": "./thumbs/44Y86BS0G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/44Y86BS0G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/44Y86BS0G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/44Y86BS0G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4BGC427BG",
@@ -2878,8 +2878,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 271451,
         "uploadTimePretty": "04:31.451",
-        "thumbnail": "./thumbs/4BGC427BG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4BGC427BG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4BGC427BG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4BGC427BG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DD95D13HF",
@@ -2900,8 +2900,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 262811,
         "uploadTimePretty": "04:22.811",
-        "thumbnail": "./thumbs/DD95D13HF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DD95D13HF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DD95D13HF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DD95D13HF.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Super expert": [
@@ -2924,8 +2924,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 489256,
         "uploadTimePretty": "08:09.256",
-        "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "25DR2HXTG",
@@ -2946,8 +2946,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 484286,
         "uploadTimePretty": "08:04.286",
-        "thumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/25DR2HXTG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SLW4P8VYG",
@@ -2968,8 +2968,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 430250,
         "uploadTimePretty": "07:10.250",
-        "thumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SLW4P8VYG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4NMRJWM8G",
@@ -2990,8 +2990,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 331576,
         "uploadTimePretty": "05:31.576",
-        "thumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DVLBQCCFG",
@@ -3012,8 +3012,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 328970,
         "uploadTimePretty": "05:28.970",
-        "thumbnail": "./thumbs/DVLBQCCFG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DVLBQCCFG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DVLBQCCFG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DVLBQCCFG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VYQ39S4TG",
@@ -3034,8 +3034,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.78%",
         "uploadTime": 314299,
         "uploadTimePretty": "05:14.299",
-        "thumbnail": "./thumbs/VYQ39S4TG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VYQ39S4TG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VYQ39S4TG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VYQ39S4TG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "D0H5RVVCG",
@@ -3056,8 +3056,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 287149,
         "uploadTimePretty": "04:47.149",
-        "thumbnail": "./thumbs/D0H5RVVCG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/D0H5RVVCG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/D0H5RVVCG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/D0H5RVVCG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LY4YM6CSG",
@@ -3078,8 +3078,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 280578,
         "uploadTimePretty": "04:40.578",
-        "thumbnail": "./thumbs/LY4YM6CSG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LY4YM6CSG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LY4YM6CSG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LY4YM6CSG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GH63JBCFG",
@@ -3100,8 +3100,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.31%",
         "uploadTime": 253741,
         "uploadTimePretty": "04:13.741",
-        "thumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GH63JBCFG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VCHXPQ0MF",
@@ -3122,8 +3122,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 250338,
         "uploadTimePretty": "04:10.338",
-        "thumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VCHXPQ0MF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VFG7RD9GF",
@@ -3144,8 +3144,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 240405,
         "uploadTimePretty": "04:00.405",
-        "thumbnail": "./thumbs/VFG7RD9GF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VFG7RD9GF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VFG7RD9GF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VFG7RD9GF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "G95DDNKRG",
@@ -3166,8 +3166,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 227923,
         "uploadTimePretty": "03:47.923",
-        "thumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/G95DDNKRG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0JND25VYG",
@@ -3188,8 +3188,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 224346,
         "uploadTimePretty": "03:44.346",
-        "thumbnail": "./thumbs/0JND25VYG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0JND25VYG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0JND25VYG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0JND25VYG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LP4WMKVHF",
@@ -3210,8 +3210,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.73%",
         "uploadTime": 222809,
         "uploadTimePretty": "03:42.809",
-        "thumbnail": "./thumbs/LP4WMKVHF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LP4WMKVHF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LP4WMKVHF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LP4WMKVHF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SSL6C7QDF",
@@ -3232,8 +3232,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 222600,
         "uploadTimePretty": "03:42.600",
-        "thumbnail": "./thumbs/SSL6C7QDF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SSL6C7QDF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SSL6C7QDF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SSL6C7QDF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "80LXQBCSG",
@@ -3254,8 +3254,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 222443,
         "uploadTimePretty": "03:42.443",
-        "thumbnail": "./thumbs/80LXQBCSG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/80LXQBCSG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/80LXQBCSG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/80LXQBCSG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "48TPV8V7G",
@@ -3276,8 +3276,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 221507,
         "uploadTimePretty": "03:41.507",
-        "thumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/48TPV8V7G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LWRW9QFKF",
@@ -3298,8 +3298,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 221497,
         "uploadTimePretty": "03:41.497",
-        "thumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LWRW9QFKF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "NVV5349KG",
@@ -3320,8 +3320,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 208072,
         "uploadTimePretty": "03:28.072",
-        "thumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/NVV5349KG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "B397SN2YG",
@@ -3342,8 +3342,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 206849,
         "uploadTimePretty": "03:26.849",
-        "thumbnail": "./thumbs/B397SN2YG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/B397SN2YG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/B397SN2YG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/B397SN2YG.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ]
   },
@@ -3367,8 +3367,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 12983,
       "uploadTimePretty": "00:12.983",
-      "thumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "6FCY2HFXF",
@@ -3389,8 +3389,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 48359,
       "uploadTimePretty": "00:48.359",
-      "thumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "8QRWY1QVG",
@@ -3411,8 +3411,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 186960,
       "uploadTimePretty": "03:06.960",
-      "thumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "SBMD41Q4G",
@@ -3433,8 +3433,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 46533,
       "uploadTimePretty": "00:46.533",
-      "thumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "4DWPGQ2YG",
@@ -3455,8 +3455,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 9697,
       "uploadTimePretty": "00:09.697",
-      "thumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "SGFQYV27G",
@@ -3477,8 +3477,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 29733,
       "uploadTimePretty": "00:29.733",
-      "thumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "Q1YC0B9GF",
@@ -3499,8 +3499,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 105139,
       "uploadTimePretty": "01:45.139",
-      "thumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "0S8SQGX3G",
@@ -3521,8 +3521,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 9877,
       "uploadTimePretty": "00:09.877",
-      "thumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "L1JNLT0MF",
@@ -3543,8 +3543,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 52851,
       "uploadTimePretty": "00:52.851",
-      "thumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T18-54-25-06-00"
     },
     {
       "courseId": "NL021W43G",
@@ -3565,8 +3565,8 @@ window.SMM2_DASHBOARD_DATA = {
       "clearRatePretty": "0.00%",
       "uploadTime": 489256,
       "uploadTimePretty": "08:09.256",
-      "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00",
-      "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00"
+      "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00"
     }
   ],
   "leastClearedByDifficulty": {
@@ -3590,8 +3590,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.00%",
         "uploadTime": 26636,
         "uploadTimePretty": "00:26.636",
-        "thumbnail": "./thumbs/GYHXNSK1G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GYHXNSK1G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GYHXNSK1G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GYHXNSK1G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LKGTP0QHG",
@@ -3612,8 +3612,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "3.70%",
         "uploadTime": 76100,
         "uploadTimePretty": "01:16.100",
-        "thumbnail": "./thumbs/LKGTP0QHG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LKGTP0QHG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LKGTP0QHG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LKGTP0QHG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LMF6D072H",
@@ -3634,8 +3634,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "10.34%",
         "uploadTime": 10499,
         "uploadTimePretty": "00:10.499",
-        "thumbnail": "./thumbs/LMF6D072H.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LMF6D072H.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LMF6D072H.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LMF6D072H.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "460CK1Q4G",
@@ -3656,8 +3656,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "13.04%",
         "uploadTime": 37887,
         "uploadTimePretty": "00:37.887",
-        "thumbnail": "./thumbs/460CK1Q4G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/460CK1Q4G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/460CK1Q4G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/460CK1Q4G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "G5HL4V2VF",
@@ -3678,8 +3678,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "15.79%",
         "uploadTime": 11311,
         "uploadTimePretty": "00:11.311",
-        "thumbnail": "./thumbs/G5HL4V2VF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/G5HL4V2VF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/G5HL4V2VF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/G5HL4V2VF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "Q74F0SHFF",
@@ -3700,8 +3700,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "16.13%",
         "uploadTime": 126292,
         "uploadTimePretty": "02:06.292",
-        "thumbnail": "./thumbs/Q74F0SHFF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/Q74F0SHFF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/Q74F0SHFF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/Q74F0SHFF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0XSTY3Q4G",
@@ -3722,8 +3722,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "20.00%",
         "uploadTime": 3735,
         "uploadTimePretty": "00:03.735",
-        "thumbnail": "./thumbs/0XSTY3Q4G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0XSTY3Q4G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0XSTY3Q4G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0XSTY3Q4G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "QCXJ4DFNG",
@@ -3744,8 +3744,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "20.00%",
         "uploadTime": 69751,
         "uploadTimePretty": "01:09.751",
-        "thumbnail": "./thumbs/QCXJ4DFNG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/QCXJ4DFNG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/QCXJ4DFNG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/QCXJ4DFNG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "DNKKYCC2G",
@@ -3766,8 +3766,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "20.00%",
         "uploadTime": 28615,
         "uploadTimePretty": "00:28.615",
-        "thumbnail": "./thumbs/DNKKYCC2G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/DNKKYCC2G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/DNKKYCC2G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/DNKKYCC2G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "BP6FQ47LF",
@@ -3788,8 +3788,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "21.21%",
         "uploadTime": 23783,
         "uploadTimePretty": "00:23.783",
-        "thumbnail": "./thumbs/BP6FQ47LF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/BP6FQ47LF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/BP6FQ47LF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/BP6FQ47LF.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Normal": [
@@ -3812,8 +3812,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 35883,
         "uploadTimePretty": "00:35.883",
-        "thumbnail": "./thumbs/D604PMHJG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/D604PMHJG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/D604PMHJG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/D604PMHJG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VC17LLH5G",
@@ -3834,8 +3834,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 25406,
         "uploadTimePretty": "00:25.406",
-        "thumbnail": "./thumbs/VC17LLH5G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VC17LLH5G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VC17LLH5G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VC17LLH5G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "44KLQSKDG",
@@ -3856,8 +3856,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 321649,
         "uploadTimePretty": "05:21.649",
-        "thumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/44KLQSKDG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0L7HYBL5G",
@@ -3878,8 +3878,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 60766,
         "uploadTimePretty": "01:00.766",
-        "thumbnail": "./thumbs/0L7HYBL5G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0L7HYBL5G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0L7HYBL5G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0L7HYBL5G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0GFY417PG",
@@ -3900,8 +3900,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "1.28%",
         "uploadTime": 128642,
         "uploadTimePretty": "02:08.642",
-        "thumbnail": "./thumbs/0GFY417PG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0GFY417PG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0GFY417PG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0GFY417PG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "S6F81VHFF",
@@ -3922,8 +3922,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "1.35%",
         "uploadTime": 68208,
         "uploadTimePretty": "01:08.208",
-        "thumbnail": "./thumbs/S6F81VHFF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/S6F81VHFF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/S6F81VHFF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/S6F81VHFF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "VKNYP67LF",
@@ -3944,8 +3944,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "1.54%",
         "uploadTime": 30106,
         "uploadTimePretty": "00:30.106",
-        "thumbnail": "./thumbs/VKNYP67LF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/VKNYP67LF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/VKNYP67LF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/VKNYP67LF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LCC3XPM0H",
@@ -3966,8 +3966,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "1.89%",
         "uploadTime": 3569,
         "uploadTimePretty": "00:03.569",
-        "thumbnail": "./thumbs/LCC3XPM0H.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LCC3XPM0H.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LCC3XPM0H.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LCC3XPM0H.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "JJNXMJF9G",
@@ -3988,8 +3988,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.08%",
         "uploadTime": 19316,
         "uploadTimePretty": "00:19.316",
-        "thumbnail": "./thumbs/JJNXMJF9G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/JJNXMJF9G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/JJNXMJF9G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/JJNXMJF9G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "L1GYF8SMF",
@@ -4010,8 +4010,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "2.13%",
         "uploadTime": 48694,
         "uploadTimePretty": "00:48.694",
-        "thumbnail": "./thumbs/L1GYF8SMF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/L1GYF8SMF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/L1GYF8SMF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/L1GYF8SMF.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Expert": [
@@ -4034,8 +4034,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 186960,
         "uploadTimePretty": "03:06.960",
-        "thumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/8QRWY1QVG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "BHM9SLHWG",
@@ -4056,8 +4056,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 66533,
         "uploadTimePretty": "01:06.533",
-        "thumbnail": "./thumbs/BHM9SLHWG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/BHM9SLHWG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/BHM9SLHWG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/BHM9SLHWG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "QMBMWL0CG",
@@ -4078,8 +4078,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 34350,
         "uploadTimePretty": "00:34.350",
-        "thumbnail": "./thumbs/QMBMWL0CG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/QMBMWL0CG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/QMBMWL0CG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/QMBMWL0CG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "86CRD5VYG",
@@ -4100,8 +4100,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 29366,
         "uploadTimePretty": "00:29.366",
-        "thumbnail": "./thumbs/86CRD5VYG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/86CRD5VYG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/86CRD5VYG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/86CRD5VYG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "6MBMJJXQF",
@@ -4122,8 +4122,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 102189,
         "uploadTimePretty": "01:42.189",
-        "thumbnail": "./thumbs/6MBMJJXQF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/6MBMJJXQF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/6MBMJJXQF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/6MBMJJXQF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "J4G6JDFNG",
@@ -4144,8 +4144,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 178063,
         "uploadTimePretty": "02:58.063",
-        "thumbnail": "./thumbs/J4G6JDFNG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/J4G6JDFNG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/J4G6JDFNG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/J4G6JDFNG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "LRP7W496G",
@@ -4166,8 +4166,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 19483,
         "uploadTimePretty": "00:19.483",
-        "thumbnail": "./thumbs/LRP7W496G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/LRP7W496G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/LRP7W496G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/LRP7W496G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "6YTQCLH5G",
@@ -4188,8 +4188,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 24461,
         "uploadTimePretty": "00:24.461",
-        "thumbnail": "./thumbs/6YTQCLH5G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/6YTQCLH5G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/6YTQCLH5G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/6YTQCLH5G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "2W90X87LF",
@@ -4210,8 +4210,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 6689,
         "uploadTimePretty": "00:06.689",
-        "thumbnail": "./thumbs/2W90X87LF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/2W90X87LF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/2W90X87LF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/2W90X87LF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "NVLFC17PG",
@@ -4232,8 +4232,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 172004,
         "uploadTimePretty": "02:52.004",
-        "thumbnail": "./thumbs/NVLFC17PG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/NVLFC17PG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/NVLFC17PG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/NVLFC17PG.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ],
     "Super expert": [
@@ -4256,8 +4256,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 12983,
         "uploadTimePretty": "00:12.983",
-        "thumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/N6LLT8CFG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "6FCY2HFXF",
@@ -4278,8 +4278,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 48359,
         "uploadTimePretty": "00:48.359",
-        "thumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/6FCY2HFXF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SBMD41Q4G",
@@ -4300,8 +4300,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 46533,
         "uploadTimePretty": "00:46.533",
-        "thumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SBMD41Q4G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "4DWPGQ2YG",
@@ -4322,8 +4322,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 9697,
         "uploadTimePretty": "00:09.697",
-        "thumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/4DWPGQ2YG.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "SGFQYV27G",
@@ -4344,8 +4344,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 29733,
         "uploadTimePretty": "00:29.733",
-        "thumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/SGFQYV27G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "Q1YC0B9GF",
@@ -4366,8 +4366,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 105139,
         "uploadTimePretty": "01:45.139",
-        "thumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/Q1YC0B9GF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "0S8SQGX3G",
@@ -4388,8 +4388,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 9877,
         "uploadTimePretty": "00:09.877",
-        "thumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/0S8SQGX3G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "L1JNLT0MF",
@@ -4410,8 +4410,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 52851,
         "uploadTimePretty": "00:52.851",
-        "thumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/L1JNLT0MF.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "NL021W43G",
@@ -4432,8 +4432,8 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 489256,
         "uploadTimePretty": "08:09.256",
-        "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/NL021W43G.jpg?v=2026-06-17T18-54-25-06-00"
       },
       {
         "courseId": "GY7L33SQG",
@@ -4454,12 +4454,233 @@ window.SMM2_DASHBOARD_DATA = {
         "clearRatePretty": "0.00%",
         "uploadTime": 74383,
         "uploadTimePretty": "01:14.383",
-        "thumbnail": "./thumbs/GY7L33SQG.jpg?v=2026-06-17T06-17-02-06-00",
-        "entireThumbnail": "./thumbs/GY7L33SQG.jpg?v=2026-06-17T06-17-02-06-00"
+        "thumbnail": "./thumbs/GY7L33SQG.jpg?v=2026-06-17T18-54-25-06-00",
+        "entireThumbnail": "./thumbs/GY7L33SQG.jpg?v=2026-06-17T18-54-25-06-00"
       }
     ]
   },
-  "assetVersion": "2026-06-17T06-17-02-06-00",
-  "recentlyPlayed": [],
-  "recentlyPlayedMakerId": ""
+  "assetVersion": "2026-06-17T18-54-25-06-00",
+  "recentlyPlayed": [
+    {
+      "courseId": "JNXYSHHWG",
+      "dataId": 59501784,
+      "name": "● Cannon Heights ● 【Kaizo Lite】",
+      "description": "Not sure if this would be considered kaizo lite or platforming, anyway, HF!",
+      "uploadedPretty": "16-6-2026 14:16:47",
+      "uploaderName": "Klasflod+",
+      "uploaderCountry": "SE",
+      "difficulty": "Expert",
+      "style": "SMB1",
+      "theme": "Overworld",
+      "likes": 65,
+      "plays": 250,
+      "clears": 95,
+      "attempts": 2101,
+      "clearRate": 4.521656354117088,
+      "clearRatePretty": "4.52%",
+      "uploadTime": 67691,
+      "uploadTimePretty": "01:07.691",
+      "thumbnail": "./thumbs/JNXYSHHWG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/JNXYSHHWG.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "4BGC427BG",
+      "dataId": 59501890,
+      "name": "SMB 2-4 Boss",
+      "description": "",
+      "uploadedPretty": "16-6-2026 14:36:14",
+      "uploaderName": "ルイージS",
+      "uploaderCountry": "JP",
+      "difficulty": "Expert",
+      "style": "NSMBU",
+      "theme": "Castle",
+      "likes": 1,
+      "plays": 6,
+      "clears": 2,
+      "attempts": 18,
+      "clearRate": 11.11111111111111,
+      "clearRatePretty": "11.11%",
+      "uploadTime": 271451,
+      "uploadTimePretty": "04:31.451",
+      "thumbnail": "./thumbs/4BGC427BG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4BGC427BG.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "DD95D13HF",
+      "dataId": 59506210,
+      "name": "Calamar",
+      "description": "",
+      "uploadedPretty": "17-6-2026 1:45:51",
+      "uploaderName": "marcoXdDxX",
+      "uploaderCountry": "CL",
+      "difficulty": "Expert",
+      "style": "SM3DW",
+      "theme": "Forest",
+      "likes": 0,
+      "plays": 2,
+      "clears": 1,
+      "attempts": 4,
+      "clearRate": 25.0,
+      "clearRatePretty": "25.00%",
+      "uploadTime": 262811,
+      "uploadTimePretty": "04:22.811",
+      "thumbnail": "./thumbs/DD95D13HF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/DD95D13HF.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "4NMRJWM8G",
+      "dataId": 59500992,
+      "name": "bombing time",
+      "description": "fische",
+      "uploadedPretty": "16-6-2026 12:03:00",
+      "uploaderName": "ChuckCock",
+      "uploaderCountry": "DE",
+      "difficulty": "Expert",
+      "style": "SM3DW",
+      "theme": "Underground",
+      "likes": 0,
+      "plays": 4,
+      "clears": 1,
+      "attempts": 16,
+      "clearRate": 6.25,
+      "clearRatePretty": "6.25%",
+      "uploadTime": 331576,
+      "uploadTimePretty": "05:31.576",
+      "thumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4NMRJWM8G.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "QYMMJTH5G",
+      "dataId": 59493436,
+      "name": "Apartment Boom-Plex",
+      "description": "An apartment complex made out of Hard Blocks. Use the Bob-Ombs to navigate!",
+      "uploadedPretty": "15-6-2026 15:24:44",
+      "uploaderName": "◎Go-Shi!★™",
+      "uploaderCountry": "CA",
+      "difficulty": "Expert",
+      "style": "SM3DW",
+      "theme": "Sky",
+      "likes": 0,
+      "plays": 2,
+      "clears": 1,
+      "attempts": 6,
+      "clearRate": 16.666666666666664,
+      "clearRatePretty": "16.67%",
+      "uploadTime": 428875,
+      "uploadTimePretty": "07:08.875",
+      "thumbnail": "./thumbs/QYMMJTH5G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/QYMMJTH5G.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "4V6TYRX3G",
+      "dataId": 59497018,
+      "name": "Mario Forest Adventure 4",
+      "description": "As you reach closer to the Forest Castle, the forest gets more dangerous!",
+      "uploadedPretty": "15-6-2026 23:41:42",
+      "uploaderName": "Sir_Frog",
+      "uploaderCountry": "US",
+      "difficulty": "Expert",
+      "style": "SM3DW",
+      "theme": "Forest",
+      "likes": 0,
+      "plays": 4,
+      "clears": 1,
+      "attempts": 23,
+      "clearRate": 4.3478260869565215,
+      "clearRatePretty": "4.35%",
+      "uploadTime": 438564,
+      "uploadTimePretty": "07:18.564",
+      "thumbnail": "./thumbs/4V6TYRX3G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/4V6TYRX3G.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "Q9T3L05TG",
+      "dataId": 59493781,
+      "name": "Castle Panic (all new game)",
+      "description": "Bosses: 1 Orc Warlord 2 Troll Mage 3 Healer 4 Goblin King. Can you win?",
+      "uploadedPretty": "15-6-2026 16:14:20",
+      "uploaderName": "Danny GB!",
+      "uploaderCountry": "US",
+      "difficulty": "Normal",
+      "style": "NSMBU",
+      "theme": "Castle",
+      "likes": 0,
+      "plays": 3,
+      "clears": 1,
+      "attempts": 6,
+      "clearRate": 16.666666666666664,
+      "clearRatePretty": "16.67%",
+      "uploadTime": 301373,
+      "uploadTimePretty": "05:01.373",
+      "thumbnail": "./thumbs/Q9T3L05TG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/Q9T3L05TG.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "X0MW633VF",
+      "dataId": 59495728,
+      "name": "Big fight2",
+      "description": "fight Roy BUT 2 times",
+      "uploadedPretty": "15-6-2026 20:55:59",
+      "uploaderName": "Dino Brice",
+      "uploaderCountry": "US",
+      "difficulty": "Normal",
+      "style": "NSMBU",
+      "theme": "Snow",
+      "likes": 0,
+      "plays": 3,
+      "clears": 1,
+      "attempts": 7,
+      "clearRate": 14.285714285714285,
+      "clearRatePretty": "14.29%",
+      "uploadTime": 293099,
+      "uploadTimePretty": "04:53.099",
+      "thumbnail": "./thumbs/X0MW633VF.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/X0MW633VF.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "X0KX5S0QG",
+      "dataId": 59496081,
+      "name": "TLOZ：Final Test",
+      "description": "The last one",
+      "uploadedPretty": "15-6-2026 21:40:53",
+      "uploaderName": "Jack_ddj",
+      "uploaderCountry": "JP",
+      "difficulty": "Expert",
+      "style": "SMB1",
+      "theme": "Snow",
+      "likes": 0,
+      "plays": 12,
+      "clears": 1,
+      "attempts": 54,
+      "clearRate": 1.8518518518518516,
+      "clearRatePretty": "1.85%",
+      "uploadTime": 292650,
+      "uploadTimePretty": "04:52.650",
+      "thumbnail": "./thumbs/X0KX5S0QG.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/X0KX5S0QG.jpg?v=2026-06-17T18-54-25-06-00"
+    },
+    {
+      "courseId": "BMR0WSX3G",
+      "dataId": 59498490,
+      "name": "Bowser's Magma Tower",
+      "description": "Warning: Really Difficult!",
+      "uploadedPretty": "16-6-2026 5:14:30",
+      "uploaderName": "Raymani",
+      "uploaderCountry": "US",
+      "difficulty": "Expert",
+      "style": "NSMBU",
+      "theme": "Castle",
+      "likes": 1,
+      "plays": 9,
+      "clears": 3,
+      "attempts": 85,
+      "clearRate": 3.5294117647058822,
+      "clearRatePretty": "3.53%",
+      "uploadTime": 359505,
+      "uploadTimePretty": "05:59.505",
+      "thumbnail": "./thumbs/BMR0WSX3G.jpg?v=2026-06-17T18-54-25-06-00",
+      "entireThumbnail": "./thumbs/BMR0WSX3G.jpg?v=2026-06-17T18-54-25-06-00"
+    }
+  ],
+  "recentlyPlayedMakerId": "S00DC0DDG"
 };
