@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SMM2 Rankings de Ayer</title>
-    <link rel="stylesheet" href="./styles.css?v=mobile-1" />
+    <link rel="stylesheet" href="./styles.css?v=recently-played-1" />
   </head>
   <body>
     <header class="topbar">
@@ -1219,6 +1219,21 @@
           </div>
         </section>
       </section>
+
+      <section class="played-section board" aria-labelledby="playedTitle">
+        <div class="board-heading played-heading">
+          <div>
+            <p class="kicker">Día anterior</p>
+            <h2 id="playedTitle">Jugados recientemente</h2>
+          </div>
+          <div class="board-controls">
+            <span class="sort-label">recientes</span>
+          </div>
+        </div>
+          <div id="recentlyPlayed" class="level-list">
+            <div class="empty-state">No hay niveles jugados registrados para esta fecha.</div>
+          </div>
+      </section>
     </main>
 
     <div id="detailOverlay" class="detail-overlay" hidden>
@@ -1229,6 +1244,6 @@
     </div>
 
     <script src="./data.js?v=2026-06-17T06-17-02-06-00"></script>
-    <script src="./app.js?v=2026-06-05-thumbs-1"></script>
+    <script src="./app.js?v=recently-played-1"></script>
   </body>
 </html>

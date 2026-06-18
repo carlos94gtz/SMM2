@@ -20,7 +20,8 @@ window.SMM2_DASHBOARD_DATA = {
     "leastClearedCount": 10,
     "leastClearedMinAttempts": 20,
     "totalLikes": 5942,
-    "totalPlays": 34167
+    "totalPlays": 34167,
+    "recentlyPlayedCount": 0
   },
   "topLiked": [
     {
@@ -4458,5 +4459,7 @@ window.SMM2_DASHBOARD_DATA = {
       }
     ]
   },
-  "assetVersion": "2026-06-17T06-17-02-06-00"
+  "assetVersion": "2026-06-17T06-17-02-06-00",
+  "recentlyPlayed": [],
+  "recentlyPlayedMakerId": ""
 };

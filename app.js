@@ -12,7 +12,7 @@ for (const courses of dashboardCourseLists()) {
 let lastActiveCard = null;
 
 function dashboardCourseLists() {
-  const lists = [data.topLiked || [], data.topLongest || [], data.leastCleared || []];
+  const lists = [data.topLiked || [], data.topLongest || [], data.leastCleared || [], data.recentlyPlayed || []];
   for (const courses of Object.values(data.topLikedByDifficulty || {})) {
     lists.push(courses || []);
   }
@@ -94,6 +94,15 @@ function scoreMarkup(course, mode) {
     `;
   }
 
+  if (mode === "plays") {
+    return `
+      <div class="primary-score">
+        <strong>${metric(course.plays)}</strong>
+        <span>plays</span>
+      </div>
+    `;
+  }
+
   return `
     <div class="primary-score">
       <strong>${escapeHtml(course.clearRatePretty)}</strong>
@@ -131,10 +140,10 @@ function card(course, index, mode) {
   `;
 }
 
-function emptyState() {
+function emptyState(message = "No hay niveles con suficientes intentos para esta dificultad.") {
   return `
     <div class="empty-state">
-      No hay niveles con suficientes intentos para esta dificultad.
+      ${escapeHtml(message)}
     </div>
   `;
 }
@@ -305,6 +314,17 @@ function renderLeastCleared() {
   );
 }
 
+function renderRecentlyPlayed() {
+  const list = byId("recentlyPlayed");
+  if (!list) return;
+
+  const courses = data.recentlyPlayed || [];
+  list.innerHTML = courses.length
+    ? courses.map((course, index) => card(course, index, "plays")).join("")
+    : emptyState("No hay niveles jugados registrados para esta fecha.");
+  bindImageFallbacks(list);
+}
+
 function bindDifficultyFilter() {
   byId("likedDifficultyFilter")?.addEventListener("change", renderTopLiked);
   byId("longestDifficultyFilter")?.addEventListener("change", renderTopLongest);
@@ -322,6 +342,7 @@ function render() {
   renderTopLiked();
   renderTopLongest();
   renderLeastCleared();
+  renderRecentlyPlayed();
 }
 
 render();

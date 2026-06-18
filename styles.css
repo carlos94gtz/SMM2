@@ -451,6 +451,18 @@ main {
   font-size: 13px;
 }
 
+.played-section {
+  margin-top: 22px;
+}
+
+.played-heading {
+  min-height: auto;
+}
+
+.played-section .level-list {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 390px), 1fr));
+}
+
 .detail-overlay {
   position: fixed;
   inset: 0;

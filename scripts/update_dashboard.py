@@ -14,6 +14,7 @@ import concurrent.futures
 import datetime as dt
 import html
 import json
+import os
 import re
 import subprocess
 import sys
@@ -40,6 +41,7 @@ DIFFICULTY_ORDER = ["Easy", "Normal", "Expert", "Super expert"]
 MIN_ATTEMPTS_FOR_LEAST_CLEARED = 20
 MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED = 180_000
 TOP_LONGEST_LIMIT = 20
+RECENTLY_PLAYED_LIMIT = 10
 SLOW_THUMBNAIL_TIMEOUT = 25.0
 SLOW_THUMBNAIL_RETRIES = 4
 SLOW_THUMBNAIL_DELAY = 0.8
@@ -446,6 +448,11 @@ def payload_asset_version(payload: dict) -> str:
     return safe_asset_version(payload.get("assetVersion") or payload.get("generatedAt") or payload.get("date"))
 
 
+def normalize_maker_id(value: object) -> str:
+    raw = str(value or "").replace("-", "").strip().upper()
+    return raw if len(raw) == 9 else ""
+
+
 def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
     start_ts, end_ts = day_bounds(local_date)
     generated_at = dt.datetime.now(tz=TZ).isoformat(timespec="seconds")
@@ -485,7 +492,26 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
             difficulty: [compact(c) for c in least_cleared_courses([c for c in courses if (c.get("difficulty_name") or "") == difficulty])]
             for difficulty in DIFFICULTY_ORDER
         },
+        "recentlyPlayed": [],
     }
+
+
+def fetch_recently_played(args: argparse.Namespace) -> tuple[str, list[dict]]:
+    maker_id = normalize_maker_id(args.played_maker_id)
+    if not maker_id:
+        return "", []
+
+    status, payload = request_json(f"/get_played/{maker_id}", args.timeout, args.retries)
+    if status != 200 or not isinstance(payload, dict):
+        print(f"Could not load recently played levels for {maker_id}: HTTP {status}", flush=True)
+        return maker_id, []
+
+    courses = payload.get("courses")
+    if not isinstance(courses, list):
+        return maker_id, []
+
+    limit = max(0, int(args.played_limit or RECENTLY_PLAYED_LIMIT))
+    return maker_id, [compact(course) for course in courses[:limit]]
 
 
 def save_payload(payload: dict) -> None:
@@ -501,6 +527,7 @@ def course_groups(payload: dict) -> Iterable[list[dict]]:
     yield payload.get("topLiked", [])
     yield payload.get("topLongest", [])
     yield payload.get("leastCleared", [])
+    yield payload.get("recentlyPlayed", [])
     for group in (payload.get("topLikedByDifficulty") or {}).values():
         yield group
     for group in (payload.get("topLongestByDifficulty") or {}).values():
@@ -704,6 +731,13 @@ def score(course: dict, mode: str) -> str:
             <span>clear-check</span>
           </div>
         """
+    if mode == "plays":
+        return f"""
+          <div class="primary-score">
+            <strong>{metric(course.get("plays"))}</strong>
+            <span>plays</span>
+          </div>
+        """
     return f"""
       <div class="primary-score">
         <strong>{esc(course.get("clearRatePretty"))}</strong>
@@ -757,10 +791,21 @@ def replace_list(html_text: str, element_id: str, content: str, end_marker: str)
     return html_text[:start] + replacement + html_text[end:]
 
 
+def rendered_list(courses: list[dict], mode: str, empty_text: str) -> str:
+    if courses:
+        return "\n".join(card(course, i, mode) for i, course in enumerate(courses))
+    return f'            <div class="empty-state">{esc(empty_text)}</div>'
+
+
 def update_index(payload: dict) -> None:
     top = "\n".join(card(course, i, "likes") for i, course in enumerate(payload["topLiked"]))
     least = "\n".join(card(course, i, "clear") for i, course in enumerate(payload["leastCleared"]))
     longest = "\n".join(card(course, i, "time") for i, course in enumerate(payload["topLongest"]))
+    played = rendered_list(
+        payload.get("recentlyPlayed", []),
+        "plays",
+        "No hay niveles jugados registrados para esta fecha.",
+    )
     text = INDEX_HTML.read_text(encoding="utf-8")
     text = replace_list(
         text,
@@ -778,7 +823,13 @@ def update_index(payload: dict) -> None:
         text,
         "topLongest",
         longest,
-        "\n        </section>\n      </section>\n    </main>",
+        "\n        </section>\n      </section>\n\n      <section class=\"played-section board\" aria-labelledby=\"playedTitle\">",
+    )
+    text = replace_list(
+        text,
+        "recentlyPlayed",
+        played,
+        "\n      </section>\n    </main>",
     )
     version = payload_asset_version(payload)
     text = re.sub(r"data\.js\?v=[^\"']+", f"data.js?v={version}", text)
@@ -831,6 +882,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--thumbnail-retries", type=int, default=1)
     parser.add_argument("--thumbnail-delay", type=float, default=0.05)
     parser.add_argument("--thumbnail-workers", type=int, default=4)
+    parser.add_argument(
+        "--played-maker-id",
+        default=os.environ.get("SMM2_PLAYER_ID", ""),
+        help="Maker ID used to load recently played levels from TGRCode.",
+    )
+    parser.add_argument("--played-limit", type=int, default=RECENTLY_PLAYED_LIMIT)
     parser.add_argument("--skip-thumbnails", action="store_true", help="Only for local debugging.")
     parser.add_argument("--validate", action="store_true", help="Print the estimated range without making network requests.")
     return parser
@@ -865,6 +922,10 @@ def main(argv: list[str] | None = None) -> int:
         raise RuntimeError(f"No levels found for {local_date.isoformat()}")
 
     payload = build_payload(local_date, day_courses)
+    played_maker_id, recently_played = fetch_recently_played(args)
+    payload["recentlyPlayedMakerId"] = played_maker_id
+    payload["recentlyPlayed"] = recently_played
+    payload["stats"]["recentlyPlayedCount"] = len(recently_played)
     if not args.skip_thumbnails:
         localize_thumbnails(
             payload,
@@ -887,6 +948,7 @@ def main(argv: list[str] | None = None) -> int:
                 "topLiked": [course["courseId"] for course in payload["topLiked"]],
                 "leastCleared": [course["courseId"] for course in payload["leastCleared"]],
                 "topLongest": [course["courseId"] for course in payload["topLongest"]],
+                "recentlyPlayed": [course["courseId"] for course in payload["recentlyPlayed"]],
             },
             ensure_ascii=False,
             indent=2,
