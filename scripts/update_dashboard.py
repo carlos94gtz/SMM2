@@ -119,7 +119,7 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                 parsed = json.loads(body) if body else {}
             except json.JSONDecodeError:
                 parsed = {"error": body[:500]}
-            if status == 429 and attempt < retries:
+            if (status == 429 or status >= 500) and attempt < retries:
                 time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
                 continue
             return status, parsed
@@ -146,7 +146,7 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                 parsed = json.loads(body)
             except json.JSONDecodeError:
                 parsed = {"error": body[:500]}
-            if error.code == 429 and attempt < retries:
+            if (error.code == 429 or error.code >= 500) and attempt < retries:
                 time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
                 continue
             return error.code, parsed
