@@ -115,7 +115,10 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                 return 0, None
             body, status_text = result.stdout.rsplit("\n", 1)
             status = int(status_text)
-            parsed = json.loads(body) if body else {}
+            try:
+                parsed = json.loads(body) if body else {}
+            except json.JSONDecodeError:
+                parsed = {"error": body[:500]}
             if status == 429 and attempt < retries:
                 time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
                 continue
@@ -194,6 +197,9 @@ def fetch_pairs(
         remaining = [pair for pair in pairs if pair.course_id != bad_course_id]
         courses, requests, splits, missing = fetch_pairs(remaining, timeout, retries, pause)
         return courses, 1 + requests, splits, missing + 1
+
+    if status == 0 or status >= 500:
+        raise RuntimeError(f"TGRCode API unavailable while fetching {len(pairs)} levels (HTTP {status})")
 
     mid = len(pairs) // 2
     left = fetch_pairs(pairs[:mid], timeout, retries, pause)
