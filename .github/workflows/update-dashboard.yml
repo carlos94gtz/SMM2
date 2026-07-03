@@ -12,6 +12,7 @@ on:
     - cron: "30 10 * * *"
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -60,6 +61,30 @@ jobs:
           echo "date=$CURRENT_DATE" >> "$GITHUB_OUTPUT"
           echo "Current SMM2 date: $CURRENT_DATE"
 
+      - name: Check published dashboard date
+        id: published
+        continue-on-error: true
+        run: |
+          PUBLIC_DATE="$(python - <<'PY'
+          import json
+          import re
+          import sys
+          import urllib.request
+
+          url = "https://carlos94gtz.github.io/SMM2/data.js?v=workflow-${{ github.run_id }}"
+          try:
+              with urllib.request.urlopen(url, timeout=20) as response:
+                  text = response.read().decode("utf-8", errors="replace")
+              payload = json.loads(re.search(r"window\.SMM2_DASHBOARD_DATA\s*=\s*(\{.*\});\s*$", text, re.S).group(1))
+              print(payload.get("date", ""))
+          except Exception as error:
+              print(f"Could not read public dashboard date: {error}", file=sys.stderr)
+              print("")
+          PY
+          )"
+          echo "date=$PUBLIC_DATE" >> "$GITHUB_OUTPUT"
+          echo "Published SMM2 date: ${PUBLIC_DATE:-unknown}"
+
       - name: Update dashboard data
         if: steps.target.outputs.force == 'true' || steps.current.outputs.date != steps.target.outputs.date
         env:
@@ -71,14 +96,106 @@ jobs:
           python scripts/update_roblox_dashboard.py
 
       - name: Commit and push changes
+        id: publish
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data.js index.html thumbs automation-state.json roblox/data.js
           if git diff --cached --quiet; then
             echo "No dashboard changes to publish."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
           else
             DASHBOARD_DATE="$(python -c 'import json, pathlib; text = pathlib.Path("data.js").read_text(encoding="utf-8"); payload = json.loads(text.split("=", 1)[1].rsplit(";", 1)[0]); print(payload["date"])')"
             git commit -m "Update SMM2 dashboard for ${DASHBOARD_DATE}"
             git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Ensure GitHub Pages deployment
+        if: steps.publish.outputs.pushed == 'true' || steps.published.outputs.date != steps.target.outputs.date
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_DATE: ${{ steps.target.outputs.date }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          HEAD_SHA="$(git rev-parse HEAD)"
+          echo "Waiting for GitHub Pages to publish $TARGET_DATE from $HEAD_SHA"
+
+          get_public_date() {
+            python - <<'PY'
+          import json
+          import re
+          import sys
+          import time
+          import urllib.request
+
+          url = f"https://carlos94gtz.github.io/SMM2/data.js?v=workflow-{int(time.time())}"
+          try:
+              with urllib.request.urlopen(url, timeout=20) as response:
+                  text = response.read().decode("utf-8", errors="replace")
+              payload = json.loads(re.search(r"window\.SMM2_DASHBOARD_DATA\s*=\s*(\{.*\});\s*$", text, re.S).group(1))
+              print(payload.get("date", ""))
+          except Exception as error:
+              print(f"public-date-error: {error}", file=sys.stderr)
+              print("")
+          PY
+          }
+
+          rerun_pages_failure() {
+            python - "$HEAD_SHA" "$REPOSITORY" <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.request
+
+          head_sha, repository = sys.argv[1], sys.argv[2]
+          token = os.environ["GH_TOKEN"]
+          base = f"https://api.github.com/repos/{repository}"
+
+          def request(method, path):
+              req = urllib.request.Request(
+                  base + path,
+                  method=method,
+                  headers={
+                      "Authorization": f"Bearer {token}",
+                      "Accept": "application/vnd.github+json",
+                      "X-GitHub-Api-Version": "2022-11-28",
+                  },
+              )
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  body = response.read().decode("utf-8", errors="replace")
+              return json.loads(body) if body else {}
+
+          runs = request("GET", "/actions/runs?per_page=20").get("workflow_runs", [])
+          for run in runs:
+              if run.get("name") != "pages build and deployment":
+                  continue
+              if run.get("head_sha") != head_sha:
+                  continue
+              status = run.get("status")
+              conclusion = run.get("conclusion")
+              run_id = run.get("id")
+              print(f"Pages run {run_id}: {status}/{conclusion}")
+              if status == "completed" and conclusion == "failure":
+                  request("POST", f"/actions/runs/{run_id}/rerun-failed-jobs")
+                  print(f"Requested rerun for failed Pages deployment {run_id}")
+              return
+          print("No Pages deployment run found for current commit yet")
+          PY
+          }
+
+          for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
+            PUBLIC_DATE="$(get_public_date)"
+            echo "Public date check $attempt: ${PUBLIC_DATE:-unknown}"
+            if [ "$PUBLIC_DATE" = "$TARGET_DATE" ]; then
+              echo "GitHub Pages published $TARGET_DATE"
+              exit 0
+            fi
+            rerun_pages_failure || true
+            sleep 30
+          done
+
+          PUBLIC_DATE="$(get_public_date)"
+          echo "Final public date: ${PUBLIC_DATE:-unknown}"
+          test "$PUBLIC_DATE" = "$TARGET_DATE"
