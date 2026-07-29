@@ -1,12 +1,12 @@
 window.ROBLOX_DASHBOARD_DATA = {
-  "generatedAt": "2026-07-28T04:36:09-06:00",
-  "targetDate": "2026-07-27",
-  "targetDateLabel": "2026-07-27",
+  "generatedAt": "2026-07-29T04:19:43-06:00",
+  "targetDate": "2026-07-28",
+  "targetDateLabel": "2026-07-28",
   "source": "Roblox public web APIs, filtered by games.created",
   "stats": {
     "sampleSize": 0,
     "matchedCreatedYesterday": 0,
-    "seedIds": 281,
+    "seedIds": 284,
     "scannedIds": 0,
     "scanRange": null,
     "idStride": null,
@@ -19,17 +19,17 @@ window.ROBLOX_DASHBOARD_DATA = {
     {
       "id": "top-trending",
       "name": "Top Trending",
-      "count": 87
+      "count": 88
     },
     {
       "id": "up-and-coming",
       "name": "Up-and-Coming",
-      "count": 27
+      "count": 29
     },
     {
       "id": "top-playing-now",
       "name": "Top Playing Now",
-      "count": 95
+      "count": 96
     },
     {
       "id": "fun-with-friends",
