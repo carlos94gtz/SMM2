@@ -1,7 +1,7 @@
 window.ROBLOX_DASHBOARD_DATA = {
-  "generatedAt": "2026-09-08T06:32:54-06:00",
-  "targetDate": "2026-09-07",
-  "targetDateLabel": "2026-09-07",
+  "generatedAt": "2026-09-09T06:42:08-06:00",
+  "targetDate": "2026-09-08",
+  "targetDateLabel": "2026-09-08",
   "source": "Roblox public web APIs, filtered by games.created",
   "stats": {
     "sampleSize": 0,
@@ -39,7 +39,7 @@ window.ROBLOX_DASHBOARD_DATA = {
     {
       "id": "top-revisited",
       "name": "Top Revisited",
-      "count": 91
+      "count": 92
     }
   ],
   "maturityOptions": [
