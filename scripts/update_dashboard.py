@@ -179,7 +179,9 @@ def fetch_pairs(
             time.sleep(pause)
         if status == 200 and payload and not payload.get("error"):
             return [payload], 1, 0, 0
-        return [], 1, 0, 1
+        if status in (200, 400, 404) and payload and "No course with that ID" in str(payload.get("error", "")):
+            return [], 1, 0, 1
+        raise RuntimeError(f"TGRCode level lookup failed (HTTP {status}): {payload}")
 
     course_ids = ",".join(pair.course_id for pair in pairs)
     status, payload = request_json(f"/level_info_multiple/{course_ids}", timeout, retries)
@@ -192,13 +194,15 @@ def fetch_pairs(
         ordered = [found[pair.data_id] for pair in pairs if pair.data_id in found]
         return ordered, 1, 0, missing
 
-    if payload and payload.get("course_id") and "No course with that ID" in str(payload.get("error", "")):
+    if status in (200, 400, 404) and payload and payload.get("course_id") and "No course with that ID" in str(payload.get("error", "")):
         bad_course_id = str(payload["course_id"]).upper()
         remaining = [pair for pair in pairs if pair.course_id != bad_course_id]
+        if len(remaining) == len(pairs):
+            raise RuntimeError(f"TGRCode reported an unrequested course: {bad_course_id}")
         courses, requests, splits, missing = fetch_pairs(remaining, timeout, retries, pause)
         return courses, 1 + requests, splits, missing + 1
 
-    if status == 0 or status >= 500:
+    if status not in (400, 404):
         raise RuntimeError(f"TGRCode API unavailable while fetching {len(pairs)} levels (HTTP {status})")
 
     mid = len(pairs) // 2
@@ -297,9 +301,67 @@ def estimate_range(local_date: dt.date, state: dict, margin: int) -> tuple[int, 
     return max(1, expected_start - margin), expected_end + margin
 
 
+def locate_day_range(args: argparse.Namespace, local_date: dt.date, state: dict) -> tuple[int, int]:
+    start_ts, end_ts = day_bounds(local_date)
+    status, payload = request_json("/search_new?count=10", args.timeout, args.retries)
+    if status != 200 or not payload or not isinstance(payload.get("courses"), list):
+        raise RuntimeError(f"Could not load recent TGRCode courses (HTTP {status})")
+    recent = [c for c in payload["courses"] if c.get("data_id") and c.get("uploaded")]
+    if not recent:
+        raise RuntimeError("TGRCode returned no recent courses; refusing to guess a range")
+    latest = max(recent, key=lambda course: int(course["data_id"]))
+    if int(latest["uploaded"]) < end_ts:
+        raise RuntimeError(f"Recent TGRCode courses do not yet cover the end of {local_date}")
+    latest_id = int(latest["data_id"])
+    print(f"Recent course: data_id {latest_id}, uploaded {latest['uploaded']}", flush=True)
+
+    def sample(start_id: int, end_id: int) -> list[dict]:
+        pairs = [IdPair(value, data_id_to_course_id(value)) for value in range(start_id, end_id + 1)]
+        courses, _, _, _ = fetch_pairs(pairs, args.timeout, args.retries, args.pause)
+        return sorted(courses, key=lambda course: int(course["data_id"]))
+
+    # Bracket the day using real timestamps, then narrow both boundaries. Deleted
+    # IDs may leave a wider bracket, but must never exclude unscanned courses.
+    distance = max(1, int(state.get("idsPerDay") or DEFAULT_STATE["idsPerDay"]))
+    before = None
+    for _ in range(24):
+        probe = max(1, latest_id - distance)
+        courses = sample(probe, min(latest_id - 1, probe + 19))
+        older = [c for c in courses if int(c["uploaded"]) < start_ts]
+        if older:
+            before = max(older, key=lambda course: int(course["data_id"]))
+            break
+        if probe == 1:
+            break
+        distance *= 2
+    if before is None:
+        raise RuntimeError(f"Could not locate courses before {local_date}; refusing partial coverage")
+
+    def boundary(timestamp: int) -> tuple[dict, dict]:
+        low, high = before, latest
+        while int(high["data_id"]) - int(low["data_id"]) > 64:
+            midpoint = (int(low["data_id"]) + int(high["data_id"])) // 2
+            courses = sample(midpoint, min(midpoint + 19, int(high["data_id"]) - 1))
+            if not courses:
+                break
+            for course in courses:
+                if int(course["uploaded"]) < timestamp:
+                    low = course
+                else:
+                    high = course
+                    break
+        return low, high
+
+    before_start, _ = boundary(start_ts)
+    _, after_end = boundary(end_ts)
+    scan_start, scan_end = int(before_start["data_id"]), int(after_end["data_id"])
+    print(f"Calibrated range for {local_date}: {scan_start}..{scan_end}", flush=True)
+    return scan_start, scan_end
+
+
 def scan_target_day(args: argparse.Namespace, local_date: dt.date, state: dict) -> tuple[list[dict], list[dict], tuple[int, int]]:
     start_ts, end_ts = day_bounds(local_date)
-    current_start, current_end = estimate_range(local_date, state, args.scan_margin)
+    current_start, current_end = locate_day_range(args, local_date, state)
     all_courses: dict[int, dict] = {}
     scanned_start: int | None = None
     scanned_end: int | None = None
