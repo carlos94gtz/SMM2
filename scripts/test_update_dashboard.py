@@ -1,6 +1,8 @@
 import datetime as dt
+import io
 import unittest
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import MagicMock, patch
 
 import update_dashboard as dashboard
 
@@ -85,6 +87,83 @@ class LookupFailureTests(unittest.TestCase):
         with patch.object(dashboard, "request_json", return_value=response):
             with self.assertRaisesRegex(RuntimeError, "unrequested course"):
                 dashboard.fetch_pairs([self.pair, self.pair], 20, 4, 0)
+
+
+class FakeClock:
+    def __init__(self):
+        self.now = 0.0
+
+    def sleep(self, seconds):
+        self.now += seconds
+
+
+class RateLimitTests(unittest.TestCase):
+    def test_retry_after_seconds_and_http_dates(self):
+        self.assertEqual(dashboard.rate_limit_delay("120", 0), 120)
+        self.assertEqual(dashboard.rate_limit_delay("invalid", 0), 60)
+        self.assertEqual(dashboard.rate_limit_delay(None, 2), 240)
+        with patch.object(dashboard.time, "time", return_value=1792497600):
+            self.assertEqual(dashboard.rate_limit_delay("Tue, 20 Oct 2026 12:05:00 GMT", 0), 300)
+
+    def test_pacer_spaces_requests_and_shares_longest_cooldown(self):
+        clock = FakeClock()
+        pacer = dashboard.RequestPacer(interval=2)
+        with patch.object(dashboard.time, "monotonic", side_effect=lambda: clock.now), patch.object(
+            dashboard.time, "sleep", side_effect=clock.sleep
+        ):
+            pacer.wait()
+            pacer.wait()
+            self.assertEqual(clock.now, 2)
+            pacer.defer(120)
+            pacer.defer(60)
+            pacer.wait()
+            self.assertEqual(clock.now, 122)
+            pacer.wait()
+            self.assertEqual(clock.now, 124)
+
+    def test_curl_429_retries_after_shared_pause(self):
+        clock = FakeClock()
+        responses = iter([
+            '{"error":"Too many requests"}\n429\n120',
+            '{"courses":[]}\n200\n',
+            '{"courses":[]}\n200\n',
+        ])
+        starts = []
+
+        def curl(*args, **kwargs):
+            starts.append(clock.now)
+            return SimpleNamespace(returncode=0, stdout=next(responses))
+
+        with patch.object(dashboard, "API_PACER", dashboard.RequestPacer()), patch.object(
+            dashboard.time, "monotonic", side_effect=lambda: clock.now
+        ), patch.object(dashboard.time, "sleep", side_effect=clock.sleep), patch.object(
+            dashboard.subprocess, "run", side_effect=curl
+        ):
+            self.assertEqual(dashboard.request_json("/search_new?count=10", 20, 1), (200, {"courses": []}))
+            dashboard.request_json("/search_new?count=10", 20, 1)
+        self.assertEqual(starts, [0, 120, 122])
+
+    def test_urllib_429_uses_same_cooldown(self):
+        clock = FakeClock()
+        error = dashboard.urllib.error.HTTPError(
+            "https://tgrcode.com/mm2/search_new?count=10", 429, "Rate limit",
+            {"Retry-After": "120"}, io.BytesIO(b'{"error":"Too many requests"}')
+        )
+        response = MagicMock()
+        response.__enter__.return_value.status = 200
+        response.__enter__.return_value.read.return_value = b'{"courses":[]}'
+        with patch.object(dashboard, "API_PACER", dashboard.RequestPacer()), patch.object(
+            dashboard.time, "monotonic", side_effect=lambda: clock.now
+        ), patch.object(dashboard.time, "sleep", side_effect=clock.sleep), patch.object(
+            dashboard.subprocess, "run", side_effect=FileNotFoundError
+        ), patch.object(dashboard.urllib.request, "urlopen", side_effect=[error, response]):
+            self.assertEqual(dashboard.request_json("/search_new?count=10", 20, 1), (200, {"courses": []}))
+        self.assertEqual(clock.now, 120)
+
+    def test_persistent_rate_limit_still_fails_without_losing_data_silently(self):
+        response = SimpleNamespace(returncode=0, stdout='{"error":"Rate limit"}\n429\n')
+        with patch.object(dashboard, "API_PACER"), patch.object(dashboard.subprocess, "run", return_value=response):
+            self.assertEqual(dashboard.request_json("/level_info/TEST", 20, 0)[0], 429)
 
 
 if __name__ == "__main__":
