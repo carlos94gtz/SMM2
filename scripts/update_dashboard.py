@@ -18,10 +18,12 @@ import os
 import re
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Iterable
 from zoneinfo import ZoneInfo
@@ -86,9 +88,61 @@ def chunked(items: list[IdPair], size: int) -> Iterable[list[IdPair]]:
         yield items[index : index + size]
 
 
+class RequestPacer:
+    def __init__(self, interval: float = 2.0):
+        self.interval = interval
+        self.next_request = 0.0
+        self.lock = threading.Lock()
+
+    def wait(self) -> None:
+        while True:
+            with self.lock:
+                delay = self.next_request - time.monotonic()
+                if delay <= 0:
+                    self.next_request = time.monotonic() + self.interval
+                    return
+            time.sleep(delay)
+
+    def defer(self, seconds: float) -> None:
+        with self.lock:
+            self.next_request = max(self.next_request, time.monotonic() + seconds)
+
+
+API_PACER = RequestPacer()
+
+
+def rate_limit_delay(retry_after: str | None, attempt: int) -> float:
+    delay = min(300.0, 60.0 * 2 ** attempt)
+    if retry_after:
+        try:
+            requested = float(retry_after)
+        except ValueError:
+            try:
+                requested = parsedate_to_datetime(retry_after).timestamp() - time.time()
+            except (TypeError, ValueError, OverflowError):
+                requested = 0.0
+        if requested > delay:
+            delay = requested
+    return delay
+
+
+def retry_http(status: int, retry_after: str | None, attempt: int, retries: int) -> bool:
+    if status == 429:
+        delay = rate_limit_delay(retry_after, attempt)
+        API_PACER.defer(delay)
+        print(f"TGRCode HTTP 429: pausing all API workers for {delay:.0f}s "
+              f"(attempt {attempt + 1}/{retries + 1})", flush=True)
+        return attempt < retries
+    if status >= 500 and attempt < retries:
+        time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
+        return True
+    return False
+
+
 def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | None]:
     url = f"{API_BASE}{path}"
     for attempt in range(retries + 1):
+        API_PACER.wait()
         curl_missing = False
         try:
             result = subprocess.run(
@@ -100,7 +154,7 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                     "-H",
                     "User-Agent: smm2-dashboard-updater/1.0",
                     "-w",
-                    "\n%{http_code}",
+                    "\n%{http_code}\n%header{retry-after}",
                     url,
                 ],
                 capture_output=True,
@@ -113,14 +167,13 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                     time.sleep(min(6.0, 0.6 * (attempt + 1) ** 2))
                     continue
                 return 0, None
-            body, status_text = result.stdout.rsplit("\n", 1)
+            body, status_text, retry_after = result.stdout.rsplit("\n", 2)
             status = int(status_text)
             try:
                 parsed = json.loads(body) if body else {}
             except json.JSONDecodeError:
                 parsed = {"error": body[:500]}
-            if (status == 429 or status >= 500) and attempt < retries:
-                time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
+            if retry_http(status, retry_after.strip(), attempt, retries):
                 continue
             return status, parsed
         except FileNotFoundError:
@@ -146,8 +199,7 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                 parsed = json.loads(body)
             except json.JSONDecodeError:
                 parsed = {"error": body[:500]}
-            if (error.code == 429 or error.code >= 500) and attempt < retries:
-                time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
+            if retry_http(error.code, error.headers.get("Retry-After"), attempt, retries):
                 continue
             return error.code, parsed
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError):
