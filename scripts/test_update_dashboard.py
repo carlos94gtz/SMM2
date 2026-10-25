@@ -1,6 +1,9 @@
 import datetime as dt
 import io
+import json
+import tempfile
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
@@ -141,7 +144,7 @@ class RateLimitTests(unittest.TestCase):
         ):
             self.assertEqual(dashboard.request_json("/search_new?count=10", 20, 1), (200, {"courses": []}))
             dashboard.request_json("/search_new?count=10", 20, 1)
-        self.assertEqual(starts, [0, 120, 122])
+        self.assertEqual(starts, [0, 120, 130])
 
     def test_urllib_429_uses_same_cooldown(self):
         clock = FakeClock()
@@ -162,8 +165,133 @@ class RateLimitTests(unittest.TestCase):
 
     def test_persistent_rate_limit_still_fails_without_losing_data_silently(self):
         response = SimpleNamespace(returncode=0, stdout='{"error":"Rate limit"}\n429\n')
-        with patch.object(dashboard, "API_PACER"), patch.object(dashboard.subprocess, "run", return_value=response):
+        with patch.object(dashboard, "API_PACER", dashboard.RequestPacer()), patch.object(dashboard.subprocess, "run", return_value=response):
             self.assertEqual(dashboard.request_json("/level_info/TEST", 20, 0)[0], 429)
+
+    def test_rate_limit_slows_future_requests_and_recovers_only_gradually(self):
+        pacer = dashboard.RequestPacer()
+        with patch.object(dashboard, "API_PACER", pacer):
+            dashboard.retry_http(429, "180", 0, 4)
+        self.assertEqual(pacer.interval, 10)
+        for _ in range(49):
+            pacer.succeeded()
+        self.assertEqual(pacer.interval, 10)
+        pacer.succeeded()
+        self.assertEqual(pacer.interval, 9)
+        for _ in range(1000):
+            pacer.succeeded()
+        self.assertEqual(pacer.interval, 5)
+
+    def test_adaptive_interval_is_capped_and_rate_limit_resets_success_streak(self):
+        pacer = dashboard.RequestPacer()
+        for _ in range(49):
+            pacer.succeeded()
+        for _ in range(10):
+            pacer.throttle(60)
+        self.assertEqual(pacer.interval, 60)
+        pacer.succeeded()
+        self.assertEqual(pacer.interval, 60)
+
+    def test_thumbnails_use_shared_pacer_and_do_not_save_error_bodies(self):
+        clock = FakeClock()
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "level.jpg"
+            starts = []
+
+            def curl(*args, **kwargs):
+                starts.append(clock.now)
+                output.with_suffix(".tmp").write_bytes(b"error" if len(starts) == 1 else b"image")
+                return SimpleNamespace(returncode=0, stdout="\n429\n120" if len(starts) == 1 else "\n200\n")
+
+            with patch.object(dashboard, "API_PACER", dashboard.RequestPacer()), patch.object(
+                dashboard.time, "monotonic", side_effect=lambda: clock.now
+            ), patch.object(dashboard.time, "sleep", side_effect=clock.sleep), patch.object(
+                dashboard.subprocess, "run", side_effect=curl
+            ):
+                dashboard.download_binary("https://tgrcode.com/mm2/level_thumbnail/TEST", output, 20, 1)
+            self.assertEqual(starts, [0, 120])
+            self.assertEqual(output.read_bytes(), b"image")
+
+
+class ScanCheckpointTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.date = dt.date(2026, 10, 24)
+        self.start, self.end = dashboard.day_bounds(self.date)
+        self.cache = dashboard.ScanCache(Path(self.temp.name), self.date)
+        self.pacer_patch = patch.object(dashboard, "API_PACER", dashboard.RequestPacer())
+        self.pacer_patch.start()
+        self.addCleanup(self.pacer_patch.stop)
+
+    def course(self, value):
+        timestamp = self.start - 1 if value == 1 else self.end if value == 6 else self.start + value
+        return {"data_id": value, "uploaded": timestamp}
+
+    def scan(self):
+        return dashboard.scan_range(1, 6, batch_size=2, workers=1, timeout=20, retries=0, pause=0,
+                                    checkpoint=self.cache)
+
+    def test_failure_keeps_completed_batches_and_resume_fetches_only_pending(self):
+        def fail(pairs, *args):
+            if pairs[0].data_id == 3:
+                raise RuntimeError("HTTP 429")
+            return [self.course(pair.data_id) for pair in pairs], 1, 0, 0
+
+        with patch.object(dashboard, "fetch_pairs", side_effect=fail) as fetch:
+            with self.assertRaisesRegex(RuntimeError, "429"):
+                self.scan()
+            self.assertEqual(fetch.call_count, 2)
+        self.assertEqual(len(self.cache.load_batch(1, 2)), 2)
+        self.assertIsNone(self.cache.load_batch(3, 4))
+        self.assertIsNone(self.cache.load_batch(5, 6))
+
+        def succeed(pairs, *args):
+            return [self.course(pair.data_id) for pair in pairs], 1, 0, 0
+
+        with patch.object(dashboard, "fetch_pairs", side_effect=succeed) as fetch:
+            courses = self.scan()
+        self.assertEqual([course["data_id"] for course in courses], list(range(1, 7)))
+        self.assertEqual([call.args[0][0].data_id for call in fetch.call_args_list], [3, 5])
+
+    def test_complete_checkpoint_reuses_range_but_still_checks_day_coverage(self):
+        self.cache.save("range.json", {"start": 1, "end": 6})
+        for start in (1, 3, 5):
+            self.cache.save_batch(start, start + 1, [self.course(start), self.course(start + 1)])
+        args = dashboard.build_parser().parse_args(["--checkpoint-dir", self.temp.name, "--batch-size", "2"])
+        with patch.object(dashboard, "locate_day_range") as locate, patch.object(dashboard, "fetch_pairs") as fetch:
+            courses, _, scanned_range = dashboard.scan_target_day(args, self.date, {})
+        locate.assert_not_called()
+        fetch.assert_not_called()
+        self.assertEqual(len(courses), 4)
+        self.assertEqual(scanned_range, (1, 6))
+
+    def test_empty_batch_is_a_completed_batch_and_other_dates_are_not_reused(self):
+        self.cache.save_batch(1, 2, [])
+        self.assertEqual(self.cache.load_batch(1, 2), [])
+        other = dashboard.ScanCache(Path(self.temp.name), self.date + dt.timedelta(days=1))
+        self.assertIsNone(other.load_batch(1, 2))
+
+    def test_corrupt_wrong_date_and_out_of_range_checkpoints_are_rejected(self):
+        self.cache.path.mkdir(parents=True)
+        path = self.cache.path / "1-2.json"
+        for payload in ("{", json.dumps({"version": 1, "date": "2026-10-23"}),
+                        json.dumps({"version": 1, "date": self.date.isoformat(), "start": 1, "end": 2,
+                                    "courses": [self.course(3)]})):
+            path.write_text(payload, encoding="utf-8")
+            self.assertIsNone(self.cache.load_batch(1, 2))
+
+    def test_saved_slow_rate_is_restored(self):
+        dashboard.API_PACER.throttle(60)
+        self.cache.save("pacing.json", {})
+        with patch.object(dashboard, "API_PACER", dashboard.RequestPacer()):
+            self.cache.load("pacing.json")
+            self.assertEqual(dashboard.API_PACER.interval, 10)
+
+    def test_defaults_use_one_worker_for_levels_and_thumbnails(self):
+        args = dashboard.build_parser().parse_args([])
+        self.assertEqual(args.workers, 1)
+        self.assertEqual(args.thumbnail_workers, 1)
 
 
 if __name__ == "__main__":
