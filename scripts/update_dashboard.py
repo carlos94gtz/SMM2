@@ -34,6 +34,7 @@ DATA_JS = ROOT / "data.js"
 INDEX_HTML = ROOT / "index.html"
 THUMBS_DIR = ROOT / "thumbs"
 STATE_PATH = ROOT / "automation-state.json"
+SCAN_CACHE_DIR = ROOT / ".scan-cache"
 
 API_BASE = "https://tgrcode.com/mm2"
 CHARSET = "0123456789BCDFGHJKLMNPQRSTVWXY"
@@ -89,8 +90,10 @@ def chunked(items: list[IdPair], size: int) -> Iterable[list[IdPair]]:
 
 
 class RequestPacer:
-    def __init__(self, interval: float = 2.0):
+    def __init__(self, interval: float = 5.0):
+        self.minimum_interval = interval
         self.interval = interval
+        self.successes = 0
         self.next_request = 0.0
         self.lock = threading.Lock()
 
@@ -106,6 +109,23 @@ class RequestPacer:
     def defer(self, seconds: float) -> None:
         with self.lock:
             self.next_request = max(self.next_request, time.monotonic() + seconds)
+
+    def throttle(self, seconds: float) -> None:
+        with self.lock:
+            self.interval = min(60.0, self.interval * 2)
+            self.successes = 0
+            self.next_request = max(self.next_request, time.monotonic() + seconds)
+
+    def succeeded(self) -> None:
+        with self.lock:
+            self.successes += 1
+            if self.successes >= 50:
+                self.interval = max(self.minimum_interval, self.interval * 0.9)
+                self.successes = 0
+
+    def restore_interval(self, interval: float) -> None:
+        with self.lock:
+            self.interval = max(self.interval, min(60.0, interval))
 
 
 API_PACER = RequestPacer()
@@ -129,9 +149,10 @@ def rate_limit_delay(retry_after: str | None, attempt: int) -> float:
 def retry_http(status: int, retry_after: str | None, attempt: int, retries: int) -> bool:
     if status == 429:
         delay = rate_limit_delay(retry_after, attempt)
-        API_PACER.defer(delay)
+        API_PACER.throttle(delay)
         print(f"TGRCode HTTP 429: pausing all API workers for {delay:.0f}s "
-              f"(attempt {attempt + 1}/{retries + 1})", flush=True)
+              f"(attempt {attempt + 1}/{retries + 1}); "
+              f"request interval now {API_PACER.interval:.1f}s", flush=True)
         return attempt < retries
     if status >= 500 and attempt < retries:
         time.sleep(min(10.0, 0.9 * (attempt + 1) ** 2))
@@ -175,6 +196,8 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
                 parsed = {"error": body[:500]}
             if retry_http(status, retry_after.strip(), attempt, retries):
                 continue
+            if status == 200:
+                API_PACER.succeeded()
             return status, parsed
         except FileNotFoundError:
             curl_missing = True
@@ -191,7 +214,9 @@ def request_json(path: str, timeout: float, retries: int) -> tuple[int, dict | N
             req = urllib.request.Request(url, headers={"User-Agent": "smm2-dashboard-updater/1.0"})
             with urllib.request.urlopen(req, timeout=timeout) as response:
                 body = response.read().decode("utf-8", errors="replace")
-                return response.status, json.loads(body)
+                payload = json.loads(body)
+                API_PACER.succeeded()
+                return response.status, payload
         except urllib.error.HTTPError as error:
             body = error.read().decode("utf-8", errors="replace")
             parsed = None
@@ -268,6 +293,59 @@ def fetch_pairs(
     )
 
 
+class ScanCache:
+    def __init__(self, directory: Path, local_date: dt.date):
+        self.date = local_date.isoformat()
+        self.path = directory / self.date
+
+    def load(self, name: str) -> dict | None:
+        try:
+            value = json.loads((self.path / name).read_text(encoding="utf-8"))
+            if not isinstance(value, dict) or value.get("version") != 1 or value.get("date") != self.date:
+                return None
+            interval = value.get("interval", 5.0)
+            if isinstance(interval, (int, float)) and 0 < interval <= 60:
+                API_PACER.restore_interval(interval)
+            return value
+        except (OSError, ValueError):
+            return None
+
+    def save(self, name: str, value: dict) -> None:
+        self.path.mkdir(parents=True, exist_ok=True)
+        payload = {**value, "version": 1, "date": self.date, "interval": API_PACER.interval}
+        output = self.path / name
+        temp = output.with_suffix(".tmp")
+        temp.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+        temp.replace(output)
+
+    def load_range(self) -> tuple[int, int] | None:
+        value = self.load("range.json") or {}
+        start, end = value.get("start"), value.get("end")
+        if type(start) is int and type(end) is int and 0 < start <= end:
+            return start, end
+        return None
+
+    def load_batch(self, start: int, end: int) -> list[dict] | None:
+        value = self.load(f"{start}-{end}.json") or {}
+        courses = value.get("courses")
+        if value.get("start") != start or value.get("end") != end or not isinstance(courses, list):
+            return None
+        ids = set()
+        for course in courses:
+            if not isinstance(course, dict):
+                return None
+            data_id, uploaded = course.get("data_id"), course.get("uploaded")
+            if type(data_id) is not int or not start <= data_id <= end or data_id in ids:
+                return None
+            if type(uploaded) is not int or uploaded <= 0:
+                return None
+            ids.add(data_id)
+        return courses
+
+    def save_batch(self, start: int, end: int, courses: list[dict]) -> None:
+        self.save(f"{start}-{end}.json", {"start": start, "end": end, "courses": courses})
+
+
 def scan_range(
     start_id: int,
     end_id: int,
@@ -277,6 +355,7 @@ def scan_range(
     timeout: float,
     retries: int,
     pause: float,
+    checkpoint: ScanCache | None = None,
 ) -> list[dict]:
     if end_id < start_id:
         return []
@@ -294,22 +373,47 @@ def scan_range(
     def run_batch(batch: list[IdPair]) -> tuple[list[dict], int, int, int]:
         return fetch_pairs(batch, timeout, retries, pause)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        future_map = {executor.submit(run_batch, batch): batch for batch in batches}
-        for future in concurrent.futures.as_completed(future_map):
-            batch = future_map[future]
-            batch_courses, batch_requests, batch_splits, batch_missing = future.result()
-            courses.extend(batch_courses)
+    pending = []
+    for batch in batches:
+        saved = checkpoint.load_batch(batch[0].data_id, batch[-1].data_id) if checkpoint else None
+        if saved is None:
+            pending.append(batch)
+        else:
+            courses.extend(saved)
             completed += len(batch)
-            requests += batch_requests
-            splits += batch_splits
-            missing += batch_missing
-            if completed % max(batch_size * 20, 1) == 0 or completed == len(pairs):
-                print(
-                    f"  scanned {completed:,}/{len(pairs):,} IDs "
-                    f"(courses {len(courses):,}, missing {missing:,}, requests {requests:,}, splits {splits:,})",
-                    flush=True,
-                )
+            missing += len(batch) - len(saved)
+    if completed:
+        print(f"  Resumed {completed:,}/{len(pairs):,} IDs from checkpoint", flush=True)
+
+    def completed_batches():
+        if workers == 1:
+            for batch in pending:
+                yield batch, run_batch(batch)
+        else:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+                future_map = {executor.submit(run_batch, batch): batch for batch in pending}
+                try:
+                    for future in concurrent.futures.as_completed(future_map):
+                        yield future_map[future], future.result()
+                finally:
+                    for future in future_map:
+                        future.cancel()
+
+    for batch, result in completed_batches():
+        batch_courses, batch_requests, batch_splits, batch_missing = result
+        if checkpoint:
+            checkpoint.save_batch(batch[0].data_id, batch[-1].data_id, batch_courses)
+        courses.extend(batch_courses)
+        completed += len(batch)
+        requests += batch_requests
+        splits += batch_splits
+        missing += batch_missing
+        if completed % max(batch_size * 20, 1) == 0 or completed == len(pairs):
+            print(
+                f"  scanned {completed:,}/{len(pairs):,} IDs "
+                f"(courses {len(courses):,}, missing {missing:,}, requests {requests:,}, splits {splits:,})",
+                flush=True,
+            )
 
     courses.sort(key=lambda course: int(course.get("data_id") or 0))
     return courses
@@ -413,7 +517,13 @@ def locate_day_range(args: argparse.Namespace, local_date: dt.date, state: dict)
 
 def scan_target_day(args: argparse.Namespace, local_date: dt.date, state: dict) -> tuple[list[dict], list[dict], tuple[int, int]]:
     start_ts, end_ts = day_bounds(local_date)
-    current_start, current_end = locate_day_range(args, local_date, state)
+    checkpoint = ScanCache(Path(args.checkpoint_dir), local_date) if args.checkpoint_dir else None
+    if checkpoint:
+        checkpoint.load("pacing.json")
+    saved_range = checkpoint.load_range() if checkpoint else None
+    current_start, current_end = saved_range or locate_day_range(args, local_date, state)
+    if checkpoint and not saved_range:
+        checkpoint.save("range.json", {"start": current_start, "end": current_end})
     all_courses: dict[int, dict] = {}
     scanned_start: int | None = None
     scanned_end: int | None = None
@@ -422,15 +532,20 @@ def scan_target_day(args: argparse.Namespace, local_date: dt.date, state: dict) 
         nonlocal scanned_start, scanned_end
         if scan_end < scan_start:
             return
-        found = scan_range(
-            scan_start,
-            scan_end,
-            batch_size=args.batch_size,
-            workers=args.workers,
-            timeout=args.timeout,
-            retries=args.retries,
-            pause=args.pause,
-        )
+        try:
+            found = scan_range(
+                scan_start,
+                scan_end,
+                batch_size=args.batch_size,
+                workers=args.workers,
+                timeout=args.timeout,
+                retries=args.retries,
+                pause=args.pause,
+                checkpoint=checkpoint,
+            )
+        finally:
+            if checkpoint:
+                checkpoint.save("pacing.json", {})
         for course in found:
             data_id = course.get("data_id")
             if data_id is not None:
@@ -660,6 +775,7 @@ def download_binary(url: str, output: Path, timeout: float, retries: int) -> Non
     temp = output.with_suffix(".tmp")
     last_error: Exception | str | None = None
     for attempt in range(retries + 1):
+        API_PACER.wait()
         curl_missing = False
         try:
             result = subprocess.run(
@@ -667,13 +783,14 @@ def download_binary(url: str, output: Path, timeout: float, retries: int) -> Non
                     "curl",
                     "-sS",
                     "-L",
-                    "--fail",
                     "--max-time",
                     str(timeout),
                     "-H",
                     "User-Agent: smm2-dashboard-updater/1.0",
                     "-o",
                     str(temp),
+                    "-w",
+                    "\n%{http_code}\n%header{retry-after}",
                     url,
                 ],
                 capture_output=True,
@@ -681,14 +798,23 @@ def download_binary(url: str, output: Path, timeout: float, retries: int) -> Non
                 timeout=timeout + 5,
                 check=False,
             )
-            if result.returncode == 0 and temp.exists() and temp.stat().st_size > 0:
+            _, status_text, retry_after = result.stdout.rsplit("\n", 2)
+            status = int(status_text)
+            if status == 429:
+                temp.unlink(missing_ok=True)
+                last_error = "TGRCode thumbnail HTTP 429"
+                if retry_http(status, retry_after.strip(), attempt, retries):
+                    continue
+                break
+            if result.returncode == 0 and status == 200 and temp.exists() and temp.stat().st_size > 0:
+                API_PACER.succeeded()
                 temp.replace(output)
                 return
             temp.unlink(missing_ok=True)
             last_error = result.stderr.strip() or "empty thumbnail response"
         except FileNotFoundError:
             curl_missing = True
-        except (subprocess.TimeoutExpired, OSError) as error:
+        except (subprocess.TimeoutExpired, OSError, ValueError) as error:
             temp.unlink(missing_ok=True)
             last_error = error
 
@@ -699,9 +825,17 @@ def download_binary(url: str, output: Path, timeout: float, retries: int) -> Non
                     data = response.read()
                 if data:
                     temp.write_bytes(data)
+                    API_PACER.succeeded()
                     temp.replace(output)
                     return
                 last_error = "empty thumbnail response"
+            except urllib.error.HTTPError as error:
+                temp.unlink(missing_ok=True)
+                last_error = error
+                if error.code == 429:
+                    if retry_http(error.code, error.headers.get("Retry-After"), attempt, retries):
+                        continue
+                    break
             except (urllib.error.URLError, TimeoutError, OSError) as error:
                 temp.unlink(missing_ok=True)
                 last_error = error
@@ -995,14 +1129,15 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--scan-window", type=int, default=400, help="IDs to scan before checking day coverage.")
     parser.add_argument("--max-extensions", type=int, default=10, help="How many times to extend the scan if coverage is incomplete.")
     parser.add_argument("--batch-size", type=int, default=20)
-    parser.add_argument("--workers", type=int, default=3)
+    parser.add_argument("--workers", type=int, default=1)
+    parser.add_argument("--checkpoint-dir", type=Path, help="Directory for resumable per-day scan batches.")
     parser.add_argument("--timeout", type=float, default=20.0)
     parser.add_argument("--retries", type=int, default=4)
     parser.add_argument("--pause", type=float, default=0.08, help="Pause after each HTTP request per worker.")
     parser.add_argument("--thumbnail-timeout", type=float, default=10.0)
     parser.add_argument("--thumbnail-retries", type=int, default=1)
     parser.add_argument("--thumbnail-delay", type=float, default=0.05)
-    parser.add_argument("--thumbnail-workers", type=int, default=4)
+    parser.add_argument("--thumbnail-workers", type=int, default=1)
     parser.add_argument(
         "--played-maker-id",
         default=os.environ.get("SMM2_PLAYER_ID", ""),
