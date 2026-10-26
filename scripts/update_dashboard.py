@@ -14,6 +14,7 @@ import concurrent.futures
 import datetime as dt
 import html
 import json
+import math
 import os
 import re
 import subprocess
@@ -241,56 +242,44 @@ def fetch_pairs(
     retries: int,
     pause: float,
 ) -> tuple[list[dict], int, int, int]:
-    """Fetch a batch of courses.
+    """Fetch by internal ID, skipping deleted courses in the same API response.
 
-    Returns courses, HTTP request count, recursive split count, and missing ID
-    count. The recursive split keeps one missing/deleted course from making the
-    whole batch unusable.
+    Returns courses, request count, split count, and missing ID count.
     """
     if not pairs:
         return [], 0, 0, 0
 
-    if len(pairs) == 1:
-        status, payload = request_json(f"/level_info/{pairs[0].course_id}", timeout, retries)
-        if pause:
-            time.sleep(pause)
-        if status == 200 and payload and not payload.get("error"):
-            return [payload], 1, 0, 0
-        if status in (200, 400, 404) and payload and "No course with that ID" in str(payload.get("error", "")):
-            return [], 1, 0, 1
-        raise RuntimeError(f"TGRCode level lookup failed (HTTP {status}): {payload}")
+    if len(pairs) > 100:
+        results = [fetch_pairs(batch, timeout, retries, pause) for batch in chunked(pairs, 100)]
+        return (
+            [course for result in results for course in result[0]],
+            sum(result[1] for result in results),
+            0,
+            sum(result[3] for result in results),
+        )
 
-    course_ids = ",".join(pair.course_id for pair in pairs)
-    status, payload = request_json(f"/level_info_multiple/{course_ids}", timeout, retries)
+    data_ids = ",".join(str(pair.data_id) for pair in pairs)
+    status, payload = request_json(f"/level_info_multiple_dataid/{data_ids}", timeout, retries)
     if pause:
         time.sleep(pause)
 
-    if status == 200 and payload and isinstance(payload.get("courses"), list):
-        found = {int(course["data_id"]): course for course in payload["courses"]}
-        missing = len(pairs) - len(found)
-        ordered = [found[pair.data_id] for pair in pairs if pair.data_id in found]
-        return ordered, 1, 0, missing
-
-    if status in (200, 400, 404) and payload and payload.get("course_id") and "No course with that ID" in str(payload.get("error", "")):
-        bad_course_id = str(payload["course_id"]).upper()
-        remaining = [pair for pair in pairs if pair.course_id != bad_course_id]
-        if len(remaining) == len(pairs):
-            raise RuntimeError(f"TGRCode reported an unrequested course: {bad_course_id}")
-        courses, requests, splits, missing = fetch_pairs(remaining, timeout, retries, pause)
-        return courses, 1 + requests, splits, missing + 1
-
-    if status not in (400, 404):
+    if status != 200 or not isinstance(payload, dict) or payload.get("error") or not isinstance(payload.get("courses"), list):
         raise RuntimeError(f"TGRCode API unavailable while fetching {len(pairs)} levels (HTTP {status})")
 
-    mid = len(pairs) // 2
-    left = fetch_pairs(pairs[:mid], timeout, retries, pause)
-    right = fetch_pairs(pairs[mid:], timeout, retries, pause)
-    return (
-        left[0] + right[0],
-        1 + left[1] + right[1],
-        1 + left[2] + right[2],
-        left[3] + right[3],
-    )
+    requested = {pair.data_id for pair in pairs}
+    found = {}
+    for course in payload["courses"]:
+        if not isinstance(course, dict) or type(course.get("data_id")) is not int:
+            raise RuntimeError("TGRCode returned a malformed course")
+        data_id = course["data_id"]
+        if data_id not in requested or data_id in found:
+            raise RuntimeError(f"TGRCode returned an unrequested or duplicate course: {data_id}")
+        uploaded = course.get("uploaded")
+        if type(uploaded) not in (int, float) or not math.isfinite(uploaded) or uploaded <= 0:
+            raise RuntimeError(f"TGRCode returned an invalid upload timestamp: {data_id}")
+        found[data_id] = course
+    ordered = [found[pair.data_id] for pair in pairs if pair.data_id in found]
+    return ordered, 1, 0, len(pairs) - len(ordered)
 
 
 class ScanCache:
@@ -337,7 +326,7 @@ class ScanCache:
             data_id, uploaded = course.get("data_id"), course.get("uploaded")
             if type(data_id) is not int or not start <= data_id <= end or data_id in ids:
                 return None
-            if type(uploaded) is not int or uploaded <= 0:
+            if type(uploaded) not in (int, float) or not math.isfinite(uploaded) or uploaded <= 0:
                 return None
             ids.add(data_id)
         return courses
