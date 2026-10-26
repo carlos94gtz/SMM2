@@ -22,7 +22,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 210
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -109,7 +109,7 @@ jobs:
 
       - name: Update dashboard data
         if: steps.target.outputs.force == 'true' || steps.current.outputs.date != steps.target.outputs.date
-        timeout-minutes: 100
+        timeout-minutes: 180
         env:
           TARGET_DATE: ${{ steps.target.outputs.date }}
           SMM2_PLAYER_ID: ${{ vars.SMM2_PLAYER_ID || secrets.SMM2_PLAYER_ID || 'S00DC0DDG' }}
