@@ -76,20 +76,58 @@ class LookupFailureTests(unittest.TestCase):
         self.pair = dashboard.IdPair(60815000, "Y03HBGPWG")
 
     def test_connection_server_rate_limit_and_malformed_failures_are_not_missing(self):
-        for response in [(0, None), (502, {"error": "Bad gateway"}), (429, {"error": "Rate limit"}), (200, {})]:
+        for response in [(0, None), (502, {"error": "Bad gateway"}), (429, {"error": "Rate limit"}),
+                         (200, {}), (404, {"error": "No course with that ID"}),
+                         (200, {"error": "Server failure", "courses": []})]:
             with self.subTest(response=response), patch.object(dashboard, "request_json", return_value=response):
                 with self.assertRaises(RuntimeError):
                     dashboard.fetch_pairs([self.pair], 20, 4, 0)
 
-    def test_explicit_missing_course_is_counted(self):
-        with patch.object(dashboard, "request_json", return_value=(404, {"error": "No course with that ID"})):
+    def test_successful_empty_data_id_response_counts_missing_course(self):
+        with patch.object(dashboard, "request_json", return_value=(200, {"courses": []})):
             self.assertEqual(dashboard.fetch_pairs([self.pair], 20, 4, 0), ([], 1, 0, 1))
 
-    def test_unrequested_missing_course_cannot_recurse_forever(self):
-        response = (400, {"error": "No course with that ID", "course_id": "OTHERID00"})
+    def test_unrequested_course_is_rejected(self):
+        response = (200, {"courses": [{"data_id": 123, "uploaded": 1792453200}]})
         with patch.object(dashboard, "request_json", return_value=response):
-            with self.assertRaisesRegex(RuntimeError, "unrequested course"):
+            with self.assertRaisesRegex(RuntimeError, "unrequested"):
                 dashboard.fetch_pairs([self.pair, self.pair], 20, 4, 0)
+
+    def test_deleted_courses_do_not_retry_valid_ids_in_the_batch(self):
+        pairs = [dashboard.IdPair(value, dashboard.data_id_to_course_id(value)) for value in range(1, 21)]
+        courses = [{"data_id": value, "uploaded": 1792453200.0} for value in (1, 3, 5, 7, 9, 11, 13)]
+        with patch.object(dashboard, "request_json", return_value=(200, {"courses": list(reversed(courses))})) as request:
+            result = dashboard.fetch_pairs(pairs, 20, 4, 0)
+        self.assertEqual(result, (courses, 1, 0, 13))
+        request.assert_called_once_with("/level_info_multiple_dataid/" + ",".join(map(str, range(1, 21))), 20, 4)
+
+    def test_malformed_duplicate_and_invalid_timestamp_courses_are_not_silently_missing(self):
+        course = {"data_id": self.pair.data_id, "uploaded": 1792453200}
+        for courses in ([None], [{}], [course, course], [{**course, "uploaded": "invalid"}],
+                        [{**course, "uploaded": float("nan")}], [{**course, "uploaded": True}]):
+            with self.subTest(courses=courses), patch.object(dashboard, "request_json", return_value=(200, {"courses": courses})):
+                with self.assertRaises(RuntimeError):
+                    dashboard.fetch_pairs([self.pair], 20, 4, 0)
+
+    def test_requests_never_exceed_the_data_id_endpoint_limit(self):
+        pairs = [dashboard.IdPair(value, dashboard.data_id_to_course_id(value)) for value in range(1, 206)]
+        with patch.object(dashboard, "request_json", return_value=(200, {"courses": []})) as request:
+            self.assertEqual(dashboard.fetch_pairs(pairs, 20, 4, 0), ([], 3, 0, 205))
+        self.assertEqual([len(call.args[0].rsplit("/", 1)[1].split(",")) for call in request.call_args_list], [100, 100, 5])
+
+    def test_400_id_scan_with_deleted_levels_queries_each_id_only_once(self):
+        queried = []
+
+        def respond(path, *args):
+            ids = list(map(int, path.rsplit("/", 1)[1].split(",")))
+            queried.extend(ids)
+            return 200, {"courses": [{"data_id": value, "uploaded": 1792453200} for value in ids if value % 5]}
+
+        with patch.object(dashboard, "request_json", side_effect=respond) as request:
+            courses = dashboard.scan_range(1, 400, batch_size=20, workers=1, timeout=20, retries=4, pause=0)
+        self.assertEqual(len(courses), 320)
+        self.assertEqual(queried, list(range(1, 401)))
+        self.assertEqual(request.call_count, 20)
 
 
 class FakeClock:
@@ -271,6 +309,11 @@ class ScanCheckpointTests(unittest.TestCase):
         self.assertEqual(self.cache.load_batch(1, 2), [])
         other = dashboard.ScanCache(Path(self.temp.name), self.date + dt.timedelta(days=1))
         self.assertIsNone(other.load_batch(1, 2))
+
+    def test_float_upload_timestamps_from_data_id_endpoint_are_resumable(self):
+        course = {**self.course(2), "uploaded": float(self.start + 2)}
+        self.cache.save_batch(1, 2, [course])
+        self.assertEqual(self.cache.load_batch(1, 2), [course])
 
     def test_corrupt_wrong_date_and_out_of_range_checkpoints_are_rejected(self):
         self.cache.path.mkdir(parents=True)
