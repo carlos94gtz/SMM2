@@ -3,11 +3,13 @@ const sourceData = window.SMM2_DASHBOARD_DATA;
 const expertOnly = (courses) => (courses || []).filter((course) => course.difficulty === publishedDifficulty);
 const data = { ...sourceData, difficulties: [publishedDifficulty] };
 // Older data files already contain complete rankings for each difficulty.
-for (const board of ["topLiked", "topLongest", "leastCleared"]) {
+for (const board of ["topLiked", "topLongest"]) {
   data[board] = expertOnly(sourceData[`${board}ByDifficulty`]?.[publishedDifficulty] ?? sourceData[board]);
   data[`${board}ByDifficulty`] = { [publishedDifficulty]: data[board] };
 }
-data.recentlyPlayed = expertOnly(sourceData.recentlyPlayed);
+// Also remove these sections when an older HTML page is still cached.
+document.querySelector('section[aria-labelledby="clearedTitle"]')?.remove();
+document.querySelector('section[aria-labelledby="playedTitle"]')?.remove();
 
 const number = new Intl.NumberFormat("es-MX");
 const dateFormatter = new Intl.DateTimeFormat("es-MX", {
@@ -21,14 +23,11 @@ for (const courses of dashboardCourseLists()) {
 let lastActiveCard = null;
 
 function dashboardCourseLists() {
-  const lists = [data.topLiked || [], data.topLongest || [], data.leastCleared || [], data.recentlyPlayed || []];
+  const lists = [data.topLiked || [], data.topLongest || []];
   for (const courses of Object.values(data.topLikedByDifficulty || {})) {
     lists.push(courses || []);
   }
   for (const courses of Object.values(data.topLongestByDifficulty || {})) {
-    lists.push(courses || []);
-  }
-  for (const courses of Object.values(data.leastClearedByDifficulty || {})) {
     lists.push(courses || []);
   }
   return lists;
@@ -310,29 +309,9 @@ function renderTopLongest() {
   );
 }
 
-function renderLeastCleared() {
-  renderList(
-    "leastCleared",
-    selectedCourses("clearedDifficultyFilter", data.leastCleared, data.leastClearedByDifficulty),
-    "clear",
-  );
-}
-
-function renderRecentlyPlayed() {
-  const list = byId("recentlyPlayed");
-  if (!list) return;
-
-  const courses = data.recentlyPlayed || [];
-  list.innerHTML = courses.length
-    ? courses.map((course, index) => card(course, index, "plays")).join("")
-    : emptyState("No hay niveles jugados registrados para esta fecha.");
-  bindImageFallbacks(list);
-}
-
 function bindDifficultyFilter() {
   byId("likedDifficultyFilter")?.addEventListener("change", renderTopLiked);
   byId("longestDifficultyFilter")?.addEventListener("change", renderTopLongest);
-  byId("clearedDifficultyFilter")?.addEventListener("change", renderLeastCleared);
 }
 
 function render() {
@@ -344,11 +323,8 @@ function render() {
 
   renderDifficultyFilter("likedDifficultyFilter");
   renderDifficultyFilter("longestDifficultyFilter");
-  renderDifficultyFilter("clearedDifficultyFilter");
   renderTopLiked();
   renderTopLongest();
-  renderLeastCleared();
-  renderRecentlyPlayed();
 }
 
 render();
