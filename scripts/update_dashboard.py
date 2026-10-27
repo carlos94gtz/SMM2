@@ -684,7 +684,6 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
     generated_at = dt.datetime.now(tz=TZ).isoformat(timespec="seconds")
     top_liked = top_liked_courses(courses)
     top_longest = top_longest_courses(courses)
-    least_cleared = least_cleared_courses(courses)
 
     return {
         "generatedAt": generated_at,
@@ -699,8 +698,6 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
             "topLikedCount": len(top_liked),
             "topLikedMinClearCheckMs": MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED,
             "topLongestCount": len(top_longest),
-            "leastClearedCount": len(least_cleared),
-            "leastClearedMinAttempts": MIN_ATTEMPTS_FOR_LEAST_CLEARED,
             "totalLikes": sum(c.get("likes") or 0 for c in courses),
             "totalPlays": sum(c.get("plays") or 0 for c in courses),
         },
@@ -714,12 +711,6 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
             difficulty: [compact(c) for c in top_longest_courses([c for c in courses if (c.get("difficulty_name") or "") == difficulty])]
             for difficulty in DIFFICULTY_ORDER
         },
-        "leastCleared": [compact(c) for c in least_cleared],
-        "leastClearedByDifficulty": {
-            difficulty: [compact(c) for c in least_cleared_courses([c for c in courses if (c.get("difficulty_name") or "") == difficulty])]
-            for difficulty in DIFFICULTY_ORDER
-        },
-        "recentlyPlayed": [],
     }
 
 
@@ -754,13 +745,9 @@ def save_payload(payload: dict) -> None:
 def course_groups(payload: dict) -> Iterable[list[dict]]:
     yield payload.get("topLiked", [])
     yield payload.get("topLongest", [])
-    yield payload.get("leastCleared", [])
-    yield payload.get("recentlyPlayed", [])
     for group in (payload.get("topLikedByDifficulty") or {}).values():
         yield group
     for group in (payload.get("topLongestByDifficulty") or {}).values():
-        yield group
-    for group in (payload.get("leastClearedByDifficulty") or {}).values():
         yield group
 
 
@@ -1045,39 +1032,14 @@ def rendered_list(courses: list[dict], mode: str, empty_text: str) -> str:
 
 
 def update_index(payload: dict) -> None:
-    top = "\n".join(card(course, i, "likes") for i, course in enumerate(payload["topLiked"]))
-    least = "\n".join(card(course, i, "clear") for i, course in enumerate(payload["leastCleared"]))
-    longest = "\n".join(card(course, i, "time") for i, course in enumerate(payload["topLongest"]))
-    played = rendered_list(
-        payload.get("recentlyPlayed", []),
-        "plays",
-        "No hay niveles jugados registrados para esta fecha.",
-    )
     text = INDEX_HTML.read_text(encoding="utf-8")
-    text = replace_list(
-        text,
-        "topLiked",
-        top,
-        '\n        </section>\n\n        <section class="board" aria-labelledby="clearedTitle">',
+    text = re.sub(
+        r'\s*<section\b[^>]*aria-labelledby="(?:clearedTitle|playedTitle)"[^>]*>.*?</section>',
+        "", text, flags=re.DOTALL,
     )
-    text = replace_list(
-        text,
-        "leastCleared",
-        least,
-        '\n        </section>\n\n        <section class="board" aria-labelledby="longestTitle">',
-    )
-    text = replace_list(
-        text,
-        "topLongest",
-        longest,
-        "\n        </section>\n      </section>\n\n      <section class=\"played-section board\" aria-labelledby=\"playedTitle\">",
-    )
-    text = replace_list(
-        text,
-        "recentlyPlayed",
-        played,
-        "\n      </section>\n    </main>",
-    )
+    for board, mode in (("topLiked", "likes"), ("topLongest", "time")):
+        content = rendered_list(payload.get(board, []), mode, "No hay niveles Expert para esta fecha.")
+        text = replace_list(text, board, content, '\n        </section>')
     version = payload_asset_version(payload)
     text = re.sub(r"data\.js\?v=[^\"']+", f"data.js?v={version}", text)
     text = "\n".join(line.rstrip() for line in text.splitlines()) + "\n"
@@ -1171,10 +1133,6 @@ def main(argv: list[str] | None = None) -> int:
         raise RuntimeError(f"No levels found for {local_date.isoformat()}")
 
     payload = build_payload(local_date, day_courses)
-    played_maker_id, recently_played = fetch_recently_played(args)
-    payload["recentlyPlayedMakerId"] = played_maker_id
-    payload["recentlyPlayed"] = recently_played
-    payload["stats"]["recentlyPlayedCount"] = len(recently_played)
     if not args.skip_thumbnails:
         localize_thumbnails(
             payload,
@@ -1195,9 +1153,7 @@ def main(argv: list[str] | None = None) -> int:
                 "date": payload["date"],
                 "totalLevels": payload["stats"]["totalLevels"],
                 "topLiked": [course["courseId"] for course in payload["topLiked"]],
-                "leastCleared": [course["courseId"] for course in payload["leastCleared"]],
                 "topLongest": [course["courseId"] for course in payload["topLongest"]],
-                "recentlyPlayed": [course["courseId"] for course in payload["recentlyPlayed"]],
             },
             ensure_ascii=False,
             indent=2,
