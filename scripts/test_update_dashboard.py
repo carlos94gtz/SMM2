@@ -337,5 +337,37 @@ class ScanCheckpointTests(unittest.TestCase):
         self.assertEqual(args.thumbnail_workers, 1)
 
 
+class ExpertPublicationTests(unittest.TestCase):
+    def course(self, difficulty, value):
+        return {"difficulty_name": difficulty, "course_id": str(value), "likes": value,
+                "plays": value * 2, "upload_time": 200_000, "attempts": 30, "clear_rate": 1}
+
+    def test_rankings_and_totals_include_only_expert(self):
+        courses = [self.course("Normal", 100), self.course("Super expert", 200),
+                   self.course("Expert", 3), self.course("Expert", 5)]
+        payload = dashboard.build_payload(dt.date(2026, 10, 25), courses)
+        self.assertEqual(payload["publicationDifficulty"], "Expert")
+        self.assertEqual(payload["difficulties"], ["Expert"])
+        self.assertEqual(payload["stats"]["totalLevels"], 2)
+        self.assertEqual(payload["stats"]["totalLikes"], 8)
+        self.assertEqual(payload["stats"]["totalPlays"], 16)
+        for group in dashboard.course_groups(payload):
+            self.assertTrue(all(c["difficulty"] == "Expert" for c in group))
+        self.assertEqual([c["courseId"] for c in payload["topLiked"]], ["5", "3"])
+        self.assertEqual(len(courses), 4)  # Preserve the full scan for date coverage and state.
+
+    def test_day_without_expert_levels_has_empty_rankings(self):
+        payload = dashboard.build_payload(dt.date(2026, 10, 25), [self.course("Normal", 1)])
+        self.assertEqual(payload["stats"]["totalLevels"], 0)
+        self.assertTrue(all(not group for group in dashboard.course_groups(payload)))
+
+    def test_recently_played_filters_before_applying_limit(self):
+        args = dashboard.build_parser().parse_args(["--played-maker-id", "ABC-DEF-GHJ", "--played-limit", "1"])
+        courses = [self.course("Super expert", 1), self.course("Expert", 2), self.course("Expert", 3)]
+        with patch.object(dashboard, "request_json", return_value=(200, {"courses": courses})):
+            _, recent = dashboard.fetch_recently_played(args)
+        self.assertEqual([c["courseId"] for c in recent], ["2"])
+
+
 if __name__ == "__main__":
     unittest.main()
