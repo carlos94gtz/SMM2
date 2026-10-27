@@ -338,6 +338,28 @@ class ScanCheckpointTests(unittest.TestCase):
 
 
 class ExpertPublicationTests(unittest.TestCase):
+    def test_removed_boards_are_not_published(self):
+        payload = dashboard.build_payload(dt.date(2026, 10, 25), [])
+        for key in ("leastCleared", "leastClearedByDifficulty", "recentlyPlayed"):
+            self.assertNotIn(key, payload)
+
+    def test_static_page_update_supports_removed_sections_and_legacy_html(self):
+        current = dashboard.INDEX_HTML.read_text(encoding="utf-8")
+        legacy = current.replace('<section class="leaderboards">',
+            '<section class="leaderboards"><section class="board" aria-labelledby="clearedTitle">removed</section>')
+        legacy = legacy.replace('</main>',
+            '<section class="played-section board" aria-labelledby="playedTitle">removed</section></main>')
+        payload = dashboard.build_payload(dt.date(2026, 10, 25), [self.course("Expert", 5)])
+        for template in (current, legacy):
+            with patch.object(dashboard, "INDEX_HTML") as page:
+                page.read_text.return_value = template
+                dashboard.update_index(payload)
+                output = page.write_text.call_args.args[0]
+                self.assertNotIn('aria-labelledby="clearedTitle"', output)
+                self.assertNotIn('aria-labelledby="playedTitle"', output)
+                self.assertEqual(output.count('data-course-id="5"'), 2)
+                self.assertEqual(output.count('<section'), output.count('</section>'))
+
     def course(self, difficulty, value):
         return {"difficulty_name": difficulty, "course_id": str(value), "likes": value,
                 "plays": value * 2, "upload_time": 200_000, "attempts": 30, "clear_rate": 1}
