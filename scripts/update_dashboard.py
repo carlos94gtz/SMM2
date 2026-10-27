@@ -41,7 +41,8 @@ API_BASE = "https://tgrcode.com/mm2"
 CHARSET = "0123456789BCDFGHJKLMNPQRSTVWXY"
 TZ_NAME = "America/Mexico_City"
 TZ = ZoneInfo(TZ_NAME)
-DIFFICULTY_ORDER = ["Easy", "Normal", "Expert", "Super expert"]
+PUBLISHED_DIFFICULTY = "Expert"
+DIFFICULTY_ORDER = [PUBLISHED_DIFFICULTY]
 MIN_ATTEMPTS_FOR_LEAST_CLEARED = 20
 MIN_CLEAR_CHECK_MS_FOR_TOP_LIKED = 180_000
 TOP_LONGEST_LIMIT = 20
@@ -678,6 +679,7 @@ def normalize_maker_id(value: object) -> str:
 
 
 def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
+    courses = [course for course in courses if course.get("difficulty_name") == PUBLISHED_DIFFICULTY]
     start_ts, end_ts = day_bounds(local_date)
     generated_at = dt.datetime.now(tz=TZ).isoformat(timespec="seconds")
     top_liked = top_liked_courses(courses)
@@ -690,6 +692,7 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
         "date": local_date.isoformat(),
         "timezone": TZ_NAME,
         "difficulties": DIFFICULTY_ORDER,
+        "publicationDifficulty": PUBLISHED_DIFFICULTY,
         "range": {"startTs": start_ts, "endTs": end_ts},
         "stats": {
             "totalLevels": len(courses),
@@ -735,6 +738,7 @@ def fetch_recently_played(args: argparse.Namespace) -> tuple[str, list[dict]]:
         return maker_id, []
 
     limit = max(0, int(args.played_limit or RECENTLY_PLAYED_LIMIT))
+    courses = [course for course in courses if course.get("difficulty_name") == PUBLISHED_DIFFICULTY]
     return maker_id, [compact(course) for course in courses[:limit]]
 
 
