@@ -1,4 +1,13 @@
-const data = window.SMM2_DASHBOARD_DATA;
+const publishedDifficulty = "Expert";
+const sourceData = window.SMM2_DASHBOARD_DATA;
+const expertOnly = (courses) => (courses || []).filter((course) => course.difficulty === publishedDifficulty);
+const data = { ...sourceData, difficulties: [publishedDifficulty] };
+// Older data files already contain complete rankings for each difficulty.
+for (const board of ["topLiked", "topLongest", "leastCleared"]) {
+  data[board] = expertOnly(sourceData[`${board}ByDifficulty`]?.[publishedDifficulty] ?? sourceData[board]);
+  data[`${board}ByDifficulty`] = { [publishedDifficulty]: data[board] };
+}
+data.recentlyPlayed = expertOnly(sourceData.recentlyPlayed);
 
 const number = new Intl.NumberFormat("es-MX");
 const dateFormatter = new Intl.DateTimeFormat("es-MX", {
@@ -259,13 +268,7 @@ function renderList(id, courses, mode) {
 }
 
 function difficultyOptions() {
-  return [
-    { value: "all", label: "Todas" },
-    ...(data.difficulties || []).map((difficulty) => ({
-      value: difficulty,
-      label: difficulty,
-    })),
-  ];
+  return [{ value: publishedDifficulty, label: "Experto" }];
 }
 
 function renderDifficultyFilter(selectId) {
@@ -281,7 +284,8 @@ function renderDifficultyFilter(selectId) {
     .join("");
 
   const allowedValues = new Set(options.map((option) => option.value));
-  select.value = allowedValues.has(currentValue) ? currentValue : "all";
+  select.value = allowedValues.has(currentValue) ? currentValue : publishedDifficulty;
+  select.disabled = true;
 }
 
 function selectedCourses(selectId, allCourses, byDifficulty) {
@@ -334,7 +338,9 @@ function bindDifficultyFilter() {
 function render() {
   const localDate = new Date(`${data.date}T12:00:00`);
   byId("dateLabel").textContent = dateFormatter.format(localDate);
-  byId("countLabel").textContent = `${metric(data.stats.totalLevels)} niveles`;
+  byId("countLabel").textContent = data.publicationDifficulty === publishedDifficulty
+    ? `${metric(data.stats.totalLevels)} niveles Expert`
+    : "Solo niveles Expert";
 
   renderDifficultyFilter("likedDifficultyFilter");
   renderDifficultyFilter("longestDifficultyFilter");
