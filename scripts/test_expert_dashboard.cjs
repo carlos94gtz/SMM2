@@ -15,14 +15,14 @@ function render(payload) {
       });
       return elements.get(id);
     },
-    querySelectorAll: () => [], addEventListener() {},
+    querySelector: () => null, querySelectorAll: () => [], addEventListener() {},
   };
   const context = vm.createContext({ window: { SMM2_DASHBOARD_DATA: payload }, document, Intl });
   vm.runInContext(source, context);
   return { elements, context };
 }
 
-test('legacy mixed payload uses complete Expert rankings and filters recent levels', () => {
+test('legacy mixed payload uses complete Expert rankings and omits removed boards', () => {
   const expert = { courseId: 'EXPERT123', name: 'Expert course', difficulty: 'Expert' };
   const other = { courseId: 'SUPER1234', name: 'Excluded course', difficulty: 'Super expert' };
   const payload = { date: '2026-10-25', timezone: 'America/Mexico_City', stats: { totalLevels: 999 },
@@ -32,13 +32,15 @@ test('legacy mixed payload uses complete Expert rankings and filters recent leve
     payload[`${board}ByDifficulty`] = { Expert: [expert], 'Super expert': [other] };
   }
   const { elements, context } = render(payload);
-  for (const board of ['topLiked', 'topLongest', 'leastCleared', 'recentlyPlayed']) {
+  for (const board of ['topLiked', 'topLongest']) {
     assert.match(elements.get(board).innerHTML, /Expert course/);
     assert.doesNotMatch(elements.get(board).innerHTML, /Excluded course/);
   }
   assert.equal(elements.get('countLabel').textContent, 'Solo niveles Expert');
   assert.equal(vm.runInContext('coursesById.has("SUPER1234")', context), false);
-  for (const id of ['likedDifficultyFilter', 'longestDifficultyFilter', 'clearedDifficultyFilter']) {
+  assert.equal(elements.has('leastCleared'), false);
+  assert.equal(elements.has('recentlyPlayed'), false);
+  for (const id of ['likedDifficultyFilter', 'longestDifficultyFilter']) {
     assert.equal(elements.get(id).value, 'Expert');
     assert.equal(elements.get(id).disabled, true);
     assert.doesNotMatch(elements.get(id).innerHTML, /Todas|Normal|Super/);
