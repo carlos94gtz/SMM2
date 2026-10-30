@@ -1,13 +1,72 @@
 import datetime as dt
 import io
 import json
+import re
 import tempfile
+import textwrap
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import MagicMock, patch
 
 import update_dashboard as dashboard
+
+
+class WorkflowRecoveryTests(unittest.TestCase):
+    def scripts(self):
+        workflow = (dashboard.ROOT / ".github/workflows/update-dashboard.yml").read_text(encoding="utf-8")
+        return [textwrap.dedent(body) for body in re.findall(r"<<'PY'\n(.*?)\n\s*PY\n", workflow, re.S)]
+
+    def test_all_embedded_python_scripts_compile(self):
+        scripts = self.scripts()
+        self.assertGreaterEqual(len(scripts), 3)
+        for index, source in enumerate(scripts):
+            with self.subTest(script=index):
+                compile(source, f"workflow-script-{index}", "exec")
+
+    def recovery(self, runs):
+        source = next(source for source in self.scripts() if "rerun-failed-jobs" in source)
+        requests = []
+
+        def respond(request, **kwargs):
+            requests.append((request.method, request.full_url))
+            response = MagicMock()
+            body = {"workflow_runs": runs} if request.method == "GET" else {}
+            response.__enter__.return_value.read.return_value = json.dumps(body).encode()
+            return response
+
+        output = io.StringIO()
+        with patch("sys.argv", ["-", "test-sha", "owner/repo"]), \
+             patch.dict("os.environ", {"GH_TOKEN": "test-token"}), \
+             patch("urllib.request.urlopen", side_effect=respond), patch("sys.stdout", output):
+            exec(compile(source, "workflow-pages-recovery", "exec"), {})
+        return requests, output.getvalue()
+
+    def test_failed_pages_run_is_retried_only_for_current_commit(self):
+        runs = [
+            {"name": "pages build and deployment", "head_sha": "other-sha", "id": 1,
+             "status": "completed", "conclusion": "failure"},
+            {"name": "pages build and deployment", "head_sha": "test-sha", "id": 2,
+             "status": "completed", "conclusion": "failure"},
+        ]
+        requests, output = self.recovery(runs)
+        self.assertEqual(requests[-1], ("POST", "https://api.github.com/repos/owner/repo/actions/runs/2/rerun-failed-jobs"))
+        self.assertEqual(len(requests), 2)
+        self.assertNotIn("No Pages deployment", output)
+
+    def test_pending_or_successful_runs_are_not_retried(self):
+        for status, conclusion in (("in_progress", None), ("completed", "success")):
+            with self.subTest(status=status):
+                requests, output = self.recovery([
+                    {"name": "pages build and deployment", "head_sha": "test-sha", "id": 2,
+                     "status": status, "conclusion": conclusion}])
+                self.assertEqual(len(requests), 1)
+                self.assertNotIn("No Pages deployment", output)
+
+    def test_missing_run_is_reported_without_retry(self):
+        requests, output = self.recovery([])
+        self.assertEqual(len(requests), 1)
+        self.assertIn("No Pages deployment", output)
 
 
 class RangeCalibrationTests(unittest.TestCase):
