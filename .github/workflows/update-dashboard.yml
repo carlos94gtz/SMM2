@@ -236,8 +236,9 @@ jobs:
               if status == "completed" and conclusion == "failure":
                   request("POST", f"/actions/runs/{run_id}/rerun-failed-jobs")
                   print(f"Requested rerun for failed Pages deployment {run_id}")
-              return
-          print("No Pages deployment run found for current commit yet")
+              break
+          else:
+              print("No Pages deployment run found for current commit yet")
           PY
           }
 
