@@ -38,6 +38,11 @@ STATE_PATH = ROOT / "automation-state.json"
 SCAN_CACHE_DIR = ROOT / ".scan-cache"
 
 API_BASE = "https://tgrcode.com/mm2"
+# Owner-approved exception: this course consistently crashes both TGRCode lookups.
+EXCLUDED_COURSES = {
+    60918871: {"courseId": "S30VFR7VG", "date": "2026-10-31",
+               "reason": "Persistent TGRCode HTTP 500; excluded at owner's request"},
+}
 CHARSET = "0123456789BCDFGHJKLMNPQRSTVWXY"
 TZ_NAME = "America/Mexico_City"
 TZ = ZoneInfo(TZ_NAME)
@@ -250,12 +255,21 @@ def fetch_pairs(
     if not pairs:
         return [], 0, 0, 0
 
+    excluded = [pair for pair in pairs if pair.data_id in EXCLUDED_COURSES]
+    if excluded:
+        for pair in excluded:
+            print(f"Excluding approved course {pair.course_id} (data_id {pair.data_id}): "
+                  f"{EXCLUDED_COURSES[pair.data_id]['reason']}", flush=True)
+        courses, requests, splits, missing = fetch_pairs(
+            [pair for pair in pairs if pair.data_id not in EXCLUDED_COURSES], timeout, retries, pause)
+        return courses, requests, splits, missing + len(excluded)
+
     if len(pairs) > 100:
         results = [fetch_pairs(batch, timeout, retries, pause) for batch in chunked(pairs, 100)]
         return (
             [course for result in results for course in result[0]],
             sum(result[1] for result in results),
-            0,
+            sum(result[2] for result in results),
             sum(result[3] for result in results),
         )
 
@@ -264,8 +278,23 @@ def fetch_pairs(
     if pause:
         time.sleep(pause)
 
+    if status == 500 and len(pairs) > 1:
+        middle = len(pairs) // 2
+        print(f"HTTP 500 for data_id {pairs[0].data_id}..{pairs[-1].data_id}; "
+              f"splitting into {middle} and {len(pairs) - middle} IDs", flush=True)
+        results = [fetch_pairs(batch, timeout, retries, pause)
+                   for batch in (pairs[:middle], pairs[middle:])]
+        return (
+            [course for result in results for course in result[0]],
+            1 + sum(result[1] for result in results),
+            1 + sum(result[2] for result in results),
+            sum(result[3] for result in results),
+        )
+
     if status != 200 or not isinstance(payload, dict) or payload.get("error") or not isinstance(payload.get("courses"), list):
-        raise RuntimeError(f"TGRCode API unavailable while fetching {len(pairs)} levels (HTTP {status})")
+        raise RuntimeError(f"TGRCode API unavailable while fetching {len(pairs)} levels "
+                           f"(HTTP {status}); data_ids={data_ids}, "
+                           f"course_ids={','.join(pair.course_id for pair in pairs)}")
 
     requested = {pair.data_id for pair in pairs}
     found = {}
@@ -679,7 +708,8 @@ def normalize_maker_id(value: object) -> str:
 
 
 def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
-    courses = [course for course in courses if course.get("difficulty_name") == PUBLISHED_DIFFICULTY]
+    courses = [course for course in courses if course.get("difficulty_name") == PUBLISHED_DIFFICULTY
+               and course.get("data_id") not in EXCLUDED_COURSES]
     start_ts, end_ts = day_bounds(local_date)
     generated_at = dt.datetime.now(tz=TZ).isoformat(timespec="seconds")
     top_liked = top_liked_courses(courses)
@@ -692,6 +722,8 @@ def build_payload(local_date: dt.date, courses: list[dict]) -> dict:
         "timezone": TZ_NAME,
         "difficulties": DIFFICULTY_ORDER,
         "publicationDifficulty": PUBLISHED_DIFFICULTY,
+        "excludedCourses": [{"dataId": data_id, **details} for data_id, details in EXCLUDED_COURSES.items()
+                            if details["date"] == local_date.isoformat()],
         "range": {"startTs": start_ts, "endTs": end_ts},
         "stats": {
             "totalLevels": len(courses),
