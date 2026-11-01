@@ -131,6 +131,38 @@ class RangeCalibrationTests(unittest.TestCase):
 
 
 class LookupFailureTests(unittest.TestCase):
+    def test_http_500_batch_splits_without_losing_valid_levels(self):
+        pairs = [dashboard.IdPair(value, dashboard.data_id_to_course_id(value)) for value in range(1, 5)]
+        def respond(path, *args):
+            ids = list(map(int, path.rsplit("/", 1)[1].split(",")))
+            if len(ids) > 2:
+                return 500, {"error": "Internal Server Error"}
+            return 200, {"courses": [{"data_id": value, "uploaded": 1792453200} for value in ids]}
+        with patch.object(dashboard, "request_json", side_effect=respond):
+            courses, requests, splits, missing = dashboard.fetch_pairs(pairs, 20, 4, 0)
+        self.assertEqual([c["data_id"] for c in courses], [1, 2, 3, 4])
+        self.assertEqual((requests, splits, missing), (3, 1, 0))
+
+    def test_unapproved_single_level_500_is_identified_and_never_skipped(self):
+        pairs = [dashboard.IdPair(value, dashboard.data_id_to_course_id(value)) for value in (1, 2)]
+        with patch.object(dashboard, "request_json", return_value=(500, {})) as request:
+            with self.assertRaisesRegex(RuntimeError, "data_ids=1, course_ids="):
+                dashboard.fetch_pairs(pairs, 20, 4, 0)
+        self.assertEqual(request.call_count, 2)
+
+    def test_only_owner_approved_course_is_excluded_from_request(self):
+        pairs = [dashboard.IdPair(value, dashboard.data_id_to_course_id(value))
+                 for value in (60918870, 60918871, 60918872)]
+        courses = [{"data_id": 60918870, "uploaded": 1792453200}]
+        with patch.object(dashboard, "request_json", return_value=(200, {"courses": courses})) as request:
+            self.assertEqual(dashboard.fetch_pairs(pairs, 20, 4, 0), (courses, 1, 0, 2))
+        request.assert_called_once_with("/level_info_multiple_dataid/60918870,60918872", 20, 4)
+
+    def test_exclusion_is_documented_only_on_affected_date(self):
+        payload = dashboard.build_payload(dt.date(2026, 10, 31), [])
+        self.assertEqual(payload["excludedCourses"][0]["dataId"], 60918871)
+        self.assertEqual(dashboard.build_payload(dt.date(2026, 11, 1), [])["excludedCourses"], [])
+
     def setUp(self):
         self.pair = dashboard.IdPair(60815000, "Y03HBGPWG")
 
