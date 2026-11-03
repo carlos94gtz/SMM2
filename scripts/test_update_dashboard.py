@@ -426,6 +426,69 @@ class ScanCheckpointTests(unittest.TestCase):
         args = dashboard.build_parser().parse_args([])
         self.assertEqual(args.workers, 1)
         self.assertEqual(args.thumbnail_workers, 1)
+        self.assertEqual(args.batch_size, 100)
+
+    def test_twenty_id_checkpoints_resume_with_one_hundred_id_batches(self):
+        for start in range(1, 201, 20):
+            self.cache.save_batch(start, start + 19, [self.course(value) for value in range(start, start + 20)])
+
+        def succeed(pairs, *args):
+            return [self.course(pair.data_id) for pair in pairs], 1, 0, 0
+
+        with patch.object(dashboard, "fetch_pairs", side_effect=succeed) as fetch:
+            courses = dashboard.scan_range(1, 400, batch_size=100, workers=1, timeout=20,
+                                           retries=0, pause=0, checkpoint=self.cache)
+        self.assertEqual([course["data_id"] for course in courses], list(range(1, 401)))
+        self.assertEqual([[pair.data_id for pair in call.args[0]] for call in fetch.call_args_list],
+                         [list(range(201, 301)), list(range(301, 401))])
+        with patch.object(dashboard, "fetch_pairs") as fetch:
+            resumed = dashboard.scan_range(1, 400, batch_size=100, workers=1, timeout=20,
+                                           retries=0, pause=0, checkpoint=self.cache)
+        fetch.assert_not_called()
+        self.assertEqual(resumed, courses)
+
+    def test_partial_and_empty_old_batches_preserve_gaps_when_rebatching(self):
+        self.cache.save_batch(1, 20, [self.course(2)])
+        self.cache.save_batch(41, 60, [])
+        self.cache.save_batch(81, 100, [self.course(90)])
+
+        def succeed(pairs, *args):
+            return [self.course(pair.data_id) for pair in pairs], 1, 0, 0
+
+        with patch.object(dashboard, "fetch_pairs", side_effect=succeed) as fetch:
+            courses = dashboard.scan_range(1, 100, batch_size=100, workers=1, timeout=20,
+                                           retries=0, pause=0, checkpoint=self.cache)
+        self.assertEqual([[pair.data_id for pair in call.args[0]] for call in fetch.call_args_list],
+                         [list(range(21, 41)), list(range(61, 81))])
+        self.assertEqual([course["data_id"] for course in courses],
+                         [2, *range(21, 41), *range(61, 81), 90])
+        self.assertIsNone(self.cache.load_batch(21, 80))
+        with patch.object(dashboard, "fetch_pairs") as fetch:
+            dashboard.scan_range(1, 100, batch_size=100, workers=1, timeout=20,
+                                 retries=0, pause=0, checkpoint=self.cache)
+        fetch.assert_not_called()
+
+    def test_overlapping_cache_ranges_are_clipped_and_deduplicated(self):
+        self.cache.save_batch(1, 100, [self.course(value) for value in range(1, 101)])
+        self.cache.save_batch(41, 60, [self.course(value) for value in range(41, 61)])
+        with patch.object(dashboard, "fetch_pairs") as fetch:
+            courses = dashboard.scan_range(35, 65, batch_size=20, workers=1, timeout=20,
+                                           retries=0, pause=0, checkpoint=self.cache)
+        fetch.assert_not_called()
+        self.assertEqual([course["data_id"] for course in courses], list(range(35, 66)))
+
+    def test_corrupt_range_is_not_counted_as_cached_coverage(self):
+        self.cache.save_batch(1, 20, [self.course(21)])
+        self.cache.save_batch(21, 40, [])
+
+        def succeed(pairs, *args):
+            return [self.course(pair.data_id) for pair in pairs], 1, 0, 0
+
+        with patch.object(dashboard, "fetch_pairs", side_effect=succeed) as fetch:
+            courses = dashboard.scan_range(1, 40, batch_size=100, workers=1, timeout=20,
+                                           retries=0, pause=0, checkpoint=self.cache)
+        self.assertEqual([pair.data_id for pair in fetch.call_args.args[0]], list(range(1, 21)))
+        self.assertEqual([course["data_id"] for course in courses], list(range(1, 21)))
 
 
 class ExpertPublicationTests(unittest.TestCase):
