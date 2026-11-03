@@ -364,6 +364,27 @@ class ScanCache:
     def save_batch(self, start: int, end: int, courses: list[dict]) -> None:
         self.save(f"{start}-{end}.json", {"start": start, "end": end, "courses": courses})
 
+    def load_coverage(self, start: int, end: int) -> tuple[list[dict], set[int]]:
+        """Reuse validated ranges even when the requested batch size changes."""
+        covered: set[int] = set()
+        courses: dict[int, dict] = {}
+        for path in sorted(self.path.glob("*-*.json")):
+            match = re.fullmatch(r"(\d+)-(\d+)\.json", path.name)
+            if not match:
+                continue
+            batch_start, batch_end = map(int, match.groups())
+            if batch_start <= 0 or batch_end < batch_start or batch_end < start or batch_start > end:
+                continue
+            saved = self.load_batch(batch_start, batch_end)
+            if saved is None:
+                continue
+            # Empty responses also prove that these IDs were already checked.
+            covered.update(range(max(start, batch_start), min(end, batch_end) + 1))
+            for course in saved:
+                if start <= course["data_id"] <= end:
+                    courses.setdefault(course["data_id"], course)
+        return [courses[data_id] for data_id in sorted(courses)], covered
+
 
 def scan_range(
     start_id: int,
@@ -380,7 +401,8 @@ def scan_range(
         return []
 
     pairs = [IdPair(data_id, data_id_to_course_id(data_id)) for data_id in range(start_id, end_id + 1)]
-    batches = list(chunked(pairs, batch_size))
+    if batch_size < 1:
+        raise ValueError("batch_size must be positive")
     completed = 0
     requests = 0
     splits = 0
@@ -392,15 +414,19 @@ def scan_range(
     def run_batch(batch: list[IdPair]) -> tuple[list[dict], int, int, int]:
         return fetch_pairs(batch, timeout, retries, pause)
 
-    pending = []
-    for batch in batches:
-        saved = checkpoint.load_batch(batch[0].data_id, batch[-1].data_id) if checkpoint else None
-        if saved is None:
-            pending.append(batch)
-        else:
-            courses.extend(saved)
-            completed += len(batch)
-            missing += len(batch) - len(saved)
+    covered: set[int] = set()
+    if checkpoint:
+        courses, covered = checkpoint.load_coverage(start_id, end_id)
+        completed = len(covered)
+        missing = completed - len(courses)
+    pending: list[list[IdPair]] = []
+    for pair in pairs:
+        if pair.data_id in covered:
+            continue
+        # Keep each batch contiguous so its saved range never includes unchecked IDs.
+        if not pending or len(pending[-1]) >= batch_size or pair.data_id != pending[-1][-1].data_id + 1:
+            pending.append([])
+        pending[-1].append(pair)
     if completed:
         print(f"  Resumed {completed:,}/{len(pairs):,} IDs from checkpoint", flush=True)
 
@@ -1115,7 +1141,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--scan-margin", type=int, default=1000, help="Extra IDs to scan before and after the estimate.")
     parser.add_argument("--scan-window", type=int, default=400, help="IDs to scan before checking day coverage.")
     parser.add_argument("--max-extensions", type=int, default=10, help="How many times to extend the scan if coverage is incomplete.")
-    parser.add_argument("--batch-size", type=int, default=20)
+    parser.add_argument("--batch-size", type=int, default=100)
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--checkpoint-dir", type=Path, help="Directory for resumable per-day scan batches.")
     parser.add_argument("--timeout", type=float, default=20.0)
