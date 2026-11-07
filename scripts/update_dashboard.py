@@ -38,8 +38,10 @@ STATE_PATH = ROOT / "automation-state.json"
 SCAN_CACHE_DIR = ROOT / ".scan-cache"
 
 API_BASE = "https://tgrcode.com/mm2"
-# Owner-approved exception: this course consistently crashes both TGRCode lookups.
+# Owner-approved exceptions for courses that crash both TGRCode lookups.
 EXCLUDED_COURSES = {
+    60971671: {"courseId": "X5L77P9VG", "date": "2026-11-06",
+               "reason": "Persistent TGRCode HTTP 500; excluded at owner's request"},
     60918871: {"courseId": "S30VFR7VG", "date": "2026-10-31",
                "reason": "Persistent TGRCode HTTP 500; excluded at owner's request"},
 }
